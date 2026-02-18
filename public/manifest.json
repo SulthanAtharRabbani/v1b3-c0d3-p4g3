@@ -1,0 +1,33 @@
+{
+  "name": "EduHub - Learning Platform",
+  "short_name": "EduHub",
+  "description": "All-in-One Course Learning Platform for Engineering Students",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Browse Courses",
+      "short_name": "Courses",
+      "url": "/#courses",
+      "description": "Browse all available courses"
+    },
+    {
+      "name": "Continue Learning",
+      "short_name": "Continue",
+      "url": "/#continue",
+      "description": "Resume your last lesson"
+    }
+  ]
+}
