@@ -27,7 +27,7 @@ import { MarkdownRenderer } from '@/components/shared/MarkdownRenderer';
 import { saveRecentlyViewed } from '@/components/hub/RecentlyViewed';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/shared/ThemeToggle';
 import { SearchOverlay } from '@/components/shared/SearchOverlay';
 import { KeyboardShortcutsHelp } from '@/components/shared/KeyboardShortcuts';
@@ -168,6 +168,8 @@ export default function CoursePage({ params }: CoursePageProps) {
       updateLastAccessed(course.id, id);
     }
     setSidebarOpen(false);
+    // Scroll to top when navigating to a new lesson
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [course, updateLastAccessed]);
 
   const handleQuizClick = useCallback((moduleId: string) => {
@@ -232,6 +234,7 @@ export default function CoursePage({ params }: CoursePageProps) {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="p-0 w-72">
+                <SheetTitle className="sr-only">Course Navigation</SheetTitle>
                 <SidebarNav
                   course={course}
                   currentLessonId={activeLessonId}

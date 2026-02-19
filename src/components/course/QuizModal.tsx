@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useProgressStore } from '@/lib/storage/progress-store';
 import { useStudyTrackingStore } from '@/lib/stores/study-tracking-store';
+import { checkAchievements } from '@/lib/achievement-checker';
 import type { QuizQuestion, Module as ModuleType, Course } from '@/types';
 import { cn } from '@/lib/utils';
 
@@ -26,12 +27,12 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
   const [correctCount, setCorrectCount] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>([]);
   const [finished, setFinished] = useState(false);
-  const { updateQuizScore } = useProgressStore();
-  
+  const { updateQuizScore, getCourseProgress, unlockCourseAchievement } = useProgressStore();
+
   // Study tracking
   const startSession = useStudyTrackingStore(state => state.startSession);
   const endSession = useStudyTrackingStore(state => state.endSession);
-  
+
   // Start tracking when quiz opens
   useEffect(() => {
     if (open) {
@@ -52,7 +53,7 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
 
   const handleCheckAnswer = useCallback(() => {
     if (selectedOption === null) return;
-    
+
     setShowResult(true);
     if (isCorrect) {
       setCorrectCount((prev) => prev + 1);
@@ -74,8 +75,32 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
       const finalScore = Math.round((correctCount / questions.length) * 100);
       updateQuizScore(course.id, module.id, finalScore);
       setFinished(true);
+
+      // Check and unlock achievements after quiz completion
+      setTimeout(() => {
+        const courseProgress = getCourseProgress(course.id);
+        const notesCount = Object.keys(courseProgress.notesV2 || {}).filter(
+          lessonId => courseProgress.notesV2?.[lessonId]?.content?.trim()
+        ).length;
+
+        const results = checkAchievements(
+          course,
+          courseProgress.completedLessons,
+          courseProgress.quizScores,
+          notesCount,
+          false,
+          courseProgress.unlockedAchievements || []
+        );
+
+        // Unlock any newly earned achievements
+        for (const result of results) {
+          if (result.newlyUnlocked) {
+            unlockCourseAchievement(course.id, result.achievementId);
+          }
+        }
+      }, 100);
     }
-  }, [currentIndex, questions.length, answers, correctCount, updateQuizScore, course.id, module.id]);
+  }, [currentIndex, questions.length, answers, correctCount, updateQuizScore, course.id, module.id, getCourseProgress, unlockCourseAchievement, course]);
 
   const handleRetry = useCallback(() => {
     setCurrentIndex(0);
@@ -94,7 +119,7 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
     } else {
       endSession();
     }
-    
+
     setCurrentIndex(0);
     setSelectedOption(null);
     setShowResult(false);
@@ -108,25 +133,25 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl">
-        <DialogHeader>
+      <DialogContent className="sm:max-w-2xl flex flex-col">
+        <DialogHeader className="shrink-0">
           <DialogTitle>{module.title} - Quiz</DialogTitle>
         </DialogHeader>
 
         {finished ? (
-          <div className="text-center py-8">
-            <Trophy className="h-16 w-16 mx-auto mb-4 text-yellow-500" />
-            <h3 className="text-2xl font-bold mb-2">Quiz Complete!</h3>
-            <p className="text-muted-foreground mb-4">
+          <div className="text-center py-6 sm:py-8">
+            <Trophy className="h-12 w-12 sm:h-16 sm:w-16 mx-auto mb-4 text-yellow-500" />
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Quiz Complete!</h3>
+            <p className="text-muted-foreground mb-4 text-sm sm:text-base">
               You got {correctCount} out of {questions.length} correct
             </p>
-            <div className="text-4xl font-bold mb-6" style={{
-              color: correctCount === questions.length ? '#10B981' : 
+            <div className="text-3xl sm:text-4xl font-bold mb-6" style={{
+              color: correctCount === questions.length ? '#10B981' :
                      correctCount >= questions.length * 0.7 ? '#3B82F6' : '#EF4444'
             }}>
               {Math.round((correctCount / questions.length) * 100)}%
             </div>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-3 sm:gap-4 flex-wrap">
               <Button variant="outline" onClick={handleRetry}>
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Retry Quiz
@@ -139,7 +164,7 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
         ) : (
           <>
             {/* Progress */}
-            <div className="mb-4">
+            <div className="shrink-0">
               <div className="flex justify-between text-sm mb-2">
                 <span>Question {currentIndex + 1} of {questions.length}</span>
                 <span>{correctCount} correct</span>
@@ -147,63 +172,65 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
               <Progress value={(currentIndex / questions.length) * 100} />
             </div>
 
-            {/* Question */}
-            <Card className="mb-4">
-              <CardContent className="pt-6">
-                <p className="text-lg font-medium mb-4">{currentQuestion.question}</p>
-                <div className="space-y-2">
-                  {currentQuestion.options.map((option, index) => {
-                    const isSelected = selectedOption === index;
-                    const isCorrectOption = index === currentQuestion.correctIndex;
-                    
-                    let bgClass = 'hover:bg-muted';
-                    if (showResult) {
-                      if (isCorrectOption) bgClass = 'bg-green-100 dark:bg-green-900/30 border-green-500';
-                      else if (isSelected && !isCorrectOption) bgClass = 'bg-red-100 dark:bg-red-900/30 border-red-500';
-                    } else if (isSelected) {
-                      bgClass = 'bg-primary/10 border-primary';
-                    }
+            {/* Question - scrollable on small screens */}
+            <div className="flex-1 overflow-y-auto -mx-4 sm:-mx-6 px-4 sm:px-6">
+              <Card className="mb-4">
+                <CardContent className="pt-4 sm:pt-6">
+                  <p className="text-base sm:text-lg font-medium mb-4">{currentQuestion.question}</p>
+                  <div className="space-y-2">
+                    {currentQuestion.options.map((option, index) => {
+                      const isSelected = selectedOption === index;
+                      const isCorrectOption = index === currentQuestion.correctIndex;
 
-                    return (
-                      <button
-                        key={index}
-                        onClick={() => handleOptionSelect(index)}
-                        disabled={showResult}
-                        className={cn(
-                          'w-full p-4 text-left rounded-lg border transition-colors flex items-center gap-3',
-                          bgClass,
-                          !showResult && 'cursor-pointer'
-                        )}
-                      >
-                        <span className={cn(
-                          'w-8 h-8 rounded-full flex items-center justify-center border text-sm font-medium shrink-0',
-                          isSelected ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'
-                        )}>
-                          {String.fromCharCode(65 + index)}
-                        </span>
-                        <span>{option}</span>
-                      </button>
-                    );
-                  })}
+                      let bgClass = 'hover:bg-muted';
+                      if (showResult) {
+                        if (isCorrectOption) bgClass = 'bg-green-100 dark:bg-green-900/30 border-green-500';
+                        else if (isSelected && !isCorrectOption) bgClass = 'bg-red-100 dark:bg-red-900/30 border-red-500';
+                      } else if (isSelected) {
+                        bgClass = 'bg-primary/10 border-primary';
+                      }
+
+                      return (
+                        <button
+                          key={index}
+                          onClick={() => handleOptionSelect(index)}
+                          disabled={showResult}
+                          className={cn(
+                            'w-full p-3 sm:p-4 text-left rounded-lg border transition-colors flex items-center gap-3',
+                            bgClass,
+                            !showResult && 'cursor-pointer'
+                          )}
+                        >
+                          <span className={cn(
+                            'w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center border text-xs sm:text-sm font-medium shrink-0',
+                            isSelected ? 'border-primary bg-primary text-primary-foreground' : 'border-muted-foreground'
+                          )}>
+                            {String.fromCharCode(65 + index)}
+                          </span>
+                          <span className="text-sm sm:text-base">{option}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Explanation */}
+              {showResult && (
+                <div className={cn(
+                  'p-3 sm:p-4 rounded-lg mb-4',
+                  isCorrect ? 'bg-green-50 dark:bg-green-900/20' : 'bg-amber-50 dark:bg-amber-900/20'
+                )}>
+                  <p className="font-medium mb-1 text-sm sm:text-base">
+                    {isCorrect ? '✓ Correct!' : '✗ Incorrect'}
+                  </p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{currentQuestion.explanation}</p>
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Explanation */}
-            {showResult && (
-              <div className={cn(
-                'p-4 rounded-lg mb-4',
-                isCorrect ? 'bg-green-50 dark:bg-green-900/20' : 'bg-amber-50 dark:bg-amber-900/20'
-              )}>
-                <p className="font-medium mb-1">
-                  {isCorrect ? '✓ Correct!' : '✗ Incorrect'}
-                </p>
-                <p className="text-sm text-muted-foreground">{currentQuestion.explanation}</p>
-              </div>
-            )}
+              )}
+            </div>
 
             {/* Actions */}
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-end gap-2 shrink-0">
               {!showResult ? (
                 <Button disabled={selectedOption === null} onClick={handleCheckAnswer}>
                   Check Answer

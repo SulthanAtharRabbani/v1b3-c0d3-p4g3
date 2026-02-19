@@ -18,8 +18,8 @@ interface ProgressState {
   getAllNotes: () => { courseId: string; courseName?: string; lessonId: string; note: Note }[];
   updateLastAccessed: (courseId: string, lessonId: string) => void;
   updateStreak: () => void;
-  unlockAchievement: (achievementId: string) => void;
-  hasAchievement: (achievementId: string) => boolean;
+  unlockCourseAchievement: (courseId: string, achievementId: string) => void;
+  hasCourseAchievement: (courseId: string, achievementId: string) => boolean;
   updateSettings: (settings: Partial<UserSettings>) => void;
   getCourseProgress: (courseId: string) => CourseProgress;
   getCompletedLessonsCount: (courseId: string) => number;
@@ -40,7 +40,6 @@ const defaultProgress: UserProgress = {
   longestStreak: 0,
   lastActiveDate: '',
   courses: {},
-  achievements: [],
   settings: defaultSettings,
 };
 
@@ -54,6 +53,7 @@ const createDefaultCourseProgress = (courseId: string): CourseProgress => ({
   bookmarks: [],
   notes: {},
   notesV2: {},
+  unlockedAchievements: [],
   startedAt: new Date().toISOString(),
 });
 
@@ -64,21 +64,17 @@ export const useProgressStore = create<ProgressState>()(
 
       markLessonComplete: (courseId, lessonId) => {
         set((state) => {
-          const courseProgress = state.progress.courses[courseId] || {
-            courseId,
-            completedLessons: [],
-            quizScores: {},
-            bookmarks: [],
-            notes: {},
-            startedAt: new Date().toISOString(),
-          };
+          const courseProgress = state.progress.courses[courseId] || createDefaultCourseProgress(courseId);
 
           if (courseProgress.completedLessons.includes(lessonId)) {
             return state;
           }
 
           const newCompletedLessons = [...courseProgress.completedLessons, lessonId];
-          
+
+          // Achievement unlocking is handled by checkAchievements in LessonContent
+          // Don't hardcode achievement IDs here
+
           return {
             progress: {
               ...state.progress,
@@ -93,17 +89,6 @@ export const useProgressStore = create<ProgressState>()(
             },
           };
         });
-        
-        // Check for achievements
-        const state = get();
-        const totalCompleted = state.getTotalCompletedLessons();
-        
-        if (totalCompleted === 1) {
-          state.unlockAchievement('first-steps');
-        }
-        if (totalCompleted >= 100) {
-          state.unlockAchievement('century');
-        }
       },
 
       unmarkLessonComplete: (courseId, lessonId) => {
@@ -134,16 +119,13 @@ export const useProgressStore = create<ProgressState>()(
 
       updateQuizScore: (courseId, moduleId, score) => {
         set((state) => {
-          const courseProgress = state.progress.courses[courseId] || {
-            courseId,
-            completedLessons: [],
-            quizScores: {},
-            bookmarks: [],
-            notes: {},
-          };
+          const courseProgress = state.progress.courses[courseId] || createDefaultCourseProgress(courseId);
 
           const currentBest = courseProgress.quizScores[moduleId] ?? 0;
           const newScore = Math.max(currentBest, score);
+
+          // Achievement unlocking is handled by checkAchievements in QuizModal
+          // Don't hardcode achievement IDs here
 
           return {
             progress: {
@@ -161,22 +143,11 @@ export const useProgressStore = create<ProgressState>()(
             },
           };
         });
-
-        // Check for quiz achievements
-        if (score === 100) {
-          get().unlockAchievement('quiz-ace');
-        }
       },
 
       toggleBookmark: (courseId, lessonId) => {
         set((state) => {
-          const courseProgress = state.progress.courses[courseId] || {
-            courseId,
-            completedLessons: [],
-            quizScores: {},
-            bookmarks: [],
-            notes: {},
-          };
+          const courseProgress = state.progress.courses[courseId] || createDefaultCourseProgress(courseId);
 
           const isCurrentlyBookmarked = courseProgress.bookmarks.includes(lessonId);
           const newBookmarks = isCurrentlyBookmarked
@@ -302,14 +273,7 @@ export const useProgressStore = create<ProgressState>()(
 
       updateLastAccessed: (courseId, lessonId) => {
         set((state) => {
-          const courseProgress = state.progress.courses[courseId] || {
-            courseId,
-            completedLessons: [],
-            quizScores: {},
-            bookmarks: [],
-            notes: {},
-            startedAt: new Date().toISOString(),
-          };
+          const courseProgress = state.progress.courses[courseId] || createDefaultCourseProgress(courseId);
 
           return {
             progress: {
@@ -347,44 +311,43 @@ export const useProgressStore = create<ProgressState>()(
 
           const newLongestStreak = Math.max(newStreak, state.progress.longestStreak);
 
-          // Check streak achievements
-          const achievements = [...state.progress.achievements];
-          if (newStreak >= 7 && !achievements.includes('week-warrior')) {
-            achievements.push('week-warrior');
-          }
-          if (newStreak >= 30 && !achievements.includes('month-master')) {
-            achievements.push('month-master');
-          }
-
           return {
             progress: {
               ...state.progress,
               currentStreak: newStreak,
               longestStreak: newLongestStreak,
               lastActiveDate: today,
-              achievements,
             },
           };
         });
       },
 
-      unlockAchievement: (achievementId) => {
+      unlockCourseAchievement: (courseId, achievementId) => {
         set((state) => {
-          if (state.progress.achievements.includes(achievementId)) {
+          const courseProgress = state.progress.courses[courseId] || createDefaultCourseProgress(courseId);
+          
+          if (courseProgress.unlockedAchievements?.includes(achievementId)) {
             return state;
           }
 
           return {
             progress: {
               ...state.progress,
-              achievements: [...state.progress.achievements, achievementId],
+              courses: {
+                ...state.progress.courses,
+                [courseId]: {
+                  ...courseProgress,
+                  unlockedAchievements: [...(courseProgress.unlockedAchievements || []), achievementId],
+                },
+              },
             },
           };
         });
       },
 
-      hasAchievement: (achievementId) => {
-        return get().progress.achievements.includes(achievementId);
+      hasCourseAchievement: (courseId, achievementId) => {
+        const state = get();
+        return state.progress.courses[courseId]?.unlockedAchievements?.includes(achievementId) ?? false;
       },
 
       updateSettings: (settings) => {
@@ -400,13 +363,7 @@ export const useProgressStore = create<ProgressState>()(
       },
 
       getCourseProgress: (courseId) => {
-        return get().progress.courses[courseId] ?? {
-          courseId,
-          completedLessons: [],
-          quizScores: {},
-          bookmarks: [],
-          notes: {},
-        };
+        return get().progress.courses[courseId] ?? createDefaultCourseProgress(courseId);
       },
 
       getCompletedLessonsCount: (courseId) => {

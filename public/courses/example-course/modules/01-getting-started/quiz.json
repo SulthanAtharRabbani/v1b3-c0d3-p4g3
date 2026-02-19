@@ -1,0 +1,50 @@
+[
+  {
+    "id": "quiz-1-1",
+    "question": "What syntax is used for inline LaTeX equations?",
+    "options": [
+      "Single dollar signs: $...$",
+      "Double dollar signs: $$...$$",
+      "Square brackets: [...]",
+      "Angle brackets: <...>"
+    ],
+    "correctIndex": 0,
+    "explanation": "Single dollar signs like $E = mc^2$ create inline equations that flow with the text."
+  },
+  {
+    "id": "quiz-1-2",
+    "question": "How do you create a bold text in Markdown?",
+    "options": [
+      "*bold*",
+      "**bold**",
+      "__bold__",
+      "~bold~"
+    ],
+    "correctIndex": 1,
+    "explanation": "Double asterisks **bold** create bold text. Single asterisks create italic text."
+  },
+  {
+    "id": "quiz-1-3",
+    "question": "What is the LaTeX command for the integral symbol?",
+    "options": [
+      "\\int",
+      "\\integral",
+      "\\integrate",
+      "\\sum"
+    ],
+    "correctIndex": 0,
+    "explanation": "\\int produces the integral symbol ∫. \\sum is for summation."
+  },
+  {
+    "id": "quiz-1-4",
+    "question": "Which creates a block (centered) equation?",
+    "options": [
+      "$equation$",
+      "$$equation$$",
+      "[equation]",
+      "(equation)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Double dollar signs $$...$$ create centered block equations on their own line."
+  }
+]

@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import { MusicWidget } from '@/components/shared/MusicWidget';
 import { PomodoroWidget } from '@/components/shared/PomodoroWidget';
 import { PlaybackProvider } from '@/lib/playback-context';
+import { CoursesProvider } from '@/lib/courses-context';
 import { Toaster } from '@/components/ui/sonner';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -46,11 +47,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <PlaybackProvider>
-            {children}
-            <MusicWidget />
-            <PomodoroWidget />
-          </PlaybackProvider>
+          <CoursesProvider>
+            <PlaybackProvider>
+              {children}
+              <MusicWidget />
+              <PomodoroWidget />
+            </PlaybackProvider>
+          </CoursesProvider>
           <Toaster />
         </ThemeProvider>
       </body>

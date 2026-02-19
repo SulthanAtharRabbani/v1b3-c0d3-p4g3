@@ -1,0 +1,62 @@
+[
+  {
+    "id": "flash-markdown-bold",
+    "front": "How do you create bold text in Markdown?",
+    "back": "Use double asterisks: **bold text**"
+  },
+  {
+    "id": "flash-markdown-italic",
+    "front": "How do you create italic text in Markdown?",
+    "back": "Use single asterisks: *italic text*"
+  },
+  {
+    "id": "flash-latex-inline",
+    "front": "What is the syntax for inline LaTeX equations?",
+    "back": "Single dollar signs: $E = mc^2$"
+  },
+  {
+    "id": "flash-latex-block",
+    "front": "What is the syntax for block LaTeX equations?",
+    "back": "Double dollar signs:\n$$\\int_0^1 x dx$$"
+  },
+  {
+    "id": "flash-quadratic",
+    "front": "What is the quadratic formula?",
+    "back": "$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$"
+  },
+  {
+    "id": "flash-derivative-power",
+    "front": "What is the power rule for derivatives?",
+    "back": "$$\\frac{d}{dx}[x^n] = nx^{n-1}$$"
+  },
+  {
+    "id": "flash-keyboard-flashcard",
+    "front": "What keyboard shortcut opens flashcards?",
+    "back": "Press F to open the flashcards panel"
+  },
+  {
+    "id": "flash-keyboard-notes",
+    "front": "What keyboard shortcut opens notes?",
+    "back": "Press N to open the notes panel"
+  },
+  {
+    "id": "flash-keyboard-complete",
+    "front": "How do you mark a lesson as complete?",
+    "back": "Press M to mark the current lesson as complete"
+  },
+  {
+    "id": "flash-keyboard-reference",
+    "front": "What keyboard shortcut opens quick reference?",
+    "back": "Press Q to open the quick reference formulas panel"
+  },
+  {
+    "id": "flash-discriminant",
+    "front": "What does the discriminant tell us about quadratic roots?",
+    "back": "If Δ > 0: two real roots\nIf Δ = 0: one repeated root\nIf Δ < 0: two complex roots"
+  },
+  {
+    "id": "flash-code-block",
+    "front": "How do you create a code block with syntax highlighting?",
+    "back": "Use triple backticks with a language:\n```python\nprint('Hello')\n```"
+  }
+]

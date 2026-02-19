@@ -72,33 +72,33 @@ export function KeyboardShortcutsHelp() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <HelpCircle className="h-5 w-5" />
+          <DialogTitle className="flex items-center gap-2 text-base sm:text-lg">
+            <HelpCircle className="h-4 w-4 sm:h-5 sm:w-5" />
             Keyboard Shortcuts
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-sm">
             Speed up your learning with these keyboard shortcuts
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid gap-6 py-4">
+        <div className="grid gap-4 sm:gap-6 py-2 sm:py-4 -mx-4 sm:-mx-6 px-4 sm:px-6 overflow-y-auto max-h-[50vh]">
           {shortcutGroups.map((group) => (
             <div key={group.title}>
-              <h4 className="text-sm font-medium text-muted-foreground mb-3">
+              <h4 className="text-xs sm:text-sm font-medium text-muted-foreground mb-2 sm:mb-3">
                 {group.title}
               </h4>
-              <div className="space-y-2">
+              <div className="space-y-1.5 sm:space-y-2">
                 {group.shortcuts.map((shortcut, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between"
+                    className="flex items-center justify-between gap-2"
                   >
-                    <span className="text-sm">{shortcut.description}</span>
-                    <div className="flex gap-1">
+                    <span className="text-xs sm:text-sm">{shortcut.description}</span>
+                    <div className="flex gap-1 shrink-0">
                       {shortcut.keys.map((key, keyIndex) => (
                         <kbd
                           key={keyIndex}
-                          className="px-2 py-1 bg-muted rounded text-xs font-mono min-w-[2rem] text-center"
+                          className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-muted rounded text-[10px] sm:text-xs font-mono min-w-[1.5rem] sm:min-w-[2rem] text-center"
                         >
                           {key}
                         </kbd>
@@ -111,8 +111,8 @@ export function KeyboardShortcutsHelp() {
           ))}
         </div>
 
-        <div className="flex justify-end">
-          <Button variant="outline" onClick={() => setOpen(false)}>
+        <div className="flex justify-end shrink-0">
+          <Button variant="outline" size="sm" onClick={() => setOpen(false)}>
             Got it!
           </Button>
         </div>

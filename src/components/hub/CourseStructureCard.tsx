@@ -3,9 +3,12 @@
 import { useMemo } from 'react';
 import { BookOpen, Layers, Clock, FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { courses, getTotalLessons } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
+import { getTotalLessons } from '@/lib/courses';
 
 export function CourseStructureCard() {
+  const { courses } = useCourses();
+  
   const stats = useMemo(() => {
     const totalModules = courses.reduce((acc, course) => acc + course.modules.length, 0);
     const totalLessons = courses.reduce((acc, course) => acc + getTotalLessons(course), 0);
@@ -13,7 +16,7 @@ export function CourseStructureCard() {
     const totalCourses = courses.length;
 
     return { totalCourses, totalModules, totalLessons, totalHours };
-  }, []);
+  }, [courses]);
 
   return (
     <Card className="border-0 shadow-sm">

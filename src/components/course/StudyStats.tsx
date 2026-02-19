@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef, useSyncExternalStore } from 'react';
-import { Clock, TrendingUp, BookOpen, Brain, Target, Flame, BarChart3, ChevronDown, ChevronUp, Timer, QuizIcon } from 'lucide-react';
+import { Clock, TrendingUp, BookOpen, Brain, Target, Flame, BarChart3, ChevronDown, ChevronUp, Timer } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';

@@ -1,14 +1,17 @@
 'use client';
 
+import { useMemo } from 'react';
 import { BarChart3, Clock, BookOpen, Target, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { useProgressStore } from '@/lib/storage/progress-store';
-import { courses, getTotalLessons } from '@/lib/courses';
-import { ACHIEVEMENTS } from '@/types';
+import { useCourses } from '@/lib/courses-context';
+import { getTotalLessons } from '@/lib/courses';
+import { STREAK_ACHIEVEMENTS, DEFAULT_COURSE_ACHIEVEMENTS } from '@/types';
 
 export function StudyStatistics() {
   const { progress } = useProgressStore();
+  const { courses } = useCourses();
 
   // Calculate statistics
   const totalLessonsCompleted = Object.values(progress.courses).reduce(
@@ -42,8 +45,32 @@ export function StudyStatistics() {
   const hours = Math.floor(totalStudyTime / 3600);
   const minutes = Math.floor((totalStudyTime % 3600) / 60);
 
-  const unlockedAchievements = progress.achievements.length;
-  const totalAchievements = ACHIEVEMENTS.length;
+  // Calculate achievements from courses + streak
+  const allAchievements = useMemo(() => {
+    const achievements = [...STREAK_ACHIEVEMENTS, ...DEFAULT_COURSE_ACHIEVEMENTS];
+    for (const course of courses) {
+      if (course.achievements) {
+        achievements.push(...course.achievements);
+      }
+    }
+    return achievements;
+  }, [courses]);
+
+  const unlockedCount = useMemo(() => {
+    let count = 0;
+    // Streak achievements
+    for (const streak of STREAK_ACHIEVEMENTS) {
+      if (progress.currentStreak >= streak.requirement) {
+        count++;
+      }
+    }
+    // Course achievements
+    for (const courseId of Object.keys(progress.courses)) {
+      const courseProgress = progress.courses[courseId];
+      count += courseProgress.unlockedAchievements?.length || 0;
+    }
+    return count;
+  }, [progress]);
 
   // Recent activity
   const recentCourses = Object.entries(progress.courses)
@@ -146,15 +173,20 @@ export function StudyStatistics() {
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4 mb-4">
-            <div className="text-3xl font-bold">{unlockedAchievements}/{totalAchievements}</div>
+            <div className="text-3xl font-bold">{unlockedCount}/{allAchievements.length}</div>
             <Progress 
-              value={(unlockedAchievements / totalAchievements) * 100} 
+              value={(unlockedCount / allAchievements.length) * 100} 
               className="flex-1 h-2" 
             />
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-            {ACHIEVEMENTS.slice(0, 5).map((achievement) => {
-              const unlocked = progress.achievements.includes(achievement.id);
+            {allAchievements.slice(0, 5).map((achievement) => {
+              // Check if streak achievement
+              const isStreak = 'requirement' in achievement && typeof achievement.requirement === 'number';
+              const unlocked = isStreak
+                ? progress.currentStreak >= (achievement as { requirement: number }).requirement
+                : Object.values(progress.courses).some(cp => cp.unlockedAchievements?.includes(achievement.id));
+              
               return (
                 <div
                   key={achievement.id}

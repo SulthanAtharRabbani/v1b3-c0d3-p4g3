@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { X, BookOpen, Target, Flame, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { courses, getFirstLesson } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
+import { getFirstLesson } from '@/lib/courses';
 import { useProgressStore } from '@/lib/storage/progress-store';
 import Link from 'next/link';
 
@@ -16,6 +17,7 @@ export function WelcomeBack({ className }: WelcomeBackProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [userName, setUserName] = useState('');
   const { progress } = useProgressStore();
+  const { courses } = useCourses();
 
   useEffect(() => {
     // Check if user has visited before

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson in this course",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
+  },
+  {
+    "id": "halfway-there",
+    "title": "Halfway There",
+    "description": "Complete 50% of the course lessons",
+    "icon": "TrendingUp",
+    "type": "lesson",
+    "requirement": "complete-50"
+  },
+  {
+    "id": "course-complete",
+    "title": "Course Graduate",
+    "description": "Complete all lessons in this course",
+    "icon": "GraduationCap",
+    "type": "course",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "quiz-master",
+    "title": "Quiz Master",
+    "description": "Get 100% on any quiz",
+    "icon": "Target",
+    "type": "quiz",
+    "requirement": "score-100"
+  },
+  {
+    "id": "flashcard-pro",
+    "title": "Flashcard Pro",
+    "description": "Review all flashcards in this course",
+    "icon": "Layers",
+    "type": "custom",
+    "requirement": "review-all-flashcards"
+  },
+  {
+    "id": "note-taker",
+    "title": "Note Taker",
+    "description": "Create your first note in this course",
+    "icon": "FileText",
+    "type": "custom",
+    "requirement": "first-note"
+  }
+]

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import { Search, X, BookOpen, FolderOpen, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -53,26 +53,26 @@ export function SearchOverlay() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-2xl p-0 gap-0" onOpenAutoFocus={(e) => e.preventDefault()}>
+      <DialogContent className="sm:max-w-2xl p-0 gap-0" onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader className="sr-only">
           <DialogTitle>Search courses and lessons</DialogTitle>
         </DialogHeader>
-        <div className="flex items-center border-b px-4">
-          <Search className="h-5 w-5 text-muted-foreground shrink-0" />
+        <div className="flex items-center border-b px-3 sm:px-4 shrink-0">
+          <Search className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground shrink-0" />
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search courses, modules, lessons..."
-            className="border-0 focus-visible:ring-0 text-lg"
+            className="border-0 focus-visible:ring-0 text-base sm:text-lg"
             autoFocus
           />
           <Button variant="ghost" size="sm" onClick={() => setOpen(false)}>
             <X className="h-4 w-4" />
           </Button>
         </div>
-        <div className="max-h-96 overflow-y-auto">
+        <div className="max-h-[50vh] sm:max-h-96 overflow-y-auto">
           {results.length === 0 && query.length > 0 && (
-            <div className="p-8 text-center text-muted-foreground">
+            <div className="p-6 sm:p-8 text-center text-muted-foreground text-sm sm:text-base">
               No results found for "{query}"
             </div>
           )}
@@ -81,21 +81,21 @@ export function SearchOverlay() {
               key={`${result.item.type}-${result.item.course.id}-${result.item.lesson?.id || result.item.module?.id}`}
               onClick={() => handleSelect(result.item)}
               className={cn(
-                'w-full px-4 py-3 flex items-start gap-3 hover:bg-muted transition-colors text-left',
+                'w-full px-3 sm:px-4 py-2.5 sm:py-3 flex items-start gap-2 sm:gap-3 hover:bg-muted transition-colors text-left',
                 index !== results.length - 1 && 'border-b'
               )}
             >
               <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0"
                 style={{ backgroundColor: result.item.course.color + '20' }}
               >
-                {result.item.type === 'course' && <BookOpen className="h-4 w-4" style={{ color: result.item.course.color }} />}
-                {result.item.type === 'module' && <FolderOpen className="h-4 w-4" style={{ color: result.item.course.color }} />}
-                {result.item.type === 'lesson' && <FileText className="h-4 w-4" style={{ color: result.item.course.color }} />}
+                {result.item.type === 'course' && <BookOpen className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: result.item.course.color }} />}
+                {result.item.type === 'module' && <FolderOpen className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: result.item.course.color }} />}
+                {result.item.type === 'lesson' && <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: result.item.course.color }} />}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{result.item.title}</div>
-                <div className="text-sm text-muted-foreground truncate">
+                <div className="font-medium truncate text-sm sm:text-base">{result.item.title}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground truncate">
                   {result.item.course.title}
                   {result.item.module && ` • ${result.item.module.title}`}
                 </div>
@@ -104,7 +104,7 @@ export function SearchOverlay() {
           ))}
         </div>
         {query.length === 0 && (
-          <div className="p-4 text-center text-sm text-muted-foreground border-t">
+          <div className="p-3 sm:p-4 text-center text-xs sm:text-sm text-muted-foreground border-t">
             Start typing to search...
           </div>
         )}

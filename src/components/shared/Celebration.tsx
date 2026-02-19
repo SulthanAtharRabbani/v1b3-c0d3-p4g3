@@ -63,7 +63,7 @@ export function useCelebration() {
 
   const celebrate = useCallback((type: CelebrationType) => {
     const config = CELEBRATION_CONFIGS[type];
-    
+
     // Different celebration patterns based on type
     switch (type) {
       case 'lesson':
@@ -102,7 +102,7 @@ export function useCelebration() {
         const duration = config.duration;
         const animationEnd = Date.now() + duration;
         const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
-        
+
         const interval = setInterval(() => {
           const timeLeft = animationEnd - Date.now();
           if (timeLeft <= 0) {
@@ -218,23 +218,23 @@ export function CelebrationModal({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="text-center max-w-sm">
-        <div className="py-6">
-          <div className={`mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center mb-4 ${colorClass}`}>
-            <Icon className="h-10 w-10" />
+      <DialogContent className="text-center sm:max-w-sm">
+        <div className="py-4 sm:py-6">
+          <div className={`mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center mb-3 sm:mb-4 ${colorClass}`}>
+            <Icon className="h-8 w-8 sm:h-10 sm:w-10" />
           </div>
           <DialogHeader>
-            <DialogTitle className="text-2xl mb-2">{title}</DialogTitle>
+            <DialogTitle className="text-xl sm:text-2xl mb-1 sm:mb-2">{title}</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground mb-6">{description}</p>
+          <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6">{description}</p>
           {achievement && (
-            <div className="bg-muted rounded-lg p-4 mb-4">
-              <p className="font-medium text-sm text-muted-foreground mb-2">Achievement Unlocked!</p>
-              <p className="font-semibold">{achievement.title}</p>
+            <div className="bg-muted rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
+              <p className="font-medium text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">Achievement Unlocked!</p>
+              <p className="font-semibold text-sm sm:text-base">{achievement.title}</p>
               <p className="text-xs text-muted-foreground capitalize">{achievement.tier} Tier</p>
             </div>
           )}
-          <Button onClick={onClose} className="w-full">
+          <Button onClick={onClose} className="w-full" size="sm">
             Continue
           </Button>
         </div>

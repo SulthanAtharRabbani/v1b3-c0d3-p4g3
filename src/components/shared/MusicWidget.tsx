@@ -8,7 +8,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { usePlayback, TRACKS, Track } from '@/lib/playback-context';
+import { usePlayback, Track } from '@/lib/playback-context';
 
 // Format time helper
 function formatTime(time: number) {
@@ -77,6 +77,7 @@ export function MusicWidget() {
     duration,
     volume,
     isMuted,
+    tracks,
     currentSource,
     togglePlayPause,
     playTrack,
@@ -490,40 +491,48 @@ export function MusicWidget() {
             {/* Tracks */}
             {tab === 'tracks' && (
               <div>
-                {TRACKS.map((track, i) => (
-                  <div
-                    key={track.id}
-                    onClick={() => handleTrackClick(track)}
-                    className={cn(
-                      'w-full flex items-center gap-2 px-3 py-2 hover:bg-muted/50 transition-colors cursor-pointer',
-                      currentSource.type === 'track' && currentSource.id === track.id && 'bg-muted/50'
-                    )}
-                  >
-                    <div className={cn(
-                      'w-5 h-5 rounded flex items-center justify-center text-[10px]',
-                      currentSource.type === 'track' && currentSource.id === track.id 
-                        ? 'bg-violet-500 text-white' 
-                        : 'bg-muted'
-                    )}>
-                      {currentSource.type === 'track' && currentSource.id === track.id && (isLoading || isPlaying) ? (
-                        isLoading ? (
-                          <Loader2 className="h-3 w-3 animate-spin" />
-                        ) : (
-                          <span className="flex gap-0.5 items-end">
-                            <span className="w-0.5 h-2 bg-white rounded-full animate-pulse" />
-                            <span className="w-0.5 h-1.5 bg-white rounded-full animate-pulse" />
-                          </span>
-                        )
-                      ) : (
-                        i + 1
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-medium truncate">{track.title}</p>
-                      <p className="text-[10px] text-muted-foreground">{track.artist}</p>
-                    </div>
+                {tracks.length === 0 ? (
+                  <div className="p-4 text-center text-muted-foreground">
+                    <Music className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                    <p className="text-xs">No music files found</p>
+                    <p className="text-[10px] mt-1">Add MP3 files to public/music/</p>
                   </div>
-                ))}
+                ) : (
+                  tracks.map((track, i) => (
+                    <div
+                      key={track.id}
+                      onClick={() => handleTrackClick(track)}
+                      className={cn(
+                        'w-full flex items-center gap-2 px-3 py-2 hover:bg-muted/50 transition-colors cursor-pointer',
+                        currentSource.type === 'track' && currentSource.id === track.id && 'bg-muted/50'
+                      )}
+                    >
+                      <div className={cn(
+                        'w-5 h-5 rounded flex items-center justify-center text-[10px]',
+                        currentSource.type === 'track' && currentSource.id === track.id 
+                          ? 'bg-violet-500 text-white' 
+                          : 'bg-muted'
+                      )}>
+                        {currentSource.type === 'track' && currentSource.id === track.id && (isLoading || isPlaying) ? (
+                          isLoading ? (
+                            <Loader2 className="h-3 w-3 animate-spin" />
+                          ) : (
+                            <span className="flex gap-0.5 items-end">
+                              <span className="w-0.5 h-2 bg-white rounded-full animate-pulse" />
+                              <span className="w-0.5 h-1.5 bg-white rounded-full animate-pulse" />
+                            </span>
+                          )
+                        ) : (
+                          i + 1
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-medium truncate">{track.title}</p>
+                        <p className="text-[10px] text-muted-foreground">{track.artist}</p>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             )}
 

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useProgressStore } from '@/lib/storage/progress-store';
-import { courses } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
 import { AllNotesModal } from './AllNotesModal';
 
 // Custom hook for hydration-safe state
@@ -22,6 +22,7 @@ function useMounted() {
 export function NotesWidget() {
   const [showAllNotes, setShowAllNotes] = useState(false);
   const mounted = useMounted();
+  const { courses } = useCourses();
   
   // Subscribe to courses state directly to detect changes
   const coursesProgress = useProgressStore(state => state.progress.courses);

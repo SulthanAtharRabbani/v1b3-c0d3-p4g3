@@ -2,8 +2,8 @@
 
 import { useState, useMemo, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { 
-  StickyNote, Search, Clock, Trash2, ExternalLink, 
+import {
+  StickyNote, Search, Clock, Trash2, ExternalLink,
   FileText, Calendar, SortAsc, Filter
 } from 'lucide-react';
 import {
@@ -15,7 +15,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Select,
   SelectContent,
@@ -34,7 +33,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { useProgressStore } from '@/lib/storage/progress-store';
-import { courses } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
 import type { Note } from '@/types';
 
 interface AllNotesModalProps {
@@ -64,6 +63,7 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
   } | null>(null);
 
   // Subscribe to courses state directly to detect changes
+  const { courses } = useCourses();
   const coursesProgress = useProgressStore(state => state.progress.courses);
   const getAllNotes = useProgressStore(state => state.getAllNotes);
   const deleteNote = useProgressStore(state => state.deleteNote);
@@ -71,11 +71,11 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
   // Get all notes with enriched metadata - re-compute when coursesProgress changes
   const allNotesWithMeta = useMemo((): NoteWithMeta[] => {
     const allNotes = getAllNotes();
-    
+
     return allNotes.map(({ courseId, lessonId, note }) => {
       const course = courses.find(c => c.id === courseId);
       let lessonTitle = lessonId;
-      
+
       if (course) {
         for (const courseModule of course.modules) {
           const lesson = courseModule.lessons.find(l => l.id === lessonId);
@@ -85,7 +85,7 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
           }
         }
       }
-      
+
       return {
         courseId,
         lessonId,
@@ -95,12 +95,12 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
         courseSlug: course?.slug || courseId,
       };
     });
-  }, [coursesProgress, getAllNotes]); // Re-compute when coursesProgress changes
+  }, [coursesProgress, getAllNotes, courses]);
 
   // Filter and sort notes
   const filteredNotes = useMemo(() => {
     let result = [...allNotesWithMeta];
-    
+
     // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
@@ -111,21 +111,21 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
           lessonTitle.toLowerCase().includes(query)
       );
     }
-    
+
     // Filter by course
     if (filterCourse !== 'all') {
       result = result.filter(({ courseId }) => courseId === filterCourse);
     }
-    
+
     // Sort
     switch (sortBy) {
       case 'recent':
-        result.sort((a, b) => 
+        result.sort((a, b) =>
           new Date(b.note.updatedAt).getTime() - new Date(a.note.updatedAt).getTime()
         );
         break;
       case 'oldest':
-        result.sort((a, b) => 
+        result.sort((a, b) =>
           new Date(a.note.updatedAt).getTime() - new Date(b.note.updatedAt).getTime()
         );
         break;
@@ -133,7 +133,7 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
         result.sort((a, b) => a.courseTitle.localeCompare(b.courseTitle));
         break;
     }
-    
+
     return result;
   }, [allNotesWithMeta, searchQuery, sortBy, filterCourse]);
 
@@ -180,33 +180,33 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
   return (
     <>
       <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-        <DialogContent className="max-w-3xl h-[80vh] flex flex-col">
+        <DialogContent className="sm:max-w-3xl flex flex-col">
           <DialogHeader className="shrink-0">
-            <DialogTitle className="flex items-center gap-2">
-              <StickyNote className="h-5 w-5" />
+            <DialogTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <StickyNote className="h-4 w-4 sm:h-5 sm:w-5" />
               All Notes
-              <Badge variant="secondary" className="ml-2">
+              <Badge variant="secondary" className="ml-1 sm:ml-2 text-xs">
                 {filteredNotes.length}
               </Badge>
             </DialogTitle>
           </DialogHeader>
 
-          <div className="flex flex-col gap-4 flex-1 min-h-0 overflow-hidden">
+          <div className="flex flex-col gap-3 sm:gap-4 flex-1 min-h-0 overflow-hidden">
             {/* Search and Filters */}
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 shrink-0">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search notes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9"
+                  className="pl-9 text-sm"
                 />
               </div>
               <div className="flex gap-2 shrink-0">
                 <Select value={sortBy} onValueChange={(v) => setSortBy(v as typeof sortBy)}>
-                  <SelectTrigger className="w-[130px]">
-                    <SortAsc className="h-4 w-4 mr-2" />
+                  <SelectTrigger className="w-[110px] sm:w-[130px] text-xs sm:text-sm">
+                    <SortAsc className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -215,11 +215,11 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
                     <SelectItem value="course">By Course</SelectItem>
                   </SelectContent>
                 </Select>
-                
+
                 {uniqueCourses.length > 1 && (
                   <Select value={filterCourse} onValueChange={setFilterCourse}>
-                    <SelectTrigger className="w-[150px]">
-                      <Filter className="h-4 w-4 mr-2" />
+                    <SelectTrigger className="w-[120px] sm:w-[150px] text-xs sm:text-sm">
+                      <Filter className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -235,110 +235,108 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
               </div>
             </div>
 
-            {/* Notes List */}
-            <div className="flex-1 min-h-0 overflow-hidden">
-              <ScrollArea className="h-full">
-                {filteredNotes.length === 0 ? (
-                  <div className="text-center py-12 text-muted-foreground">
-                    <FileText className="h-12 w-12 mx-auto mb-3 opacity-40" />
-                    <p className="font-medium">No notes found</p>
-                    <p className="text-sm mt-1">
-                      {searchQuery ? 'Try a different search term' : 'Start taking notes while studying'}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="space-y-3 pr-4 pb-4">
-                    {filteredNotes.map(({ 
-                      courseId, 
-                      lessonId, 
-                      note, 
-                      courseTitle, 
-                      lessonTitle,
-                      courseSlug 
-                    }) => (
-                      <div
-                        key={note.id}
-                        className="border rounded-lg p-4 bg-muted/20 hover:bg-muted/30 transition-colors"
-                      >
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <div className="min-w-0 flex-1">
-                            <h4 className="font-medium truncate">{lessonTitle}</h4>
-                            <p className="text-sm text-muted-foreground truncate">
-                              {courseTitle}
-                            </p>
-                          </div>
-                          <div className="flex items-center gap-1 shrink-0">
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8"
-                              onClick={() => handleNavigateToLesson(courseSlug, lessonId)}
-                              title="Go to lesson"
-                            >
-                              <ExternalLink className="h-4 w-4" />
-                            </Button>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8 text-destructive hover:text-destructive"
-                              onClick={() => setDeleteDialog({
-                                open: true,
-                                courseId,
-                                lessonId,
-                                lessonTitle,
-                              })}
-                              title="Delete note"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          </div>
+            {/* Notes List - scrollable */}
+            <div className="flex-1 min-h-0 overflow-y-auto -mx-4 sm:-mx-6 px-4 sm:px-6">
+              {filteredNotes.length === 0 ? (
+                <div className="text-center py-8 sm:py-12 text-muted-foreground">
+                  <FileText className="h-10 w-10 sm:h-12 sm:w-12 mx-auto mb-3 opacity-40" />
+                  <p className="font-medium text-sm sm:text-base">No notes found</p>
+                  <p className="text-xs sm:text-sm mt-1">
+                    {searchQuery ? 'Try a different search term' : 'Start taking notes while studying'}
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2 sm:space-y-3 pb-4">
+                  {filteredNotes.map(({
+                    courseId,
+                    lessonId,
+                    note,
+                    courseTitle,
+                    lessonTitle,
+                    courseSlug
+                  }) => (
+                    <div
+                      key={note.id}
+                      className="border rounded-lg p-3 sm:p-4 bg-muted/20 hover:bg-muted/30 transition-colors"
+                    >
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div className="min-w-0 flex-1">
+                          <h4 className="font-medium truncate text-sm sm:text-base">{lessonTitle}</h4>
+                          <p className="text-xs sm:text-sm text-muted-foreground truncate">
+                            {courseTitle}
+                          </p>
                         </div>
-
-                        <p className="text-sm whitespace-pre-wrap line-clamp-3 mb-3">
-                          {note.content}
-                        </p>
-
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {formatDate(note.updatedAt)}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {formatTime(note.updatedAt)}
-                          </span>
-                          <Badge variant="outline" className="text-[10px]">
-                            {note.content.length} chars
-                          </Badge>
+                        <div className="flex items-center gap-1 shrink-0">
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 sm:h-8 sm:w-8"
+                            onClick={() => handleNavigateToLesson(courseSlug, lessonId)}
+                            title="Go to lesson"
+                          >
+                            <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 sm:h-8 sm:w-8 text-destructive hover:text-destructive"
+                            onClick={() => setDeleteDialog({
+                              open: true,
+                              courseId,
+                              lessonId,
+                              lessonTitle,
+                            })}
+                            title="Delete note"
+                          >
+                            <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          </Button>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                )}
-              </ScrollArea>
+
+                      <p className="text-xs sm:text-sm whitespace-pre-wrap line-clamp-3 mb-2 sm:mb-3">
+                        {note.content}
+                      </p>
+
+                      <div className="flex items-center gap-3 sm:gap-4 text-[10px] sm:text-xs text-muted-foreground flex-wrap">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {formatDate(note.updatedAt)}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {formatTime(note.updatedAt)}
+                        </span>
+                        <Badge variant="outline" className="text-[10px]">
+                          {note.content.length} chars
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </DialogContent>
       </Dialog>
 
       {/* Delete Confirmation Dialog */}
-      <AlertDialog 
-        open={deleteDialog?.open} 
+      <AlertDialog
+        open={deleteDialog?.open}
         onOpenChange={(open) => !open && setDeleteDialog(null)}
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Note</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to delete the note for "{deleteDialog?.lessonTitle}"? 
+            <AlertDialogTitle className="text-base sm:text-lg">Delete Note</AlertDialogTitle>
+            <AlertDialogDescription className="text-sm">
+              Are you sure you want to delete the note for &quot;{deleteDialog?.lessonTitle}&quot;?
               This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel className="text-sm">Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteNote}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90 text-sm"
             >
               Delete
             </AlertDialogAction>

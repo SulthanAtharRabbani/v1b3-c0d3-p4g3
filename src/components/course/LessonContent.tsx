@@ -1,20 +1,26 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { ChevronDown, ChevronUp, CheckCircle, Circle, Bookmark, BookmarkCheck, ArrowLeft, ArrowRight, Lightbulb, Info } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/shared/Badge';
 import { MarkdownRenderer } from '@/components/shared/MarkdownRenderer';
 import { useProgressStore } from '@/lib/storage/progress-store';
+import { checkAchievements } from '@/lib/achievement-checker';
 import { useShortcut } from '@/hooks/useKeyboardShortcuts';
 import { useCelebration, CelebrationModal } from '@/components/shared/Celebration';
 import type { Lesson, Module, Course } from '@/types';
 import { cn } from '@/lib/utils';
 
 // Example Box
-function ExampleBox({ title, problem, solution }: { title: string; problem: string; solution: { step: number; description: string; content: string }[] }) {
+function ExampleBox({ title, problem, solution }: { title: string; problem: string; solution?: { step: number; description: string; content: string }[] }) {
   const [expanded, setExpanded] = useState(false);
+
+  // Guard against missing solution
+  if (!solution || !Array.isArray(solution)) {
+    return null;
+  }
 
   return (
     <Card className="mb-4 border-l-4 border-l-blue-500">
@@ -90,7 +96,20 @@ export function LessonContent({
   nextLesson,
   prevLesson,
 }: LessonContentProps) {
-  const { markLessonComplete, unmarkLessonComplete, isLessonComplete, isBookmarked, toggleBookmark, updateLastAccessed, updateStreak, getCompletedLessonsCount } = useProgressStore();
+  const {
+    markLessonComplete,
+    unmarkLessonComplete,
+    isLessonComplete,
+    isBookmarked,
+    toggleBookmark,
+    updateLastAccessed,
+    updateStreak,
+    getCompletedLessonsCount,
+    getCourseProgress,
+    unlockCourseAchievement,
+    progress
+  } = useProgressStore();
+
   const completed = isLessonComplete(course.id, lesson.id);
   const bookmarked = isBookmarked(course.id, lesson.id);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -104,26 +123,55 @@ export function LessonContent({
     updateStreak();
   }, [course.id, lesson.id, updateLastAccessed, updateStreak]);
 
+  // Check and unlock achievements for the course
+  const checkAndUnlockAchievements = useCallback(() => {
+    const courseProgress = getCourseProgress(course.id);
+    const notesCount = Object.keys(courseProgress.notesV2 || {}).filter(
+      lessonId => courseProgress.notesV2?.[lessonId]?.content?.trim()
+    ).length;
+
+    const results = checkAchievements(
+      course,
+      courseProgress.completedLessons,
+      courseProgress.quizScores,
+      notesCount,
+      false, // flashcardsReviewed - handled separately
+      courseProgress.unlockedAchievements || []
+    );
+
+    // Unlock any newly earned achievements
+    for (const result of results) {
+      if (result.newlyUnlocked) {
+        unlockCourseAchievement(course.id, result.achievementId);
+      }
+    }
+  }, [course, getCourseProgress, unlockCourseAchievement]);
+
   // Toggle completion
   const handleToggleComplete = () => {
     if (completed) {
       unmarkLessonComplete(course.id, lesson.id);
     } else {
       markLessonComplete(course.id, lesson.id);
-      
+
       // Check what was just completed and trigger celebration
       const completedCount = getCompletedLessonsCount(course.id);
-      
+
       // Check if module is complete
       const moduleLessonIds = module.lessons.map(l => l.id);
-      const allModuleLessonsComplete = moduleLessonIds.every(id => 
+      const allModuleLessonsComplete = moduleLessonIds.every(id =>
         id === lesson.id || isLessonComplete(course.id, id)
       );
-      
+
       // Check if course is complete
       const totalLessons = course.modules.reduce((acc, m) => acc + m.lessons.length, 0);
       const courseComplete = completedCount === totalLessons;
-      
+
+      // Check and unlock achievements
+      setTimeout(() => {
+        checkAndUnlockAchievements();
+      }, 100);
+
       if (courseComplete) {
         setCelebrationType('course');
         setShowCelebration(true);
@@ -218,7 +266,7 @@ export function LessonContent({
       </div>
 
       {/* Examples */}
-      {lesson.examples && lesson.examples.length > 0 && (
+      {lesson.examples && Array.isArray(lesson.examples) && lesson.examples.length > 0 && (
         <div className="mt-8">
           <h2 className="text-xl font-semibold mb-4">Worked Examples</h2>
           {lesson.examples.map((example) => (
@@ -259,7 +307,7 @@ export function LessonContent({
         type={celebrationType}
         title={celebrationType === 'course' ? '🎉 Course Complete!' : celebrationType === 'module' ? '🏆 Module Complete!' : '✅ Lesson Complete!'}
         description={
-          celebrationType === 'course' 
+          celebrationType === 'course'
             ? `Congratulations! You've completed ${course.title}!`
             : celebrationType === 'module'
             ? `Great work! You've finished the ${module.title} module.`

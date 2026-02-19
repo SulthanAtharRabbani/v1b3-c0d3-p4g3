@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { GraduationCap, Search, Keyboard, Settings, BookOpen, Flame, Compass, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { QuickStatsBar } from '@/components/hub/QuickStatsBar';
@@ -21,13 +21,20 @@ import { SettingsModal } from '@/components/shared/SettingsModal';
 import { OnboardingTooltip } from '@/components/shared/OnboardingTooltip';
 import { useStats } from '@/hooks/useStats';
 import { useProgressStore } from '@/lib/storage/progress-store';
-import { courses, getTotalLessons } from '@/lib/courses';
-import type { CourseCategory } from '@/types';
+import { useCourses } from '@/lib/courses-context';
+import { getTotalLessons } from '@/lib/courses';
 
 export default function HubPage() {
-  const [selectedCategory, setSelectedCategory] = useState<CourseCategory | 'all'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const stats = useStats();
   const { progress } = useProgressStore();
+  const { courses } = useCourses();
+  
+  // Extract unique categories from all courses
+  const categories = useMemo(() => {
+    const uniqueCategories = [...new Set(courses.map(c => c.category).filter(Boolean))];
+    return uniqueCategories.sort();
+  }, [courses]);
   
   // Calculate total progress
   const totalLessons = courses.reduce((acc, course) => acc + getTotalLessons(course), 0);
@@ -92,8 +99,7 @@ export default function HubPage() {
                   : 'Start Your Learning Journey'}
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                Master control systems, signal processing, and more with interactive lessons,
-                quizzes, and study tools.
+                Explore courses with interactive lessons, quizzes, and study tools.
               </p>
             </div>
 
@@ -164,6 +170,7 @@ export default function HubPage() {
             <CategoryFilter
               selected={selectedCategory}
               onSelect={setSelectedCategory}
+              categories={categories}
             />
           </div>
           <CourseGrid category={selectedCategory} />

@@ -1,25 +1,19 @@
-import type { Course, CourseCategory } from '@/types';
-import { controlSystemsCourse } from '@/lib/content/control-systems';
-import { signalsSystemsCourse } from '@/lib/content/signals-systems';
+import type { Course } from '@/types';
 
-// Central registry - add new courses here
-export const courses: Course[] = [
-  controlSystemsCourse,
-  signalsSystemsCourse,
-  // Add more courses below...
-];
+// No built-in courses - all courses are loaded from public/courses/ folder
+export const courses: Course[] = [];
 
 // Helper functions
-export function getCourseBySlug(slug: string): Course | undefined {
-  return courses.find((c) => c.slug === slug);
+export function getCourseBySlug(slug: string, allCourses: Course[]): Course | undefined {
+  return allCourses.find((c) => c.slug === slug);
 }
 
-export function getCoursesByCategory(category: CourseCategory): Course[] {
-  return courses.filter((c) => c.category === category);
+export function getCoursesByCategory(category: string, allCourses: Course[]): Course[] {
+  return allCourses.filter((c) => c.category === category);
 }
 
-export function getAllCategories(): CourseCategory[] {
-  return [...new Set(courses.map((c) => c.category))];
+export function getAllCategories(allCourses: Course[]): string[] {
+  return [...new Set(allCourses.map((c) => c.category))];
 }
 
 export function getTotalLessons(course: Course): number {

@@ -24,15 +24,15 @@ export function SettingsModal() {
             <Settings className="h-5 w-5" />
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
+        <DialogContent className="sm:max-w-3xl flex flex-col">
+          <DialogHeader className="shrink-0">
             <DialogTitle>Settings & Statistics</DialogTitle>
           </DialogHeader>
-          
-          <div className="space-y-6">
+
+          <div className="space-y-6 flex-1 overflow-y-auto -mx-4 sm:-mx-6 px-4 sm:px-6">
             {/* Quick Actions */}
-            <div className="flex gap-2">
-              <Button variant="outline" onClick={() => setShowExport(true)}>
+            <div className="flex gap-2 shrink-0">
+              <Button variant="outline" size="sm" onClick={() => setShowExport(true)}>
                 <Download className="h-4 w-4 mr-2" />
                 Export/Import Progress
               </Button>
@@ -40,8 +40,8 @@ export function SettingsModal() {
 
             {/* Study Statistics */}
             <div>
-              <h3 className="font-semibold mb-4 flex items-center gap-2">
-                <BarChart3 className="h-5 w-5" />
+              <h3 className="font-semibold mb-4 flex items-center gap-2 text-sm sm:text-base">
+                <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5" />
                 Study Statistics
               </h3>
               <StudyStatistics />

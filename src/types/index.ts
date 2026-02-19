@@ -1,13 +1,4 @@
-// Course Categories
-export type CourseCategory =
-  | 'control-systems'
-  | 'signals-systems'
-  | 'electronics'
-  | 'power-systems'
-  | 'mathematics'
-  | 'programming'
-  | 'communications';
-
+// Difficulty levels
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
 
 // Example (worked example with step-by-step solution)
@@ -81,6 +72,16 @@ export interface Module {
   quizQuestions?: QuizQuestion[];
 }
 
+// Course Achievement (defined per course)
+export interface CourseAchievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string; // Lucide icon name
+  type: 'lesson' | 'module' | 'course' | 'quiz' | 'custom';
+  requirement: string; // e.g., "complete-all", "quiz-perfect", "first-lesson"
+}
+
 // Course
 export interface Course {
   id: string;
@@ -88,7 +89,7 @@ export interface Course {
   title: string;
   subtitle: string;
   description: string;
-  category: CourseCategory;
+  category: string; // Free-form category name
   icon: string; // Lucide icon name
   color: string; // Theme color (hex)
   difficulty: Difficulty;
@@ -98,6 +99,7 @@ export interface Course {
   modules: Module[];
   quickReference?: ReferenceItem[];
   flashcards?: Flashcard[];
+  achievements?: CourseAchievement[]; // Course-specific achievements
 }
 
 // Note with metadata
@@ -116,6 +118,7 @@ export interface CourseProgress {
   bookmarks: string[];
   notes: Record<string, string>; // lessonId -> note content (legacy format)
   notesV2: Record<string, Note>; // lessonId -> Note object (new format with metadata)
+  unlockedAchievements: string[]; // Achievement IDs unlocked for this course
   lastAccessedLesson?: string;
   lastAccessedAt?: string;
   startedAt?: string;
@@ -128,7 +131,6 @@ export interface UserProgress {
   longestStreak: number;
   lastActiveDate: string; // ISO date
   courses: Record<string, CourseProgress>;
-  achievements: string[];
   settings: UserSettings;
 }
 
@@ -138,148 +140,29 @@ export interface UserSettings {
   dailyGoal?: number; // minutes per day
 }
 
-// Achievement Badge
-export interface Achievement {
+// Global streak achievements (not course-specific)
+export interface StreakAchievement {
   id: string;
   title: string;
   description: string;
-  icon: string; // Lucide icon name
-  tier: 'bronze' | 'silver' | 'gold' | 'platinum';
-  requirement: string;
+  icon: string;
+  requirement: number; // days
 }
 
-// Category metadata
-export interface CategoryInfo {
-  id: CourseCategory;
-  displayName: string;
-  color: string;
-  lightColor: string;
-  description: string;
-}
-
-export const CATEGORIES: CategoryInfo[] = [
-  {
-    id: 'control-systems',
-    displayName: 'Control Systems',
-    color: '#3B82F6',
-    lightColor: '#DBEAFE',
-    description: 'Feedback control, stability, PID, root locus',
-  },
-  {
-    id: 'signals-systems',
-    displayName: 'Signals & Systems',
-    color: '#8B5CF6',
-    lightColor: '#EDE9FE',
-    description: 'Signal processing, transforms, filtering',
-  },
-  {
-    id: 'electronics',
-    displayName: 'Electronics',
-    color: '#10B981',
-    lightColor: '#D1FAE5',
-    description: 'Circuit analysis, analog, digital electronics',
-  },
-  {
-    id: 'power-systems',
-    displayName: 'Power Systems',
-    color: '#F59E0B',
-    lightColor: '#FEF3C7',
-    description: 'Power generation, distribution, machines',
-  },
-  {
-    id: 'mathematics',
-    displayName: 'Mathematics',
-    color: '#EC4899',
-    lightColor: '#FCE7F3',
-    description: 'Engineering math, transforms, linear algebra',
-  },
-  {
-    id: 'programming',
-    displayName: 'Programming',
-    color: '#06B6D4',
-    lightColor: '#CFFAFE',
-    description: 'DSP, embedded systems, MATLAB, Python',
-  },
-  {
-    id: 'communications',
-    displayName: 'Communications',
-    color: '#F97316',
-    lightColor: '#FFEDD5',
-    description: 'Wireless, modulation, information theory',
-  },
+export const STREAK_ACHIEVEMENTS: StreakAchievement[] = [
+  { id: 'streak-3', title: 'Getting Started', description: '3-day learning streak', icon: 'Flame', requirement: 3 },
+  { id: 'streak-7', title: 'Week Warrior', description: '7-day learning streak', icon: 'Flame', requirement: 7 },
+  { id: 'streak-14', title: 'Two Weeks Strong', description: '14-day learning streak', icon: 'Flame', requirement: 14 },
+  { id: 'streak-30', title: 'Month Master', description: '30-day learning streak', icon: 'Trophy', requirement: 30 },
+  { id: 'streak-60', title: 'Dedicated Learner', description: '60-day learning streak', icon: 'Trophy', requirement: 60 },
+  { id: 'streak-100', title: 'Centurion', description: '100-day learning streak', icon: 'Crown', requirement: 100 },
 ];
 
-export const ACHIEVEMENTS: Achievement[] = [
-  {
-    id: 'first-steps',
-    title: 'First Steps',
-    description: 'Complete your first lesson',
-    icon: 'Footprints',
-    tier: 'bronze',
-    requirement: 'Complete 1 lesson',
-  },
-  {
-    id: 'module-master',
-    title: 'Module Master',
-    description: 'Complete a module',
-    icon: 'Award',
-    tier: 'bronze',
-    requirement: 'Complete 1 module',
-  },
-  {
-    id: 'course-graduate',
-    title: 'Course Graduate',
-    description: 'Complete a course',
-    icon: 'GraduationCap',
-    tier: 'silver',
-    requirement: 'Complete 1 course',
-  },
-  {
-    id: 'quiz-ace',
-    title: 'Quiz Ace',
-    description: 'Score 100% on any quiz',
-    icon: 'Target',
-    tier: 'bronze',
-    requirement: 'Get perfect quiz score',
-  },
-  {
-    id: 'week-warrior',
-    title: 'Week Warrior',
-    description: '7-day learning streak',
-    icon: 'Flame',
-    tier: 'silver',
-    requirement: '7 consecutive days',
-  },
-  {
-    id: 'month-master',
-    title: 'Month Master',
-    description: '30-day learning streak',
-    icon: 'Trophy',
-    tier: 'gold',
-    requirement: '30 consecutive days',
-  },
-  {
-    id: 'polyglot',
-    title: 'Polyglot',
-    description: 'Complete 3+ courses',
-    icon: 'BookOpen',
-    tier: 'gold',
-    requirement: 'Complete 3 courses',
-  },
-  {
-    id: 'perfect-score',
-    title: 'Perfect Score',
-    description: '100% on all quizzes in a course',
-    icon: 'Star',
-    tier: 'platinum',
-    requirement: 'All perfect quiz scores',
-  },
-  {
-    id: 'century',
-    title: 'Century',
-    description: 'Complete 100 lessons',
-    icon: 'Crown',
-    tier: 'platinum',
-    requirement: 'Complete 100 lessons',
-  },
+// Default course achievement templates (courses can use these or define custom)
+export const DEFAULT_COURSE_ACHIEVEMENTS: CourseAchievement[] = [
+  { id: 'first-lesson', title: 'First Steps', description: 'Complete your first lesson', icon: 'Footprints', type: 'lesson', requirement: 'complete-first' },
+  { id: 'module-complete', title: 'Module Master', description: 'Complete a module', icon: 'Award', type: 'module', requirement: 'complete-first' },
+  { id: 'course-complete', title: 'Course Graduate', description: 'Complete the entire course', icon: 'GraduationCap', type: 'course', requirement: 'complete-all' },
+  { id: 'quiz-perfect', title: 'Perfect Score', description: 'Get 100% on a quiz', icon: 'Target', type: 'quiz', requirement: 'score-100' },
+  { id: 'all-quizzes-perfect', title: 'Quiz Master', description: 'Get 100% on all quizzes', icon: 'Star', type: 'quiz', requirement: 'all-perfect' },
 ];

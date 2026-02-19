@@ -6,7 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
-import { courses, getLessonById } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
+import { getLessonById } from '@/lib/courses';
 import Link from 'next/link';
 
 interface RecentlyViewedItem {
@@ -32,6 +33,7 @@ function useMounted() {
 export function RecentlyViewed({ className, maxItems = 5 }: RecentlyViewedProps) {
   const mounted = useMounted();
   const [recentItems, setRecentItems] = useState<RecentlyViewedItem[]>([]);
+  const { courses } = useCourses();
 
   useEffect(() => {
     if (!mounted) return;

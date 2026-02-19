@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
-import { courses, getCourseBySlug, getLessonById } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
 import type { Course, Module, Lesson } from '@/types';
 
 interface SearchResult {
@@ -18,7 +18,7 @@ interface SearchResult {
 }
 
 // Build search index
-function buildSearchIndex() {
+function buildSearchIndex(courses: Course[]) {
   const items: SearchResult['item'][] = [];
 
   for (const course of courses) {
@@ -57,17 +57,18 @@ function buildSearchIndex() {
 }
 
 export function useSearch() {
+  const { courses } = useCourses();
   const fuseRef = useRef<Fuse<SearchResult['item']> | null>(null);
 
   useEffect(() => {
-    const items = buildSearchIndex();
+    const items = buildSearchIndex(courses);
     fuseRef.current = new Fuse(items, {
       keys: ['title', 'content'],
       threshold: 0.4,
       includeScore: true,
       ignoreLocation: true,
     });
-  }, []);
+  }, [courses]);
 
   const search = useCallback((query: string): SearchResult[] => {
     if (!fuseRef.current || !query.trim()) return [];
@@ -84,18 +85,24 @@ export function useSearch() {
 }
 
 export function useCourse(slug: string) {
+  const { getCourseBySlug, isLoading } = useCourses();
   const course = getCourseBySlug(slug);
-  return { course };
+  return { course, isLoading };
 }
 
 export function useLesson(courseSlug: string, lessonId: string) {
+  const { getCourseBySlug } = useCourses();
   const course = getCourseBySlug(courseSlug);
+  
   if (!course) return { course: null, lesson: null, courseModule: null };
   
-  const result = getLessonById(course, lessonId);
-  return {
-    course,
-    lesson: result?.lesson ?? null,
-    courseModule: result?.module ?? null,
-  };
+  // Find lesson
+  for (const courseModule of course.modules) {
+    const lesson = courseModule.lessons.find((l) => l.id === lessonId);
+    if (lesson) {
+      return { course, lesson, courseModule };
+    }
+  }
+  
+  return { course, lesson: null, courseModule: null };
 }

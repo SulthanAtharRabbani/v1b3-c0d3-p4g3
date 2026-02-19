@@ -5,11 +5,12 @@ import { Bookmark, ChevronRight, CheckCircle, Clock } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useProgressStore } from '@/lib/storage/progress-store';
-import { courses } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
 import { useRouter } from 'next/navigation';
 
 export function BookmarksWidget() {
   const { progress } = useProgressStore();
+  const { courses } = useCourses();
   const router = useRouter();
 
   // Get all bookmarked lessons with their context
@@ -55,7 +56,7 @@ export function BookmarksWidget() {
     }
 
     return bookmarks;
-  }, [progress.courses]);
+  }, [progress.courses, courses]);
 
   if (bookmarkedLessons.length === 0) {
     return null;

@@ -19,11 +19,11 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [reviewed, setReviewed] = useState<Set<number>>(new Set());
-  
+
   // Study tracking
   const startSession = useStudyTrackingStore(state => state.startSession);
   const endSession = useStudyTrackingStore(state => state.endSession);
-  
+
   // Start tracking when modal opens
   useEffect(() => {
     if (open) {
@@ -35,7 +35,7 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
   }, [open, course.id, course.title, startSession]);
 
   const currentCard = flashcards[currentIndex];
-  const progress = useMemo(() => 
+  const progress = useMemo(() =>
     ((reviewed.size / flashcards.length) * 100).toFixed(0),
     [reviewed.size, flashcards.length]
   );
@@ -70,7 +70,7 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
   const handleClose = useCallback(() => {
     // End tracking session with flashcards reviewed count
     endSession({ flashcardsReviewed: reviewed.size });
-    
+
     setCurrentIndex(0);
     setIsFlipped(false);
     setReviewed(new Set());
@@ -81,9 +81,9 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-lg">
-        <DialogHeader>
-          <DialogTitle className="flex items-center justify-between">
+      <DialogContent className="sm:max-w-lg flex flex-col">
+        <DialogHeader className="shrink-0">
+          <DialogTitle className="flex items-center justify-between text-base sm:text-lg">
             <span>Flashcards</span>
             <span className="text-sm font-normal text-muted-foreground">
               {reviewed.size}/{flashcards.length} reviewed
@@ -91,21 +91,21 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-4">
+        <div className="space-y-4 flex-1 flex flex-col min-h-0">
           {/* Progress */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
             <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
               <div
                 className="h-full bg-primary transition-all"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <span className="text-sm text-muted-foreground">{progress}%</span>
+            <span className="text-sm text-muted-foreground w-10 text-right">{progress}%</span>
           </div>
 
-          {/* Card */}
+          {/* Card - responsive height */}
           <div
-            className="relative h-64 cursor-pointer"
+            className="relative h-48 sm:h-56 md:h-64 cursor-pointer shrink-0"
             onClick={handleFlip}
           >
             <div
@@ -117,41 +117,41 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
             >
               {/* Front */}
               <div
-                className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-6 flex items-center justify-center text-white text-center"
+                className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-4 sm:p-6 flex items-center justify-center text-white text-center"
                 style={{ backfaceVisibility: 'hidden' }}
               >
                 <div>
-                  <p className="text-sm mb-2 opacity-70">Question</p>
-                  <p className="text-xl font-medium">{currentCard.front}</p>
+                  <p className="text-xs sm:text-sm mb-2 opacity-70">Question</p>
+                  <p className="text-base sm:text-lg md:text-xl font-medium">{currentCard.front}</p>
                 </div>
               </div>
 
               {/* Back */}
               <div
-                className="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl p-6 flex items-center justify-center text-white text-center"
+                className="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl p-4 sm:p-6 flex items-center justify-center text-white text-center"
                 style={{
                   backfaceVisibility: 'hidden',
                   transform: 'rotateY(180deg)',
                 }}
               >
                 <div>
-                  <p className="text-sm mb-2 opacity-70">Answer</p>
-                  <p className="text-xl font-medium">{currentCard.back}</p>
+                  <p className="text-xs sm:text-sm mb-2 opacity-70">Answer</p>
+                  <p className="text-base sm:text-lg md:text-xl font-medium">{currentCard.back}</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Hint */}
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-xs sm:text-sm text-muted-foreground shrink-0">
             Click the card to flip • Card {currentIndex + 1} of {flashcards.length}
           </p>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2 shrink-0 pt-2">
             <Button variant="outline" size="sm" onClick={handleReset}>
-              <RotateCcw className="h-4 w-4 mr-2" />
-              Reset
+              <RotateCcw className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Reset</span>
             </Button>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" onClick={handlePrev} disabled={currentIndex === 0}>
@@ -162,7 +162,8 @@ export function FlashcardsModal({ course, flashcards, open, onClose }: Flashcard
               </Button>
             </div>
             <Button size="sm" onClick={handleMarkReviewed}>
-              Mark Reviewed
+              <span className="hidden sm:inline">Mark Reviewed</span>
+              <span className="sm:hidden">Done</span>
             </Button>
           </div>
         </div>

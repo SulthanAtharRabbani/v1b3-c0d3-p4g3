@@ -18,15 +18,6 @@ export interface Track {
   src: string;
 }
 
-// Built-in tracks
-export const TRACKS: Track[] = [
-  { id: 't1', title: 'Lo-Fi Study', artist: 'EduHub', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
-  { id: 't2', title: 'Chill Beats', artist: 'EduHub', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
-  { id: 't3', title: 'Focus Mode', artist: 'EduHub', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
-  { id: 't4', title: 'Night Owl', artist: 'EduHub', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
-  { id: 't5', title: 'Dream State', artist: 'EduHub', src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
-];
-
 // Source type
 export type SourceType = 'none' | 'track' | 'spotify';
 
@@ -39,6 +30,7 @@ type PlaybackContextType = {
   duration: number;
   volume: number;
   isMuted: boolean;
+  tracks: Track[]; // Dynamic tracks from folder
   currentSource: {
     type: SourceType;
     id: string;
@@ -57,6 +49,7 @@ type PlaybackContextType = {
   toggleMute: () => void;
   playNext: () => void;
   playPrevious: () => void;
+  refreshTracks: () => void; // Refresh track list
   
   // Refs
   audioRef: React.RefObject<HTMLAudioElement | null>;
@@ -70,6 +63,7 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [tracks, setTracks] = useState<Track[]>([]);
   const [volume, setVolumeState] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('music-volume');
@@ -94,11 +88,36 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
   // Refs
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const loadRequestIdRef = useRef(0);
+  const tracksRef = useRef<Track[]>([]); // Keep tracks in ref for event handlers
+  
+  // Keep tracksRef in sync
+  useEffect(() => {
+    tracksRef.current = tracks;
+  }, [tracks]);
   
   // Save volume to localStorage
   useEffect(() => {
     localStorage.setItem('music-volume', volume.toString());
   }, [volume]);
+
+  // Fetch tracks from API
+  const refreshTracks = useCallback(async () => {
+    try {
+      const res = await fetch('/api/music');
+      const data = await res.json();
+      if (data.tracks) {
+        setTracks(data.tracks);
+      }
+    } catch (error) {
+      console.error('Failed to fetch tracks:', error);
+    }
+  }, []);
+
+  // Fetch tracks on mount
+  useEffect(() => {
+    // Use queueMicrotask to avoid synchronous setState in effect
+    queueMicrotask(() => refreshTracks());
+  }, [refreshTracks]);
 
   // Toggle play/pause
   const togglePlayPause = useCallback(() => {
@@ -254,23 +273,29 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
   const playNext = useCallback(() => {
     if (currentSource.type !== 'track') return;
     
-    const idx = TRACKS.findIndex(t => t.id === currentSource.id);
-    const nextIdx = (idx + 1) % TRACKS.length;
-    playTrack(TRACKS[nextIdx]);
+    const currentTracks = tracksRef.current;
+    if (currentTracks.length === 0) return;
+    
+    const idx = currentTracks.findIndex(t => t.id === currentSource.id);
+    const nextIdx = (idx + 1) % currentTracks.length;
+    playTrack(currentTracks[nextIdx]);
   }, [currentSource, playTrack]);
 
   // Play previous track
   const playPrevious = useCallback(() => {
     if (currentSource.type !== 'track') return;
     
+    const currentTracks = tracksRef.current;
+    if (currentTracks.length === 0) return;
+    
     if (currentTime > 3 && audioRef.current) {
       audioRef.current.currentTime = 0;
       return;
     }
     
-    const idx = TRACKS.findIndex(t => t.id === currentSource.id);
-    const prevIdx = (idx - 1 + TRACKS.length) % TRACKS.length;
-    playTrack(TRACKS[prevIdx]);
+    const idx = currentTracks.findIndex(t => t.id === currentSource.id);
+    const prevIdx = (idx - 1 + currentTracks.length) % currentTracks.length;
+    playTrack(currentTracks[prevIdx]);
   }, [currentSource, currentTime, playTrack]);
 
   // Audio event listeners
@@ -282,11 +307,17 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     const onTimeUpdate = () => setCurrentTime(audio.currentTime);
     const onLoadedMetadata = () => setDuration(audio.duration);
     const onEnded = () => {
-      const idx = TRACKS.findIndex(t => t.id === currentSource.id);
+      const currentTracks = tracksRef.current;
+      if (currentTracks.length === 0) {
+        setIsPlaying(false);
+        return;
+      }
+      
+      const idx = currentTracks.findIndex(t => t.id === currentSource.id);
       if (idx !== -1) {
-        const nextIdx = (idx + 1) % TRACKS.length;
+        const nextIdx = (idx + 1) % currentTracks.length;
         setTimeout(() => {
-          playTrack(TRACKS[nextIdx]);
+          playTrack(currentTracks[nextIdx]);
         }, 100);
       } else {
         setIsPlaying(false);
@@ -322,6 +353,7 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
         duration,
         volume,
         isMuted,
+        tracks,
         currentSource,
         togglePlayPause,
         playTrack,
@@ -332,6 +364,7 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
         toggleMute,
         playNext,
         playPrevious,
+        refreshTracks,
         audioRef,
       }}
     >

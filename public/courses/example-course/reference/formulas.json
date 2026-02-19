@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ref-quadratic",
+    "title": "Quadratic Formula",
+    "formula": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+    "description": "Solves equations of the form ax² + bx + c = 0"
+  },
+  {
+    "id": "ref-discriminant",
+    "title": "Discriminant",
+    "formula": "\\Delta = b^2 - 4ac",
+    "description": "Determines nature of roots: >0 two real, =0 one real, <0 complex"
+  },
+  {
+    "id": "ref-power-rule",
+    "title": "Power Rule (Derivative)",
+    "formula": "\\frac{d}{dx}[x^n] = nx^{n-1}",
+    "description": "Derivative of x raised to a power"
+  },
+  {
+    "id": "ref-chain-rule",
+    "title": "Chain Rule",
+    "formula": "\\frac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)",
+    "description": "Derivative of composite functions"
+  },
+  {
+    "id": "ref-product-rule",
+    "title": "Product Rule",
+    "formula": "\\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)",
+    "description": "Derivative of product of two functions"
+  },
+  {
+    "id": "ref-integral-power",
+    "title": "Power Rule (Integral)",
+    "formula": "\\int x^n dx = \\frac{x^{n+1}}{n+1} + C",
+    "description": "Integral of x raised to a power (n ≠ -1)"
+  },
+  {
+    "id": "ref-pythagorean",
+    "title": "Pythagorean Theorem",
+    "formula": "a^2 + b^2 = c^2",
+    "description": "Relationship between sides of a right triangle"
+  },
+  {
+    "id": "ref-euler",
+    "title": "Euler's Identity",
+    "formula": "e^{i\\pi} + 1 = 0",
+    "description": "Beautiful equation connecting e, i, π, 1, and 0"
+  },
+  {
+    "id": "ref-sine-cosine",
+    "title": "Pythagorean Identity",
+    "formula": "\\sin^2\\theta + \\cos^2\\theta = 1",
+    "description": "Fundamental trigonometric identity"
+  },
+  {
+    "id": "ref-factorial",
+    "title": "Factorial",
+    "formula": "n! = n \\times (n-1) \\times (n-2) \\times ... \\times 1",
+    "description": "Product of all positive integers up to n"
+  }
+]

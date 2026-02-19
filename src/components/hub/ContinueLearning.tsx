@@ -6,12 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useProgressStore } from '@/lib/storage/progress-store';
-import { courses, getTotalLessons } from '@/lib/courses';
+import { useCourses } from '@/lib/courses-context';
+import { getTotalLessons } from '@/lib/courses';
 import type { Lesson } from '@/types';
 import { useRouter } from 'next/navigation';
 
 export function ContinueLearning() {
   const { progress } = useProgressStore();
+  const { courses } = useCourses();
   const router = useRouter();
 
   // Find the most recently accessed course with progress
@@ -65,7 +67,7 @@ export function ContinueLearning() {
       percentage,
       nextLesson,
     };
-  }, [progress.courses]);
+  }, [progress.courses, courses]);
 
   // Prefetch course on hover
   const handleMouseEnter = () => {

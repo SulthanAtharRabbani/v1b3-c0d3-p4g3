@@ -1,0 +1,38 @@
+[
+  {
+    "id": "quiz-2-1",
+    "question": "What keyboard shortcut opens the flashcards panel?",
+    "options": [
+      "F",
+      "Q",
+      "N",
+      "B"
+    ],
+    "correctIndex": 0,
+    "explanation": "Press F to open flashcards. Q opens quick reference, N opens notes, B bookmarks the lesson."
+  },
+  {
+    "id": "quiz-2-2",
+    "question": "What is the purpose of spaced repetition in flashcards?",
+    "options": [
+      "Show all cards in random order",
+      "Show difficult cards more frequently",
+      "Show easy cards more frequently",
+      "Show cards in alphabetical order"
+    ],
+    "correctIndex": 1,
+    "explanation": "Spaced repetition shows cards you struggle with more often, helping you focus on material you haven't mastered yet."
+  },
+  {
+    "id": "quiz-2-3",
+    "question": "How are personal notes stored?",
+    "options": [
+      "In a cloud database",
+      "In your browser's local storage",
+      "In a text file",
+      "They are not saved"
+    ],
+    "correctIndex": 1,
+    "explanation": "Notes are saved locally in your browser. You can export them anytime from settings."
+  }
+]

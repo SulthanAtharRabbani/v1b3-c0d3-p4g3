@@ -16,17 +16,17 @@ interface NotesModalProps {
   onClose: () => void;
 }
 
-function NotesModalContent({ course, lesson, onClose }: { 
-  course: Course; 
+function NotesModalContent({ course, lesson, onClose }: {
+  course: Course;
   lesson: Lesson;
   onClose: () => void;
 }) {
   const { getNote, getNoteWithMeta, saveNote } = useProgressStore();
-  
+
   // Initialize content from store
   const existingNote = getNote(course.id, lesson.id);
   const noteMeta = getNoteWithMeta(course.id, lesson.id);
-  
+
   const [content, setContent] = useState(existingNote);
   const [saved, setSaved] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -49,9 +49,9 @@ function NotesModalContent({ course, lesson, onClose }: {
       setSaved(true);
       return;
     }
-    
+
     setIsSaving(true);
-    
+
     setTimeout(() => {
       saveNote(course.id, lesson.id, content);
       setSaved(true);
@@ -65,12 +65,12 @@ function NotesModalContent({ course, lesson, onClose }: {
   const handleContentChange = useCallback((newContent: string) => {
     setContent(newContent);
     setSaved(false);
-    
+
     // Clear existing timer
     if (autoSaveTimerRef.current) {
       clearTimeout(autoSaveTimerRef.current);
     }
-    
+
     // Auto-save after 2 seconds of no typing
     autoSaveTimerRef.current = setTimeout(() => {
       performSave();
@@ -126,35 +126,34 @@ exported: ${new Date().toISOString()}
   const charCount = content.length;
 
   return (
-    <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col" onOpenAutoFocus={(e) => e.preventDefault()}>
-      <DialogHeader>
-        <DialogTitle className="flex items-center gap-2">
-          <FileText className="h-5 w-5" />
-          Notes: {lesson.title}
+    <DialogContent className="sm:max-w-2xl flex flex-col" onOpenAutoFocus={(e) => e.preventDefault()}>
+      <DialogHeader className="shrink-0">
+        <DialogTitle className="flex items-center gap-2 text-base sm:text-lg">
+          <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="truncate">Notes: {lesson.title}</span>
         </DialogTitle>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground truncate">
           {course.title}
         </p>
       </DialogHeader>
 
-      <div className="flex-1 flex flex-col min-h-0 space-y-4">
+      <div className="flex-1 flex flex-col min-h-0 space-y-3 sm:space-y-4">
         <Textarea
           placeholder="Write your personal notes here...
 
 • Key concepts to remember
 • Questions to research
 • Connections to other topics
-• Formulas and derivations
 
-Your notes are auto-saved and can be accessed from the hub."
+Your notes are auto-saved."
           value={content}
           onChange={(e) => handleContentChange(e.target.value)}
-          className="flex-1 min-h-[300px] font-mono text-sm resize-none"
+          className="flex-1 min-h-[200px] sm:min-h-[300px] font-mono text-sm resize-none"
         />
 
         {/* Status Bar */}
-        <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-4 text-muted-foreground">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+          <div className="flex items-center gap-3 sm:gap-4 text-muted-foreground flex-wrap">
             {/* Word/Char count */}
             <div className="flex items-center gap-2">
               <Badge variant="outline" className="text-xs">
@@ -164,22 +163,22 @@ Your notes are auto-saved and can be accessed from the hub."
                 {charCount} chars
               </Badge>
             </div>
-            
+
             {/* Save status */}
             {isSaving ? (
-              <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
+              <span className="flex items-center gap-1 text-amber-600 dark:text-amber-400 text-xs sm:text-sm">
                 <Loader2 className="h-3 w-3 animate-spin" />
                 Saving...
               </span>
             ) : saved ? (
               lastSaved && (
-                <span className="flex items-center gap-1">
+                <span className="flex items-center gap-1 text-xs sm:text-sm">
                   <Clock className="h-3 w-3" />
                   Saved at {formatTime(lastSaved.updatedAt)}
                 </span>
               )
             ) : (
-              <span className="text-amber-600 dark:text-amber-400">
+              <span className="text-amber-600 dark:text-amber-400 text-xs sm:text-sm">
                 Unsaved changes
               </span>
             )}
@@ -188,24 +187,24 @@ Your notes are auto-saved and can be accessed from the hub."
           {/* Actions */}
           <div className="flex gap-2">
             <Button variant="outline" size="sm" onClick={handleExport}>
-              <Download className="h-4 w-4 mr-2" />
-              Export
+              <Download className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Export</span>
             </Button>
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               onClick={handleSave}
               disabled={saved}
             >
-              <Save className="h-4 w-4 mr-2" />
-              Save
+              <Save className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Save</span>
             </Button>
           </div>
         </div>
       </div>
-      
+
       {/* Hidden close button for Dialog */}
-      <button 
-        className="sr-only" 
+      <button
+        className="sr-only"
         onClick={handleClose}
         aria-label="Close"
       />
@@ -224,9 +223,9 @@ export function NotesModal({ course, lesson, open, onClose }: NotesModalProps) {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       {/* Use key to reset component when lesson changes */}
       {open && (
-        <NotesModalContent 
+        <NotesModalContent
           key={`${course.id}-${lesson.id}`}
-          course={course} 
+          course={course}
           lesson={lesson}
           onClose={onClose}
         />
