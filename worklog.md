@@ -158,3 +158,90 @@ Stage Summary:
 - Notes are auto-saved with metadata (timestamps)
 - Notes can be searched, sorted, filtered, and deleted
 - Full navigation back to the original lesson from any note
+
+---
+Task ID: 8
+Agent: Main
+Task: Fix Hydration Errors and Keyboard Shortcuts
+
+Work Log:
+- Fixed hydration error in StudyStats component:
+  - Removed suppressHydrationWarning attributes
+  - Used mounted check consistently for all dynamic values
+  - Display placeholder "—" instead of "0" for server-side render
+  - Applied to lessons count, time displays, week chart heights
+- Fixed keyboard shortcuts reliability:
+  - Added e.preventDefault() and e.stopPropagation() for all shortcuts
+  - Changed event listener to capture phase (third parameter true)
+  - Fixed '?' shortcut to check for modifier keys
+- Fixed search "/" shortcut - now properly prevents browser quick find
+- Fixed arrow key navigation for lesson prev/next
+
+Stage Summary:
+- Hydration errors resolved - server and client render consistently
+- Keyboard shortcuts now work reliably across the app
+- Search, help, and navigation shortcuts all function correctly
+
+---
+Task ID: 9
+Agent: Main
+Task: Fix Notes Widget and Modal Issues
+
+Work Log:
+- Fixed NotesWidget not updating immediately after deleting notes:
+  - Added subscription to coursesProgress state to trigger re-renders
+  - Used coursesProgress as dependency in useMemo for notes computation
+- Fixed AllNotesModal same issue with store subscription
+- Fixed overflow in AllNotesModal popup:
+  - Changed dialog height from max-h-[85vh] to h-[80vh]
+  - Added overflow-hidden to content container
+  - Wrapped ScrollArea in proper flex container
+  - Reduced note preview from line-clamp-4 to line-clamp-3
+- Moved NotesWidget and RecentlyViewed to left column layout:
+  - Side-by-side grid below ContinueLearning
+  - Better use of screen space on large displays
+- Fixed RecentlyViewed hydration and overflow:
+  - Added mounted check for SSR
+  - Added ScrollArea with max height
+  - Fixed setState in effect with queueMicrotask
+
+Stage Summary:
+- Notes update immediately when deleted from any component
+- All modals properly constrained without overflow
+- Better layout utilization on large screens
+- All hydration issues resolved
+
+---
+Task ID: 10
+Agent: Main
+Task: Create Project README Documentation
+
+Work Log:
+- Created comprehensive README.md with 587 lines
+- Included project overview and feature list
+- Documented complete project structure
+- Created detailed "Creating a New Course" guide:
+  - Step-by-step instructions
+  - Code examples for each file
+  - Course metadata structure
+  - Module and lesson definitions
+  - Quick reference items
+  - Flashcard creation
+  - Course registration
+- Added Course Content Guide:
+  - Available categories
+  - Icon options (Lucide)
+  - Markdown formatting
+  - LaTeX/KaTeX formulas
+  - Examples with collapsible boxes
+  - Difficulty levels
+- Documented all study tools
+- Added keyboard shortcuts reference table
+- Documented data storage (localStorage keys)
+- Added development guide with scripts and tech stack
+
+Stage Summary:
+- Complete project documentation available in README.md
+- Easy guide for contributors to add new courses
+- All features documented with examples
+- Development setup instructions included

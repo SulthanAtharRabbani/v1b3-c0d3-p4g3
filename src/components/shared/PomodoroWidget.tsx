@@ -277,7 +277,7 @@ export function PomodoroWidget() {
               "w-2.5 h-2.5 rounded-full",
               phaseColors[state.phase]
             )} />
-            <span className="text-sm font-mono font-medium">
+            <span className="text-sm font-mono font-medium" suppressHydrationWarning>
               {formatTime(state.timeRemaining)}
             </span>
             <span className="text-xs text-muted-foreground">
@@ -338,7 +338,7 @@ export function PomodoroWidget() {
 
             {/* Timer Display */}
             <div className="text-center">
-              <div className={cn('text-5xl font-mono font-bold', phaseTextColors[state.phase])}>
+              <div className={cn('text-5xl font-mono font-bold', phaseTextColors[state.phase])} suppressHydrationWarning>
                 {formatTime(state.timeRemaining)}
               </div>
             </div>

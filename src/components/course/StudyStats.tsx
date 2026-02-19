@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useSyncExternalStore } from 'react';
 import { Clock, TrendingUp, BookOpen, Brain, Target, Flame, BarChart3, ChevronDown, ChevronUp, Timer, QuizIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,12 +40,24 @@ const activityColors: Record<ActivityType, string> = {
   review: 'bg-cyan-500',
 };
 
+// Custom hook for hydration-safe state
+function useMounted() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+}
+
 // Component for live timer display
 function LiveTimer({ startedAt }: { startedAt: string }) {
   const [elapsed, setElapsed] = useState(0);
+  const mounted = useMounted();
   const formatDetailedTime = useStudyTrackingStore(state => state.formatDetailedTime);
   
   useEffect(() => {
+    if (!mounted) return;
+    
     const startTime = new Date(startedAt).getTime();
     
     const updateElapsed = () => {
@@ -68,13 +80,18 @@ function LiveTimer({ startedAt }: { startedAt: string }) {
     updateElapsed(); // Initial update
     
     return () => cancelAnimationFrame(animationId);
-  }, [startedAt]);
+  }, [startedAt, mounted]);
+  
+  if (!mounted) {
+    return <span>00:00</span>;
+  }
   
   return <span>{formatDetailedTime(elapsed)}</span>;
 }
 
 export function StudyStats({ className, compact = false }: StudyStatsProps) {
   const [showDetails, setShowDetails] = useState(false);
+  const mounted = useMounted();
   
   const getTodayStats = useStudyTrackingStore(state => state.getTodayStats);
   const getWeekStats = useStudyTrackingStore(state => state.getWeekStats);
@@ -112,7 +129,7 @@ export function StudyStats({ className, compact = false }: StudyStatsProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Current Session (if active) */}
-        {currentSession && (
+        {mounted && currentSession && (
           <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
             <div className="flex items-center justify-between mb-1">
               <span className="text-xs font-medium text-primary">
@@ -132,16 +149,16 @@ export function StudyStats({ className, compact = false }: StudyStatsProps) {
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-muted-foreground">Today</span>
             <span className="text-xs text-muted-foreground">
-              {todayStats.lessonsViewed.length} lessons • {todayStats.quizzesTaken} quizzes
+              {mounted ? `${todayStats.lessonsViewed.length} lessons • ${todayStats.quizzesTaken} quizzes` : '— lessons • — quizzes'}
             </span>
           </div>
           <div className="text-3xl font-mono font-bold">
-            {formatDetailedTime(todayStats.totalSeconds)}
+            {mounted ? formatDetailedTime(todayStats.totalSeconds) : '00:00'}
           </div>
         </div>
         
         {/* Activity Breakdown */}
-        {totalActivityTime > 0 && (
+        {mounted && totalActivityTime > 0 && (
           <div className="space-y-2">
             <div className="flex gap-0.5 h-2 rounded-full overflow-hidden">
               {Object.entries(todayStats.byActivity).map(([activity, time]) => {
@@ -177,7 +194,9 @@ export function StudyStats({ className, compact = false }: StudyStatsProps) {
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
             <span className="text-muted-foreground">This Week</span>
-            <span className="font-medium">{formatTime(weekStats.totalSeconds)}</span>
+            <span className="font-medium">
+              {mounted ? formatTime(weekStats.totalSeconds) : '—'}
+            </span>
           </div>
           <div className="flex items-end gap-1 h-8">
             {weekStats.dailyBreakdown.map((day, i) => {
@@ -193,10 +212,10 @@ export function StudyStats({ className, compact = false }: StudyStatsProps) {
                       'w-full rounded-t transition-all',
                       isToday ? 'bg-primary' : 'bg-muted-foreground/30'
                     )}
-                    style={{ height: `${Math.max(height, 4)}%` }}
+                    style={{ height: mounted ? `${Math.max(height, 4)}%` : '20%' }}
                   />
                   <span className="text-[8px] text-muted-foreground">
-                    {new Date(day.date).toLocaleDateString('en', { weekday: 'short' }).charAt(0)}
+                    {mounted ? new Date(day.date).toLocaleDateString('en', { weekday: 'short' }).charAt(0) : '-'}
                   </span>
                 </div>
               );
@@ -207,11 +226,15 @@ export function StudyStats({ className, compact = false }: StudyStatsProps) {
         {/* Quick Stats */}
         <div className="grid grid-cols-2 gap-3 pt-2 border-t">
           <div className="text-center">
-            <div className="text-lg font-semibold">{formatTime(monthlyStats.averagePerDay)}</div>
+            <div className="text-lg font-semibold">
+              {mounted ? formatTime(monthlyStats.averagePerDay) : '—'}
+            </div>
             <div className="text-xs text-muted-foreground">Avg/day (30d)</div>
           </div>
           <div className="text-center">
-            <div className="text-lg font-semibold">{formatTime(totalStudyTime)}</div>
+            <div className="text-lg font-semibold">
+              {mounted ? formatTime(totalStudyTime) : '—'}
+            </div>
             <div className="text-xs text-muted-foreground">All time</div>
           </div>
         </div>

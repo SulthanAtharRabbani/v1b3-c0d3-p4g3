@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Search, X, BookOpen, FolderOpen, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -37,13 +37,23 @@ export function SearchOverlay() {
     setQuery('');
   }, [router]);
 
-  useShortcut('/', () => setOpen((prev) => !prev), 'Open search');
+  const handleClose = useCallback(() => {
+    setOpen(false);
+    setQuery('');
+  }, []);
+
+  // Only open with "/", close with Escape (handled by Dialog)
+  useShortcut('/', () => {
+    if (!open) {
+      setOpen(true);
+    }
+  }, 'Open search');
 
   const results = search(query);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-2xl p-0 gap-0">
+      <DialogContent className="max-w-2xl p-0 gap-0" onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader className="sr-only">
           <DialogTitle>Search courses and lessons</DialogTitle>
         </DialogHeader>

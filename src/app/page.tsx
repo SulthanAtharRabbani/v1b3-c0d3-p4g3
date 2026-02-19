@@ -141,14 +141,16 @@ export default function HubPage() {
           <div className="grid gap-6 lg:grid-cols-3">
             <div className="lg:col-span-2 space-y-6">
               <ContinueLearning />
+              <div className="grid gap-6 md:grid-cols-2">
+                <NotesWidget />
+                <RecentlyViewed />
+              </div>
               <CourseStructureCard />
             </div>
             <div className="space-y-6">
               <StudyStats />
               <DailyGoalProgress />
               <StreakCounter />
-              <NotesWidget />
-              <RecentlyViewed />
               <AchievementsPreview />
               <BookmarksWidget />
             </div>

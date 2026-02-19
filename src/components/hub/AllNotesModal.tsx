@@ -53,7 +53,6 @@ interface NoteWithMeta {
 
 export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
   const router = useRouter();
-  const { getAllNotes, deleteNote } = useProgressStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'recent' | 'oldest' | 'course'>('recent');
   const [filterCourse, setFilterCourse] = useState<string>('all');
@@ -64,7 +63,12 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
     lessonTitle: string;
   } | null>(null);
 
-  // Get all notes with enriched metadata
+  // Subscribe to courses state directly to detect changes
+  const coursesProgress = useProgressStore(state => state.progress.courses);
+  const getAllNotes = useProgressStore(state => state.getAllNotes);
+  const deleteNote = useProgressStore(state => state.deleteNote);
+
+  // Get all notes with enriched metadata - re-compute when coursesProgress changes
   const allNotesWithMeta = useMemo((): NoteWithMeta[] => {
     const allNotes = getAllNotes();
     
@@ -91,7 +95,7 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
         courseSlug: course?.slug || courseId,
       };
     });
-  }, [getAllNotes]);
+  }, [coursesProgress, getAllNotes]); // Re-compute when coursesProgress changes
 
   // Filter and sort notes
   const filteredNotes = useMemo(() => {
@@ -176,8 +180,8 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
   return (
     <>
       <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-        <DialogContent className="max-w-3xl max-h-[85vh] flex flex-col">
-          <DialogHeader>
+        <DialogContent className="max-w-3xl h-[80vh] flex flex-col">
+          <DialogHeader className="shrink-0">
             <DialogTitle className="flex items-center gap-2">
               <StickyNote className="h-5 w-5" />
               All Notes
@@ -187,9 +191,9 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
             </DialogTitle>
           </DialogHeader>
 
-          <div className="flex flex-col gap-4 flex-1 min-h-0">
+          <div className="flex flex-col gap-4 flex-1 min-h-0 overflow-hidden">
             {/* Search and Filters */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -199,7 +203,7 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
                   className="pl-9"
                 />
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 shrink-0">
                 <Select value={sortBy} onValueChange={(v) => setSortBy(v as typeof sortBy)}>
                   <SelectTrigger className="w-[130px]">
                     <SortAsc className="h-4 w-4 mr-2" />
@@ -232,85 +236,87 @@ export function AllNotesModal({ open, onClose }: AllNotesModalProps) {
             </div>
 
             {/* Notes List */}
-            <ScrollArea className="flex-1">
-              {filteredNotes.length === 0 ? (
-                <div className="text-center py-12 text-muted-foreground">
-                  <FileText className="h-12 w-12 mx-auto mb-3 opacity-40" />
-                  <p className="font-medium">No notes found</p>
-                  <p className="text-sm mt-1">
-                    {searchQuery ? 'Try a different search term' : 'Start taking notes while studying'}
-                  </p>
-                </div>
-              ) : (
-                <div className="space-y-3 pr-4">
-                  {filteredNotes.map(({ 
-                    courseId, 
-                    lessonId, 
-                    note, 
-                    courseTitle, 
-                    lessonTitle,
-                    courseSlug 
-                  }) => (
-                    <div
-                      key={note.id}
-                      className="border rounded-lg p-4 bg-muted/20 hover:bg-muted/30 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <div className="min-w-0 flex-1">
-                          <h4 className="font-medium truncate">{lessonTitle}</h4>
-                          <p className="text-sm text-muted-foreground truncate">
-                            {courseTitle}
-                          </p>
+            <div className="flex-1 min-h-0 overflow-hidden">
+              <ScrollArea className="h-full">
+                {filteredNotes.length === 0 ? (
+                  <div className="text-center py-12 text-muted-foreground">
+                    <FileText className="h-12 w-12 mx-auto mb-3 opacity-40" />
+                    <p className="font-medium">No notes found</p>
+                    <p className="text-sm mt-1">
+                      {searchQuery ? 'Try a different search term' : 'Start taking notes while studying'}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-3 pr-4 pb-4">
+                    {filteredNotes.map(({ 
+                      courseId, 
+                      lessonId, 
+                      note, 
+                      courseTitle, 
+                      lessonTitle,
+                      courseSlug 
+                    }) => (
+                      <div
+                        key={note.id}
+                        className="border rounded-lg p-4 bg-muted/20 hover:bg-muted/30 transition-colors"
+                      >
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                          <div className="min-w-0 flex-1">
+                            <h4 className="font-medium truncate">{lessonTitle}</h4>
+                            <p className="text-sm text-muted-foreground truncate">
+                              {courseTitle}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-1 shrink-0">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8"
+                              onClick={() => handleNavigateToLesson(courseSlug, lessonId)}
+                              title="Go to lesson"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-destructive hover:text-destructive"
+                              onClick={() => setDeleteDialog({
+                                open: true,
+                                courseId,
+                                lessonId,
+                                lessonTitle,
+                              })}
+                              title="Delete note"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1 shrink-0">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8"
-                            onClick={() => handleNavigateToLesson(courseSlug, lessonId)}
-                            title="Go to lesson"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-destructive hover:text-destructive"
-                            onClick={() => setDeleteDialog({
-                              open: true,
-                              courseId,
-                              lessonId,
-                              lessonTitle,
-                            })}
-                            title="Delete note"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
+
+                        <p className="text-sm whitespace-pre-wrap line-clamp-3 mb-3">
+                          {note.content}
+                        </p>
+
+                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            {formatDate(note.updatedAt)}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="h-3 w-3" />
+                            {formatTime(note.updatedAt)}
+                          </span>
+                          <Badge variant="outline" className="text-[10px]">
+                            {note.content.length} chars
+                          </Badge>
                         </div>
                       </div>
-
-                      <p className="text-sm whitespace-pre-wrap line-clamp-4 mb-3">
-                        {note.content}
-                      </p>
-
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {formatDate(note.updatedAt)}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          {formatTime(note.updatedAt)}
-                        </span>
-                        <Badge variant="outline" className="text-[10px]">
-                          {note.content.length} chars
-                        </Badge>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </ScrollArea>
+                    ))}
+                  </div>
+                )}
+              </ScrollArea>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
