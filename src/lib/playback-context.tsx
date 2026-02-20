@@ -88,19 +88,10 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
   // Refs
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const loadRequestIdRef = useRef(0);
-  const tracksRef = useRef<Track[]>([]); // Keep tracks in ref for event handlers
-  const currentSourceIdRef = useRef(''); // Keep current source id in ref for event handlers
-  const playTrackRef = useRef<((track: Track) => void) | null>(null); // Keep playTrack in ref
+  const playNextRef = useRef<(() => void) | null>(null); // Keep playNext for event handlers
   
-  // Keep tracksRef in sync
-  useEffect(() => {
-    tracksRef.current = tracks;
-  }, [tracks]);
-  
-  // Keep currentSourceIdRef in sync
-  useEffect(() => {
-    currentSourceIdRef.current = currentSource.id;
-  }, [currentSource.id]);
+  // Keep playNextRef updated with latest callback
+  // This is defined early but will be updated after playNext is created
   
   // Save volume to localStorage
   useEffect(() => {
@@ -198,11 +189,6 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     audio.load();
   }, []);
 
-  // Keep playTrackRef in sync (must be after playTrack declaration)
-  useEffect(() => {
-    playTrackRef.current = playTrack;
-  }, [playTrack]);
-
   // Play Spotify - this WILL stop any playing track
   const playSpotify = useCallback((url: string) => {
     // Stop audio track
@@ -283,32 +269,49 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
 
   // Play next track
   const playNext = useCallback(() => {
-    if (currentSource.type !== 'track') return;
+    if (currentSource.type !== 'track') {
+      console.log('[playNext] Not a track, skipping');
+      return;
+    }
     
-    const currentTracks = tracksRef.current;
-    if (currentTracks.length === 0) return;
+    if (tracks.length === 0) {
+      console.log('[playNext] No tracks available');
+      return;
+    }
     
-    const idx = currentTracks.findIndex(t => t.id === currentSource.id);
-    const nextIdx = (idx + 1) % currentTracks.length;
-    playTrack(currentTracks[nextIdx]);
-  }, [currentSource, playTrack]);
+    const idx = tracks.findIndex(t => t.id === currentSource.id);
+    console.log(`[playNext] Current index: ${idx}, total tracks: ${tracks.length}`);
+    
+    if (idx === -1) {
+      console.log('[playNext] Current track not found in list');
+      return;
+    }
+    
+    const nextIdx = (idx + 1) % tracks.length;
+    console.log(`[playNext] Playing next track at index: ${nextIdx}`);
+    playTrack(tracks[nextIdx]);
+  }, [currentSource, tracks, playTrack]);
 
   // Play previous track
   const playPrevious = useCallback(() => {
     if (currentSource.type !== 'track') return;
     
-    const currentTracks = tracksRef.current;
-    if (currentTracks.length === 0) return;
+    if (tracks.length === 0) return;
     
     if (currentTime > 3 && audioRef.current) {
       audioRef.current.currentTime = 0;
       return;
     }
     
-    const idx = currentTracks.findIndex(t => t.id === currentSource.id);
-    const prevIdx = (idx - 1 + currentTracks.length) % currentTracks.length;
-    playTrack(currentTracks[prevIdx]);
-  }, [currentSource, currentTime, playTrack]);
+    const idx = tracks.findIndex(t => t.id === currentSource.id);
+    const prevIdx = (idx - 1 + tracks.length) % tracks.length;
+    playTrack(tracks[prevIdx]);
+  }, [currentSource, currentTime, tracks, playTrack]);
+
+  // Keep playNextRef in sync (must be after playNext declaration)
+  useEffect(() => {
+    playNextRef.current = playNext;
+  }, [playNext]);
 
   // Audio event listeners
   useEffect(() => {
@@ -319,23 +322,12 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     const onTimeUpdate = () => setCurrentTime(audio.currentTime);
     const onLoadedMetadata = () => setDuration(audio.duration);
     const onEnded = () => {
-      const currentTracks = tracksRef.current;
-      const currentId = currentSourceIdRef.current;
-      const playTrackFn = playTrackRef.current;
-      
-      if (currentTracks.length === 0 || !playTrackFn) {
-        setIsPlaying(false);
-        return;
-      }
-      
-      const idx = currentTracks.findIndex(t => t.id === currentId);
-      if (idx !== -1) {
-        // Auto-play next track, loop back to first if at end
-        const nextIdx = (idx + 1) % currentTracks.length;
-        setTimeout(() => {
-          playTrackFn(currentTracks[nextIdx]);
-        }, 100);
+      console.log('[onEnded] Track ended, calling playNext');
+      const fn = playNextRef.current;
+      if (fn) {
+        setTimeout(() => fn(), 100);
       } else {
+        console.log('[onEnded] playNextRef not set');
         setIsPlaying(false);
       }
     };
