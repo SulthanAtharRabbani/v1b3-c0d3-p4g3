@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useSyncExternalStore } from 'react';
 import { GraduationCap, Search, Keyboard, Settings, BookOpen, Flame, Compass, Library } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { QuickStatsBar } from '@/components/hub/QuickStatsBar';
@@ -29,6 +29,13 @@ export default function HubPage() {
   const stats = useStats();
   const { progress } = useProgressStore();
   const { courses } = useCourses();
+  
+  // Use useSyncExternalStore for safe client-only value (avoids hydration mismatch)
+  const isMounted = useSyncExternalStore(
+    () => () => {}, // no-op subscribe
+    () => true,     // client: mounted
+    () => false     // server: not mounted
+  );
   
   // Extract unique categories from all courses
   const categories = useMemo(() => {
@@ -94,8 +101,8 @@ export default function HubPage() {
                 <span className="text-sm font-medium">Self-Study Platform</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {stats.totalCompletedLessons > 0
-                  ? `Welcome back! Keep learning!`
+                {!isMounted ? 'Start Your Learning Journey' : stats.totalCompletedLessons > 0
+                  ? 'Welcome back! Keep learning!'
                   : 'Start Your Learning Journey'}
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

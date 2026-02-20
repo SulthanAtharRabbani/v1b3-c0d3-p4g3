@@ -89,11 +89,18 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const loadRequestIdRef = useRef(0);
   const tracksRef = useRef<Track[]>([]); // Keep tracks in ref for event handlers
+  const currentSourceIdRef = useRef(''); // Keep current source id in ref for event handlers
+  const playTrackRef = useRef<((track: Track) => void) | null>(null); // Keep playTrack in ref
   
   // Keep tracksRef in sync
   useEffect(() => {
     tracksRef.current = tracks;
   }, [tracks]);
+  
+  // Keep currentSourceIdRef in sync
+  useEffect(() => {
+    currentSourceIdRef.current = currentSource.id;
+  }, [currentSource.id]);
   
   // Save volume to localStorage
   useEffect(() => {
@@ -190,6 +197,11 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     audio.addEventListener('canplay', handleCanPlay);
     audio.load();
   }, []);
+
+  // Keep playTrackRef in sync (must be after playTrack declaration)
+  useEffect(() => {
+    playTrackRef.current = playTrack;
+  }, [playTrack]);
 
   // Play Spotify - this WILL stop any playing track
   const playSpotify = useCallback((url: string) => {
@@ -308,16 +320,20 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     const onLoadedMetadata = () => setDuration(audio.duration);
     const onEnded = () => {
       const currentTracks = tracksRef.current;
-      if (currentTracks.length === 0) {
+      const currentId = currentSourceIdRef.current;
+      const playTrackFn = playTrackRef.current;
+      
+      if (currentTracks.length === 0 || !playTrackFn) {
         setIsPlaying(false);
         return;
       }
       
-      const idx = currentTracks.findIndex(t => t.id === currentSource.id);
+      const idx = currentTracks.findIndex(t => t.id === currentId);
       if (idx !== -1) {
+        // Auto-play next track, loop back to first if at end
         const nextIdx = (idx + 1) % currentTracks.length;
         setTimeout(() => {
-          playTrack(currentTracks[nextIdx]);
+          playTrackFn(currentTracks[nextIdx]);
         }, 100);
       } else {
         setIsPlaying(false);
