@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ref-1",
+    "title": "Laplace Transform Definition",
+    "formula": "X(s) = ∫₋∞^∞ x(t)e^(-st) dt",
+    "description": "The bilateral Laplace Transform maps a time-domain signal x(t) to the complex frequency domain X(s), where s = σ + jω."
+  },
+  {
+    "id": "ref-2",
+    "title": "Unit Impulse Transform",
+    "formula": "L{δ(t)} = 1",
+    "description": "The Laplace Transform of the unit impulse is unity for all values of s."
+  },
+  {
+    "id": "ref-3",
+    "title": "Unit Step Transform",
+    "formula": "L{u(t)} = 1/s, ROC: Re{s} > 0",
+    "description": "The unit step function transforms to 1/s with region of convergence in the right half-plane."
+  },
+  {
+    "id": "ref-4",
+    "title": "Exponential Transform",
+    "formula": "L{e^(at)u(t)} = 1/(s-a), ROC: Re{s} > Re{a}",
+    "description": "The causal exponential transforms to a simple pole. The ROC is to the right of the pole."
+  },
+  {
+    "id": "ref-5",
+    "title": "Ramp Transform",
+    "formula": "L{tu(t)} = 1/s², ROC: Re{s} > 0",
+    "description": "The ramp function transforms to 1/s² with a double pole at the origin."
+  },
+  {
+    "id": "ref-6",
+    "title": "Cosine Transform",
+    "formula": "L{cos(ω₀t)u(t)} = s/(s² + ω₀²)",
+    "description": "The cosine function produces complex conjugate poles on the jω axis."
+  },
+  {
+    "id": "ref-7",
+    "title": "Sine Transform",
+    "formula": "L{sin(ω₀t)u(t)} = ω₀/(s² + ω₀²)",
+    "description": "The sine function produces the same denominator as cosine with a different numerator."
+  },
+  {
+    "id": "ref-8",
+    "title": "Linearity Property",
+    "formula": "L{α₁x₁(t) + α₂x₂(t)} = α₁X₁(s) + α₂X₂(s)",
+    "description": "The Laplace Transform is linear, allowing decomposition of complex signals into simpler components."
+  },
+  {
+    "id": "ref-9",
+    "title": "Time-Shifting Property",
+    "formula": "L{x(t-t₀)} = e^(-st₀)X(s)",
+    "description": "A time delay multiplies the transform by an exponential factor in s."
+  },
+  {
+    "id": "ref-10",
+    "title": "Time Differentiation",
+    "formula": "L{dx/dt} = sX(s) - x(0⁻)",
+    "description": "Differentiation in time corresponds to multiplication by s, with initial condition contribution."
+  },
+  {
+    "id": "ref-11",
+    "title": "Integration Property",
+    "formula": "L{∫₀ᵗ x(τ)dτ} = X(s)/s",
+    "description": "Integration in time corresponds to division by s in the transform domain."
+  },
+  {
+    "id": "ref-12",
+    "title": "Capacitor Impedance",
+    "formula": "Z_C = 1/(sC)",
+    "description": "The s-domain impedance of a capacitor C is 1/(sC)."
+  },
+  {
+    "id": "ref-13",
+    "title": "Inductor Impedance",
+    "formula": "Z_L = sL",
+    "description": "The s-domain impedance of an inductor L is sL."
+  },
+  {
+    "id": "ref-14",
+    "title": "Damped Sinusoid Transform",
+    "formula": "L{e^(-at)sin(ω₀t)u(t)} = ω₀/((s+a)² + ω₀²)",
+    "description": "An exponentially damped sinusoid has poles shifted into the left half-plane."
+  },
+  {
+    "id": "ref-15",
+    "title": "Euler's Formula",
+    "formula": "e^(jθ) = cos(θ) + j·sin(θ)",
+    "description": "Euler's formula connects complex exponentials to trigonometric functions."
+  }
+]

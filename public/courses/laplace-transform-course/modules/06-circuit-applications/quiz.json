@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m6-q1",
+    "question": "What is the s-domain impedance of a capacitor C?",
+    "options": [
+      "sC",
+      "1/sC",
+      "C",
+      "1/C"
+    ],
+    "correctIndex": 1,
+    "explanation": "The impedance of a capacitor in the s-domain is Z_C = 1/sC. This comes from the Laplace Transform of the capacitor equation i(t) = C·dv/dt, giving I(s) = sC·V(s) - Cv(0⁻), so V(s)/I(s) = 1/sC."
+  },
+  {
+    "id": "m6-q2",
+    "question": "What is the s-domain impedance of an inductor L?",
+    "options": [
+      "sL",
+      "1/sL",
+      "L",
+      "1/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The impedance of an inductor in the s-domain is Z_L = sL. This comes from the Laplace Transform of v(t) = L·di/dt, giving V(s) = sL·I(s) - Li(0⁻), so V(s)/I(s) = sL."
+  },
+  {
+    "id": "m6-q3",
+    "question": "In s-domain circuit analysis, how are initial capacitor voltages represented?",
+    "options": [
+      "As a parallel current source",
+      "As a series voltage source v(0⁻)/s",
+      "As an additional impedance",
+      "Initial conditions are ignored"
+    ],
+    "correctIndex": 1,
+    "explanation": "The initial capacitor voltage v(0⁻) is represented as a series voltage source with value v(0⁻)/s. This accounts for the energy stored in the capacitor before t=0."
+  },
+  {
+    "id": "m6-q4",
+    "question": "For an RC circuit with transfer function H(s) = 1/(RCs + 1), what type of filter is it?",
+    "options": [
+      "High-pass filter",
+      "Low-pass filter",
+      "Band-pass filter",
+      "Band-stop filter"
+    ],
+    "correctIndex": 1,
+    "explanation": "This is a first-order low-pass filter with cutoff frequency ωc = 1/RC. Low frequencies (s ≈ 0) pass through with gain ≈ 1, while high frequencies are attenuated."
+  },
+  {
+    "id": "m6-q5",
+    "question": "For a series RLC circuit, what determines whether the response is overdamped, critically damped, or underdamped?",
+    "options": [
+      "The resistor value only",
+      "The resonant frequency",
+      "The roots of the characteristic equation (poles)",
+      "The source voltage amplitude"
+    ],
+    "correctIndex": 2,
+    "explanation": "The poles of the system (roots of LCs² + RCs + 1 = 0) determine the response type: real distinct poles (overdamped), repeated real pole (critically damped), or complex poles (underdamped)."
+  }
+]

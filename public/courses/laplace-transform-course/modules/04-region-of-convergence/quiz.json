@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m4-q1",
+    "question": "What is the Region of Convergence (ROC)?",
+    "options": [
+      "The set of poles of X(s)",
+      "The set of s values where the Laplace integral converges",
+      "The imaginary axis of the s-plane",
+      "The region where X(s) = 0"
+    ],
+    "correctIndex": 1,
+    "explanation": "The ROC is the set of all values of the complex variable s for which the Laplace Transform integral converges to a finite result. It's essential for uniquely determining the inverse transform."
+  },
+  {
+    "id": "m4-q2",
+    "question": "For a causal signal, what is the shape of the ROC?",
+    "options": [
+      "A vertical strip between two lines",
+      "The entire s-plane",
+      "A region to the right of a vertical line",
+      "A region to the left of a vertical line"
+    ],
+    "correctIndex": 2,
+    "explanation": "For causal signals (zero for t < 0), the ROC is always to the right of a vertical line passing through the rightmost pole. This is because the convergence requirement depends on the behavior as t → ∞."
+  },
+  {
+    "id": "m4-q3",
+    "question": "Can the ROC contain poles of X(s)?",
+    "options": [
+      "Yes, poles are always inside the ROC",
+      "No, the ROC cannot contain any poles",
+      "Only simple poles can be in the ROC",
+      "Poles on the jω axis can be in the ROC"
+    ],
+    "correctIndex": 1,
+    "explanation": "Poles are values of s that make X(s) infinite, so the transform cannot converge at pole locations. The ROC is always bounded by poles but never contains them."
+  },
+  {
+    "id": "m4-q4",
+    "question": "For a causal LTI system to be stable, where must its poles be located?",
+    "options": [
+      "Anywhere in the s-plane",
+      "In the right half-plane (RHP)",
+      "In the left half-plane (LHP)",
+      "On the jω axis"
+    ],
+    "correctIndex": 2,
+    "explanation": "For a causal system to be stable, all poles must be in the left half-plane (have negative real parts). This ensures the ROC includes the jω axis, meaning the system has a Fourier Transform and bounded output for bounded input."
+  },
+  {
+    "id": "m4-q5",
+    "question": "If X(s) = 1/(s-2) with ROC: Re{s} > 2, what is the corresponding time function?",
+    "options": [
+      "-e²ᵗu(-t)",
+      "e²ᵗu(t)",
+      "e⁻²ᵗu(t)",
+      "δ(t) - 2u(t)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The transform 1/(s-2) with ROC to the right of the pole at s=2 corresponds to a causal exponential. Using the general form e^(at)u(t) ↔ 1/(s-a), we get x(t) = e²ᵗu(t)."
+  }
+]

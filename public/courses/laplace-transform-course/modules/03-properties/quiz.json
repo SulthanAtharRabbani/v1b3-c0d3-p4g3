@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m3-q1",
+    "question": "According to the linearity property, what is L{3x₁(t) + 2x₂(t)}?",
+    "options": [
+      "3X₁(s) - 2X₂(s)",
+      "3X₁(s) + 2X₂(s)",
+      "X₁(s) + X₂(s)",
+      "5(X₁(s) + X₂(s))"
+    ],
+    "correctIndex": 1,
+    "explanation": "The linearity property states that L{α₁x₁(t) + α₂x₂(t)} = α₁X₁(s) + α₂X₂(s). Therefore, L{3x₁(t) + 2x₂(t)} = 3X₁(s) + 2X₂(s)."
+  },
+  {
+    "id": "m3-q2",
+    "question": "What is the Laplace Transform of x(t - t₀) in terms of X(s)?",
+    "options": [
+      "X(s - t₀)",
+      "e^(st₀)X(s)",
+      "e^(-st₀)X(s)",
+      "X(s)/t₀"
+    ],
+    "correctIndex": 2,
+    "explanation": "The time-shifting property states that L{x(t - t₀)} = e^(-st₀)X(s). Time delay in the time domain corresponds to multiplication by an exponential in the s-domain."
+  },
+  {
+    "id": "m3-q3",
+    "question": "According to the time-differentiation property, what is L{dx(t)/dt}?",
+    "options": [
+      "X'(s)",
+      "sX(s)",
+      "sX(s) - x(0⁻)",
+      "X(s)/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "The time-differentiation property states that L{dx(t)/dt} = sX(s) - x(0⁻). The initial condition x(0⁻) is automatically incorporated into the transform."
+  },
+  {
+    "id": "m3-q4",
+    "question": "What is L{t·u(t)} using the s-domain differentiation property?",
+    "options": [
+      "1/s",
+      "1/s²",
+      "2/s²",
+      "1/s³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the s-domain differentiation property: L{t·x(t)} = -dX(s)/ds. Since L{u(t)} = 1/s, we have L{t·u(t)} = -d(1/s)/ds = 1/s²."
+  },
+  {
+    "id": "m3-q5",
+    "question": "According to the integration property, what is L{∫₀ᵗ x(τ)dτ}?",
+    "options": [
+      "X(s)/s",
+      "sX(s)",
+      "∫X(s)ds",
+      "X(s) + x(0)"
+    ],
+    "correctIndex": 0,
+    "explanation": "The integration property states that L{∫₀ᵗ x(τ)dτ} = X(s)/s. Integration in the time domain corresponds to division by s in the s-domain."
+  }
+]

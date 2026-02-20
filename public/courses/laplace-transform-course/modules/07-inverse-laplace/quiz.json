@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m7-q1",
+    "question": "What is the primary method for finding inverse Laplace Transforms of rational functions?",
+    "options": [
+      "Direct integration using the definition",
+      "Partial fraction expansion",
+      "Numerical approximation",
+      "Fourier series expansion"
+    ],
+    "correctIndex": 1,
+    "explanation": "Partial fraction expansion is the primary method. It decomposes complex rational functions into simpler terms that can be inverse-transformed using tables of known transform pairs."
+  },
+  {
+    "id": "m7-q2",
+    "question": "For X(s) = 1/(s+2) with ROC: Re{s} > -2, what is x(t)?",
+    "options": [
+      "e^(2t)u(t)",
+      "e^(-2t)u(t)",
+      "-e^(2t)u(-t)",
+      "e^(2t)u(-t)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The transform 1/(s-a) with ROC to the right of the pole corresponds to e^(at)u(t). With a = -2 and ROC to the right of s = -2, we get e^(-2t)u(t)."
+  },
+  {
+    "id": "m7-q3",
+    "question": "In partial fraction expansion, what is the coefficient A for the term A/(s-p) using the cover-up method?",
+    "options": [
+      "A = X(p)",
+      "A = (s-p)X(s)|_{s=p}",
+      "A = dX/ds|_{s=p}",
+      "A = 1/(s-p)X(p)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The cover-up method states that for a simple pole at s = p, the coefficient A = (s-p)X(s)|_{s=p}. This 'covers up' the (s-p) term and evaluates the remainder at s = p."
+  },
+  {
+    "id": "m7-q4",
+    "question": "For a repeated pole of order 2 at s = p, what time-domain terms appear in the inverse transform?",
+    "options": [
+      "Only e^(pt)u(t)",
+      "Both e^(pt)u(t) and t·e^(pt)u(t)",
+      "Only t·e^(pt)u(t)",
+      "t²·e^(pt)u(t)"
+    ],
+    "correctIndex": 1,
+    "explanation": "A repeated pole of order 2 contributes both e^(pt)u(t) from the A/(s-p) term and t·e^(pt)u(t) from the B/(s-p)² term. This is why repeated poles create polynomial-time exponential responses."
+  },
+  {
+    "id": "m7-q5",
+    "question": "For X(s) = (s+1)/(s²+2s+5), what is the inverse transform?",
+    "options": [
+      "cos(2t)u(t)",
+      "sin(2t)u(t)",
+      "e^(-t)cos(2t)u(t)",
+      "e^(-t)sin(2t)u(t)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Completing the square: s²+2s+5 = (s+1)²+4. So X(s) = (s+1)/((s+1)²+4), which matches the form for e^(-at)cos(ω₀t)u(t) with a=1, ω₀=2, giving e^(-t)cos(2t)u(t)."
+  }
+]

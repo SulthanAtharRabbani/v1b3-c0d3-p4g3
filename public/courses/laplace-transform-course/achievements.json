@@ -1,0 +1,66 @@
+[
+  {
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
+  },
+  {
+    "id": "module-master",
+    "title": "Module Master",
+    "description": "Complete all lessons in a module",
+    "icon": "Award",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "transform-expert",
+    "title": "Transform Expert",
+    "description": "Complete the Laplace Transform Definition module",
+    "icon": "Zap",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "roc-champion",
+    "title": "ROC Champion",
+    "description": "Master the Region of Convergence concepts",
+    "icon": "Target",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "circuit-analyst",
+    "title": "Circuit Analyst",
+    "description": "Complete the Circuit Applications module",
+    "icon": "Cpu",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "quiz-perfect",
+    "title": "Perfect Score",
+    "description": "Get 100% on any quiz",
+    "icon": "Star",
+    "type": "quiz",
+    "requirement": "score-100"
+  },
+  {
+    "id": "flashcard-reviewer",
+    "title": "Flashcard Reviewer",
+    "description": "Review all flashcards",
+    "icon": "Layers",
+    "type": "custom",
+    "requirement": "review-all-flashcards"
+  },
+  {
+    "id": "course-graduate",
+    "title": "Course Graduate",
+    "description": "Complete all lessons in this course",
+    "icon": "GraduationCap",
+    "type": "course",
+    "requirement": "complete-all"
+  }
+]

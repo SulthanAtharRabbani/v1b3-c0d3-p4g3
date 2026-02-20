@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m2-q1",
+    "question": "What is the bilateral Laplace Transform of a signal x(t)?",
+    "options": [
+      "∫₀^∞ x(t)e^(-st) dt",
+      "∫₋∞^∞ x(t)e^(-st) dt",
+      "∫₋∞^∞ x(t)e^(st) dt",
+      "∫₀^∞ x(t)e^(st) dt"
+    ],
+    "correctIndex": 1,
+    "explanation": "The bilateral Laplace Transform is defined as X(s) = ∫₋∞^∞ x(t)e^(-st) dt, where s = σ + jω is a complex variable. This integrates over all time from negative infinity to positive infinity."
+  },
+  {
+    "id": "m2-q2",
+    "question": "What is the Laplace Transform of the unit impulse δ(t)?",
+    "options": [
+      "0",
+      "1/s",
+      "1",
+      "s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Using the sifting property of the impulse function: L{δ(t)} = ∫₋∞^∞ δ(t)e^(-st) dt = e^(-st)|_{t=0} = 1. The ROC is the entire s-plane."
+  },
+  {
+    "id": "m2-q3",
+    "question": "What is the Laplace Transform of e^(-2t)u(t)?",
+    "options": [
+      "1/(s+2), ROC: Re{s} > -2",
+      "1/(s-2), ROC: Re{s} > 2",
+      "1/(s+2), ROC: Re{s} > 2",
+      "1/(s-2), ROC: Re{s} > -2"
+    ],
+    "correctIndex": 0,
+    "explanation": "For e^(at)u(t), the transform is 1/(s-a) with ROC: Re{s} > Re{a}. With a = -2, we get 1/(s-(-2)) = 1/(s+2) with ROC: Re{s} > -2."
+  },
+  {
+    "id": "m2-q4",
+    "question": "Why is the Region of Convergence (ROC) important in Laplace Transform analysis?",
+    "options": [
+      "It determines the amplitude of the transform",
+      "The same algebraic expression can correspond to different time functions with different ROCs",
+      "It is only important for theoretical purposes",
+      "It determines the phase of the transform"
+    ],
+    "correctIndex": 1,
+    "explanation": "Different time functions can have the same algebraic transform expression but different ROCs. For example, both e^(at)u(t) and -e^(at)u(-t) have transform 1/(s-a), but with different ROCs. The ROC uniquely identifies the correct inverse."
+  },
+  {
+    "id": "m2-q5",
+    "question": "What is the relationship between the Laplace Transform and Fourier Transform?",
+    "options": [
+      "They are completely independent transforms",
+      "The Laplace Transform evaluated on the jω axis equals the Fourier Transform",
+      "The Fourier Transform is a generalization of the Laplace Transform",
+      "They always give identical results"
+    ],
+    "correctIndex": 1,
+    "explanation": "When σ = 0 (s = jω), the Laplace Transform X(s)|_{s=jω} = ∫₋∞^∞ x(t)e^(-jωt) dt, which is exactly the Fourier Transform definition. The Fourier Transform is a special case of the Laplace Transform."
+  }
+]

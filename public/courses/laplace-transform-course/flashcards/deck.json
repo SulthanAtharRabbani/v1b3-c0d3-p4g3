@@ -1,0 +1,77 @@
+[
+  {
+    "id": "card-1",
+    "front": "What is the Laplace Transform of the unit impulse δ(t)?",
+    "back": "$$L\\{\\delta(t)\\} = 1$$\n\nThe transform equals 1 for all values of s (ROC: entire s-plane). This is because the impulse 'sifts' out the value of e^(-st) at t = 0."
+  },
+  {
+    "id": "card-2",
+    "front": "What is the Laplace Transform of the unit step u(t)?",
+    "back": "$$L\\{u(t)\\} = \\frac{1}{s}, \\quad \\text{ROC: Re}\\{s\\} > 0$$\n\nThe unit step transforms to a simple pole at the origin with ROC in the right half-plane."
+  },
+  {
+    "id": "card-3",
+    "front": "What is the Laplace Transform of e^(at)u(t)?",
+    "back": "$$L\\{e^{at}u(t)\\} = \\frac{1}{s-a}, \\quad \\text{ROC: Re}\\{s\\} > \\text{Re}\\{a\\}$$\n\nThe causal exponential produces a simple pole at s = a. The ROC is to the right of this pole."
+  },
+  {
+    "id": "card-4",
+    "front": "State the linearity property of the Laplace Transform.",
+    "back": "$$L\\{\\alpha_1 x_1(t) + \\alpha_2 x_2(t)\\} = \\alpha_1 X_1(s) + \\alpha_2 X_2(s)$$\n\nThe Laplace Transform is linear, allowing us to decompose complex signals and find transforms of each component separately."
+  },
+  {
+    "id": "card-5",
+    "front": "State the time-shifting property of the Laplace Transform.",
+    "back": "$$L\\{x(t - t_0)\\} = e^{-st_0} X(s)$$\n\nA delay in time corresponds to multiplication by an exponential factor in the s-domain. The ROC remains unchanged."
+  },
+  {
+    "id": "card-6",
+    "front": "State the time-differentiation property of the Laplace Transform.",
+    "back": "$$L\\left\\{\\frac{dx(t)}{dt}\\right\\} = sX(s) - x(0^-)$$\n\nDifferentiation in time becomes multiplication by s, minus the initial condition. This is key for solving differential equations."
+  },
+  {
+    "id": "card-7",
+    "front": "What is the Region of Convergence (ROC)?",
+    "back": "The ROC is the set of all values of s for which the Laplace Transform integral converges to a finite result.\n\nThe ROC is essential for unique inverse transformation and determining system properties like stability and causality."
+  },
+  {
+    "id": "card-8",
+    "front": "What is the ROC for a causal signal?",
+    "back": "For a causal signal (zero for t < 0), the ROC is to the **right** of the rightmost pole:\n\n$$\\text{ROC: Re}\\{s\\} > \\sigma_1$$\n\nwhere σ₁ is the real part of the rightmost pole."
+  },
+  {
+    "id": "card-9",
+    "front": "What is the s-domain impedance of a capacitor?",
+    "back": "$$Z_C = \\frac{1}{sC}$$\n\nThe capacitor impedance is inversely proportional to both frequency (s) and capacitance (C). At DC (s = 0), it becomes infinite (open circuit)."
+  },
+  {
+    "id": "card-10",
+    "front": "What is the s-domain impedance of an inductor?",
+    "back": "$$Z_L = sL$$\n\nThe inductor impedance is directly proportional to both frequency (s) and inductance (L). At DC (s = 0), it becomes zero (short circuit)."
+  },
+  {
+    "id": "card-11",
+    "front": "What is the Laplace Transform of cos(ω₀t)u(t)?",
+    "back": "$$L\\{\\cos(\\omega_0 t)u(t)\\} = \\frac{s}{s^2 + \\omega_0^2}, \\quad \\text{ROC: Re}\\{s\\} > 0$$\n\nThe cosine has complex conjugate poles on the jω axis at s = ±jω₀."
+  },
+  {
+    "id": "card-12",
+    "front": "What is the Laplace Transform of sin(ω₀t)u(t)?",
+    "back": "$$L\\{\\sin(\\omega_0 t)u(t)\\} = \\frac{\\omega_0}{s^2 + \\omega_0^2}, \\quad \\text{ROC: Re}\\{s\\} > 0$$\n\nThe sine has the same poles as cosine but a different numerator. The ω₀ factor in the numerator normalizes the response."
+  },
+  {
+    "id": "card-13",
+    "front": "For a causal LTI system, what condition ensures stability?",
+    "back": "All poles must be in the **left half-plane** (have negative real parts).\n\nThis ensures the ROC includes the jω axis, meaning the system has a Fourier Transform and bounded output for bounded input."
+  },
+  {
+    "id": "card-14",
+    "front": "What is the cover-up method for partial fraction expansion?",
+    "back": "For a simple pole at s = p:\n\n$$A = (s-p)X(s)\\bigg|_{s=p}$$\n\nMultiply X(s) by (s-p), 'cover up' the (s-p) factor, and evaluate the remaining expression at s = p."
+  },
+  {
+    "id": "card-15",
+    "front": "What is the relationship between Laplace and Fourier Transforms?",
+    "back": "The Fourier Transform is a special case of the Laplace Transform evaluated on the jω axis:\n\n$$X(j\\omega) = X(s)\\bigg|_{s=j\\omega}$$\n\nThis only exists when the ROC includes the jω axis."
+  }
+]

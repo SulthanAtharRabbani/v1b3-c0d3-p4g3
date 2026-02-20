@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m5-q1",
+    "question": "What is the Laplace Transform of t·u(t)?",
+    "options": [
+      "1/s",
+      "1/s²",
+      "1/s³",
+      "s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the s-domain differentiation property: L{t·u(t)} = -d(1/s)/ds = 1/s². This is a fundamental transform pair that appears frequently in signals and systems."
+  },
+  {
+    "id": "m5-q2",
+    "question": "What is L{e^(-2t)·cos(3t)·u(t)}?",
+    "options": [
+      "s/(s²+9)",
+      "(s+2)/((s+2)²+9)",
+      "(s-2)/((s-2)²+9)",
+      "3/((s+2)²+9)"
+    ],
+    "correctIndex": 1,
+    "explanation": "For e^(-at)cos(ω₀t)u(t), the transform is (s+a)/((s+a)²+ω₀²). With a=2 and ω₀=3, we get (s+2)/((s+2)²+9)."
+  },
+  {
+    "id": "m5-q3",
+    "question": "What is the ROC for L{e^(2t)u(t)}?",
+    "options": [
+      "Re{s} < 2",
+      "Re{s} > 2",
+      "Re{s} > 0",
+      "All s"
+    ],
+    "correctIndex": 1,
+    "explanation": "For e^(at)u(t), the transform 1/(s-a) converges for Re{s} > Re{a}. Since a = 2, the ROC is Re{s} > 2."
+  },
+  {
+    "id": "m5-q4",
+    "question": "What is L{δ(t - 5)}?",
+    "options": [
+      "5",
+      "e^(-5s)",
+      "e^(5s)",
+      "1/(s-5)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the time-shifting property: L{δ(t-τ)} = e^(-sτ). Therefore, L{δ(t-5)} = e^(-5s)."
+  },
+  {
+    "id": "m5-q5",
+    "question": "What is L{sin(4t)u(t)}?",
+    "options": [
+      "4/(s²+16)",
+      "s/(s²+16)",
+      "4/(s²+4)",
+      "s/(s²+4)"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Laplace Transform of sin(ω₀t)u(t) is ω₀/(s²+ω₀²). With ω₀=4, we get 4/(s²+16)."
+  }
+]

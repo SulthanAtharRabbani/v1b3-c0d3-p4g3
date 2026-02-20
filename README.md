@@ -1,6 +1,6 @@
 # EduHub - All-in-One Course Learning Platform
 
-A comprehensive, self-paced learning platform designed for engineering students. EduHub provides an interactive environment for studying control systems, signal processing, and more with rich content including LaTeX formulas, quizzes, flashcards, and personal notes.
+A comprehensive, self-paced learning platform designed for engineering students. EduHub provides an interactive environment for studying with rich content including LaTeX formulas, quizzes, flashcards, achievements, and personal notes.
 
 ![EduHub](https://img.shields.io/badge/EduHub-Learning%20Platform-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
@@ -16,6 +16,7 @@ A comprehensive, self-paced learning platform designed for engineering students.
 - [Creating a New Course](#creating-a-new-course)
 - [Course Content Guide](#course-content-guide)
 - [Study Tools](#study-tools)
+- [Achievement System](#achievement-system)
 - [Keyboard Shortcuts](#keyboard-shortcuts)
 - [Data Storage](#data-storage)
 - [Development](#development)
@@ -25,27 +26,36 @@ A comprehensive, self-paced learning platform designed for engineering students.
 ## Features
 
 ### 📚 Course Management
-- **Modular Course Structure** - Organize content into modules and lessons
+- **File-Based Course System** - Create courses using markdown files, no code required
+- **Modular Structure** - Organize content into modules and lessons
 - **Rich Content Support** - Markdown with LaTeX/KaTeX for mathematical formulas
 - **Reading Time Estimation** - Automatic calculation based on content length
 - **Progress Tracking** - Track completed lessons and overall course progress
 
 ### 📝 Study Tools
 - **Personal Notes** - Take notes on any lesson with auto-save
+- **Centralized Notes View** - See all notes across all courses in one place
 - **Bookmarks** - Bookmark important lessons for quick access
 - **Flashcards** - Spaced repetition flashcard system
-- **Quick Reference** - Searchable formula sheets and key concepts
+- **Quick Reference** - Searchable formula sheets and key concepts (per-course)
 - **Quizzes** - Multiple choice quizzes with explanations
+
+### 🏆 Achievements & Motivation
+- **Course-Specific Achievements** - Each course defines its own achievements
+- **Achievement Types** - Lesson, module, course, quiz, and custom achievements
+- **Celebration Animations** - Confetti bursts for milestones
+- **Streak Counter** - Daily learning streak with fire animation
+- **Certificates** - Download certificates upon course completion
 
 ### ⏱️ Productivity
 - **Pomodoro Timer** - Built-in focus timer with work/break cycles
 - **Focus Mode** - Distraction-free reading mode
 - **Study Statistics** - Track daily, weekly, and monthly study time
-- **Streak Counter** - Daily learning streak with milestones
+- **Print-Friendly View** - Optimized for printing lessons
 
 ### 🎯 User Experience
 - **Dark/Light Theme** - System preference detection with manual toggle
-- **Responsive Design** - Works on desktop and mobile
+- **Responsive Design** - Works on all devices with adaptive dialogs
 - **Keyboard Shortcuts** - Power user navigation
 - **Progress Export/Import** - Backup and restore your progress
 
@@ -72,7 +82,7 @@ bun install
 bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+Open the **Preview Panel** to view the application.
 
 ---
 
@@ -84,9 +94,7 @@ src/
 │   ├── page.tsx                  # Hub landing page
 │   ├── layout.tsx                # Root layout with providers
 │   ├── globals.css               # Global styles
-│   └── courses/
-│       └── [slug]/
-│           └── page.tsx          # Course viewer page
+│   └── api/                      # API routes
 │
 ├── components/
 │   ├── course/                   # Course-related components
@@ -94,10 +102,14 @@ src/
 │   │   ├── NotesModal.tsx        # Personal notes editor
 │   │   ├── QuizModal.tsx         # Quiz interface
 │   │   ├── FlashcardsModal.tsx   # Flashcard viewer
-│   │   └── ...
+│   │   ├── QuickReferenceModal.tsx # Formula reference
+│   │   ├── CelebrationModal.tsx  # Achievement celebration
+│   │   └── CertificateModal.tsx  # Course certificate
 │   │
 │   ├── hub/                      # Hub page widgets
 │   │   ├── NotesWidget.tsx       # Notes overview
+│   │   ├── AllNotesModal.tsx     # Centralized notes view
+│   │   ├── AchievementsPreview.tsx # Achievement display
 │   │   ├── CourseGrid.tsx        # Course catalog
 │   │   └── ...
 │   │
@@ -108,27 +120,16 @@ src/
 │   │   └── ...
 │   │
 │   └── ui/                       # shadcn/ui components
-│
+
 ├── lib/
-│   ├── content/                  # Course content definitions
-│   │   ├── control-systems/      # Control Systems course
-│   │   │   ├── index.ts          # Course export
-│   │   │   ├── modules.ts        # Module & lesson content
-│   │   │   ├── flashcards.ts     # Flashcard definitions
-│   │   │   └── reference.ts      # Quick reference items
-│   │   │
-│   │   └── signals-systems/      # Signals & Systems course
-│   │       └── ...
+│   ├── courses/                  # Course loader & parser
+│   │   └── index.ts              # File-based course loading
 │   │
-│   ├── stores/                   # Zustand stores
-│   │   └── study-tracking-store.ts
+│   ├── storage/                  # Zustand stores
+│   │   └── progress-store.ts     # User progress persistence
 │   │
-│   ├── courses/
-│   │   └── index.ts              # Course registry & helpers
-│   │
-│   └── storage/
-│       └── progress-store.ts     # User progress persistence
-│
+│   └── achievement-checker.ts    # Achievement requirement checker
+
 ├── hooks/                        # Custom React hooks
 │   ├── useCourse.ts
 │   ├── useStats.ts
@@ -137,229 +138,211 @@ src/
 │
 └── types/
     └── index.ts                  # TypeScript type definitions
+
+public/
+└── courses/                      # File-based courses
+    └── example-course/           # Example course template
+        ├── course.md             # Course metadata
+        ├── achievements.json     # Course achievements
+        ├── modules/              # Course modules
+        ├── reference/            # Quick reference formulas
+        └── flashcards/           # Flashcard decks
 ```
 
 ---
 
 ## Creating a New Course
 
-### Step 1: Create Course Directory
+Courses are file-based and require no coding. Just create a folder in `public/courses/`!
 
-Create a new folder in `src/lib/content/` with your course ID:
+### Quick Start
 
-```bash
-mkdir src/lib/content/my-course
+```
+public/courses/
+└── my-course/                    # Folder name = course slug
+    ├── course.md                 # Course metadata (required)
+    └── modules/
+        └── 01-intro/
+            ├── module.md         # Module metadata
+            └── 01-lesson.md      # Lesson content
 ```
 
-### Step 2: Define Course Metadata
+### Full Structure
 
-Create `src/lib/content/my-course/index.ts`:
-
-```typescript
-import type { Course } from '@/types';
-
-export const course: Course = {
-  id: 'my-course',                    // Unique identifier
-  slug: 'my-course',                  // URL slug
-  title: 'My Course Title',
-  subtitle: 'A brief subtitle',
-  description: 'Detailed course description...',
-  category: 'electronics',            // See categories below
-  icon: 'Cpu',                        // Lucide icon name
-  color: '#10B981',                   // Theme color (hex)
-  difficulty: 'intermediate',         // 'beginner' | 'intermediate' | 'advanced'
-  estimatedHours: 20,                 // Estimated completion time
-  prerequisites: [
-    'Basic mathematics',
-    'Fundamentals of circuits',
-  ],
-  learningOutcomes: [
-    'Understand core concepts',
-    'Apply techniques to real problems',
-  ],
-  modules: [],                        // Defined in modules.ts
-  quickReference: [],                 // Defined in reference.ts
-  flashcards: [],                     // Defined in flashcards.ts
-};
-
-export { modules } from './modules';
-export { quickReference } from './reference';
-export { flashcards } from './flashcards';
+```
+public/courses/
+└── course-slug/
+    ├── course.md                 # Required: Course metadata
+    ├── achievements.json         # Optional: Course-specific achievements
+    ├── modules/
+    │   ├── 01-module-name/      # Number prefix = order
+    │   │   ├── module.md        # Module metadata
+    │   │   ├── 01-lesson.md     # Lessons as markdown
+    │   │   ├── 02-lesson.md
+    │   │   └── quiz.json        # Optional: Quiz questions
+    │   └── 02-next-module/
+    │       └── ...
+    ├── reference/
+    │   └── formulas.json        # Optional: Quick reference
+    └── flashcards/
+        └── deck.json            # Optional: Flashcards
 ```
 
-### Step 3: Define Modules and Lessons
+### Step 1: Create Course Metadata
 
-Create `src/lib/content/my-course/modules.ts`:
+Create `public/courses/my-course/course.md`:
 
-```typescript
-import type { Module } from '@/types';
+```markdown
+---
+id: my-course
+title: My Course Title
+subtitle: A brief description
+icon: BookOpen
+color: "#8B5CF6"
+difficulty: beginner
+category: Mathematics
+estimatedHours: 10
+prerequisites:
+  - Basic algebra
+learningOutcomes:
+  - Learn something new
+  - Apply techniques to problems
+---
 
-export const modules: Module[] = [
-  {
-    id: 'module-1-intro',
-    title: 'Introduction',
-    description: 'Getting started with the basics',
-    lessons: [
-      {
-        id: 'lesson-1-1',
-        title: 'What is This Course About?',
-        content: `
-# Introduction
+# Course Description
 
-Welcome to this course! In this lesson, we'll cover...
+This appears in the course card on the hub page.
+```
+
+**Required Fields:** `title`
+
+**Optional Fields:** `id`, `subtitle`, `icon`, `color`, `difficulty`, `category`, `estimatedHours`, `prerequisites`, `learningOutcomes`
+
+### Step 2: Create Module
+
+Create `public/courses/my-course/modules/01-intro/module.md`:
+
+```markdown
+---
+title: Introduction
+description: Getting started with the basics
+---
+
+# Module Introduction
+
+Brief overview of what this module covers.
+```
+
+### Step 3: Create Lessons
+
+Create `public/courses/my-course/modules/01-intro/01-welcome.md`:
+
+```markdown
+---
+title: Welcome to the Course
+readingTime: 10
+difficulty: beginner
+objectives:
+  - Understand the course scope
+  - Learn basic terminology
+keyPoints:
+  - Important concept 1
+  - Important concept 2
+---
+
+# Welcome
+
+This lesson covers the basics...
 
 ## Key Concepts
 
 The fundamental equation is:
 
-$$
-E = mc^2
-$$
+$$E = mc^2$$
 
 ### Subsection
 
 - Point 1
 - Point 2
-- Point 3
-
-## Examples
-
-// Example will be rendered in a collapsible box
 
 ## Summary
 
 You've learned the basics!
-        `,
-        objectives: [
-          'Understand the course scope',
-          'Learn basic terminology',
-        ],
-        keyPoints: [
-          'Important concept 1',
-          'Important concept 2',
-        ],
-        readingTime: 10,  // Minutes
-        difficulty: 'beginner',
-        examples: [
-          {
-            id: 'example-1',
-            title: 'Basic Example',
-            problem: 'Calculate X given Y...',
-            solution: [
-              {
-                step: 1,
-                description: 'Identify the given values',
-                content: 'We have Y = 5...',
-              },
-              {
-                step: 2,
-                description: 'Apply the formula',
-                content: '$$X = Y^2 = 25$$',
-              },
-            ],
-          },
-        ],
-        exercises: [
-          {
-            id: 'ex-1',
-            question: 'Practice problem...',
-            hint: 'Try using the formula from the example',
-            answer: '42',
-            explanation: 'The answer is 42 because...',
-          },
-        ],
-      },
-    ],
-    quizQuestions: [
-      {
-        id: 'q1',
-        question: 'What is the correct answer?',
-        options: ['Option A', 'Option B', 'Option C', 'Option D'],
-        correctIndex: 1,
-        explanation: 'Option B is correct because...',
-      },
-    ],
-  },
-];
 ```
 
-### Step 4: Add Quick Reference Items
+### Step 4: Add Quiz (Optional)
 
-Create `src/lib/content/my-course/reference.ts`:
+Create `public/courses/my-course/modules/01-intro/quiz.json`:
 
-```typescript
-import type { ReferenceItem } from '@/types';
-
-export const quickReference: ReferenceItem[] = [
+```json
+[
   {
-    id: 'ref-1',
-    title: 'Ohm\'s Law',
-    formula: 'V = IR',
-    description: 'Voltage equals current times resistance',
-    module: 'module-1-intro',  // Optional: link to module
-  },
-  {
-    id: 'ref-2',
-    title: 'Power Equation',
-    formula: 'P = VI = I^2R = \\frac{V^2}{R}',
-    description: 'Electrical power in various forms',
-  },
-];
+    "id": "q1",
+    "question": "What is the correct answer?",
+    "options": ["Option A", "Option B", "Option C", "Option D"],
+    "correctIndex": 1,
+    "explanation": "Option B is correct because..."
+  }
+]
 ```
 
-### Step 5: Create Flashcards
+### Step 5: Add Achievements (Optional)
 
-Create `src/lib/content/my-course/flashcards.ts`:
+Create `public/courses/my-course/achievements.json`:
 
-```typescript
-import type { Flashcard } from '@/types';
-
-export const flashcards: Flashcard[] = [
+```json
+[
   {
-    id: 'card-1',
-    front: 'What is the formula for voltage?',
-    back: '$$V = IR$$\n\nVoltage equals current times resistance.',
-    moduleId: 'module-1-intro',
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
   },
   {
-    id: 'card-2',
-    front: 'Define resistance',
-    back: 'Resistance is the opposition to current flow, measured in Ohms (Ω).',
-  },
-];
+    "id": "quiz-master",
+    "title": "Quiz Master",
+    "description": "Get 100% on any quiz",
+    "icon": "Target",
+    "type": "quiz",
+    "requirement": "score-100"
+  }
+]
 ```
 
-### Step 6: Register the Course
+### Step 6: Add Quick Reference (Optional)
 
-Add your course to `src/lib/courses/index.ts`:
+Create `public/courses/my-course/reference/formulas.json`:
 
-```typescript
-import { course as myCourse } from '@/lib/content/my-course';
+```json
+[
+  {
+    "id": "ref-1",
+    "title": "Ohm's Law",
+    "formula": "V = IR",
+    "description": "Voltage equals current times resistance"
+  }
+]
+```
 
-export const courses: Course[] = [
-  controlSystemsCourse,
-  signalsSystemsCourse,
-  myCourse,  // Add your course here
-];
+### Step 7: Add Flashcards (Optional)
+
+Create `public/courses/my-course/flashcards/deck.json`:
+
+```json
+[
+  {
+    "id": "card-1",
+    "front": "What is the formula for voltage?",
+    "back": "$$V = IR$$\n\nVoltage equals current times resistance."
+  }
+]
 ```
 
 ---
 
 ## Course Content Guide
-
-### Categories
-
-Available course categories (defined in `src/types/index.ts`):
-
-| ID | Display Name | Description |
-|----|--------------|-------------|
-| `control-systems` | Control Systems | Feedback control, stability, PID, root locus |
-| `signals-systems` | Signals & Systems | Signal processing, transforms, filtering |
-| `electronics` | Electronics | Circuit analysis, analog, digital electronics |
-| `power-systems` | Power Systems | Power generation, distribution, machines |
-| `mathematics` | Mathematics | Engineering math, transforms, linear algebra |
-| `programming` | Programming | DSP, embedded systems, MATLAB, Python |
-| `communications` | Communications | Wireless, modulation, information theory |
 
 ### Available Icons
 
@@ -371,14 +354,14 @@ Use any icon from [Lucide](https://lucide.dev/icons/). Common choices:
 - `Settings` - Control systems
 - `Zap` - Power systems
 - `Code` - Programming
-- `Radio` - Communications
-- `Calculator` - Mathematics
+- `GraduationCap` - Graduation/achievement
+- `Footprints` - First steps
+- `Target` - Goals/targets
+- `Trophy` - Achievements
 
 ### Content Formatting
 
 #### Markdown Support
-
-The content field supports standard Markdown:
 
 ```markdown
 # Heading 1
@@ -418,42 +401,17 @@ $$
 Inline formula: The transfer function $G(s) = \frac{Y(s)}{U(s)}$ relates output to input.
 ```
 
-#### Examples (Collapsible)
-
-```typescript
-examples: [
-  {
-    id: 'example-id',
-    title: 'Example Title',
-    problem: 'Problem statement with $x = 5$',
-    solution: [
-      {
-        step: 1,
-        description: 'First step description',
-        content: 'Detailed solution with $$\\frac{dy}{dx}$$',
-      },
-      {
-        step: 2,
-        description: 'Second step',
-        content: 'Final answer',
-      },
-    ],
-  },
-]
-```
-
 ### Difficulty Levels
 
 - `beginner` - No prerequisites, introductory content
 - `intermediate` - Requires basic understanding
 - `advanced` - Requires solid foundation
 
-### Reading Time
+### Ordering
 
-Estimate reading time based on:
-- ~200-250 words per minute for technical content
-- Add extra time for complex formulas
-- Consider example interactions
+Files and folders are automatically sorted by numeric prefix:
+- `01-introduction` comes before `02-advanced`
+- `01-welcome.md` comes before `02-basics.md`
 
 ---
 
@@ -464,8 +422,8 @@ Estimate reading time based on:
 Users can take notes on any lesson:
 - Press `N` or click notes button
 - Auto-save with 2-second debounce
-- Access all notes from hub page
-- Search, filter, and organize
+- Access all notes from hub page (centralized view)
+- Search, filter, and organize across all courses
 - Export as Markdown
 
 ### Quizzes
@@ -475,6 +433,7 @@ Multiple choice quizzes with:
 - Explanations for each answer
 - Score tracking
 - Best score saved
+- Confetti celebration for perfect scores
 
 ### Flashcards
 
@@ -486,9 +445,57 @@ Spaced repetition flashcards:
 ### Quick Reference
 
 Searchable formula sheets:
-- Organized by topic
+- Organized per-course
 - Search functionality
 - LaTeX rendering
+
+---
+
+## Achievement System
+
+Each course can define its own achievements in `achievements.json`.
+
+### Achievement Types
+
+| Type | Description |
+|------|-------------|
+| `lesson` | Lesson completion achievements |
+| `module` | Module completion achievements |
+| `course` | Course completion achievements |
+| `quiz` | Quiz score achievements |
+| `custom` | Custom achievements |
+
+### Requirement Values
+
+| Requirement | Description |
+|-------------|-------------|
+| `complete-first` | Complete first item (lesson/module) |
+| `complete-50` | Complete 50% of items |
+| `complete-all` | Complete all items |
+| `score-100` | Score 100% on quiz |
+| `review-all-flashcards` | Review all flashcards |
+| `first-note` | Create first note |
+
+### Achievement Example
+
+```json
+{
+  "id": "course-complete",
+  "title": "Course Graduate",
+  "description": "Complete all lessons in this course",
+  "icon": "GraduationCap",
+  "type": "course",
+  "requirement": "complete-all"
+}
+```
+
+### How Achievements Work
+
+1. Achievements are **per-course** - each course defines its own
+2. Progress is tracked automatically via the progress store
+3. When requirements are met, the achievement unlocks
+4. A celebration animation plays when unlocked
+5. All achievements (locked/unlocked) are visible in the hub for motivation
 
 ---
 
@@ -515,11 +522,10 @@ EduHub uses browser localStorage for all user data:
 
 | Key | Description |
 |-----|-------------|
-| `eduhub-progress` | User progress (completed lessons, quiz scores, notes, bookmarks, streaks) |
+| `eduhub-progress` | User progress (completed lessons, quiz scores, notes, bookmarks, achievements, streaks) |
 | `eduhub-study-tracking` | Detailed study time tracking |
 | `eduhub-recently-viewed` | Recently viewed lessons |
 | `eduhub-pomodoro-state` | Pomodoro timer state |
-| `eduhub-music-state` | Music widget preferences |
 
 ### Export/Import
 
@@ -558,6 +564,7 @@ bun run db:push
 - **Math Rendering**: KaTeX
 - **Icons**: Lucide React
 - **Search**: Fuse.js
+- **Celebrations**: canvas-confetti
 
 ### Adding New UI Components
 

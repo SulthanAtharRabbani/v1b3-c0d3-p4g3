@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m1-q1",
+    "question": "What is a continuous-time signal?",
+    "options": [
+      "A signal defined only at discrete instants of time",
+      "A signal defined for all values of time",
+      "A signal that is zero for negative time",
+      "A signal that repeats periodically"
+    ],
+    "correctIndex": 1,
+    "explanation": "A continuous-time signal is defined for all values of time t, where t can take any real value. This is in contrast to discrete-time signals, which are only defined at specific time instants."
+  },
+  {
+    "id": "m1-q2",
+    "question": "Which property allows a system to be analyzed using transform methods like the Laplace Transform?",
+    "options": [
+      "Stability",
+      "Causality",
+      "Linearity and Time Invariance",
+      "Memory"
+    ],
+    "correctIndex": 2,
+    "explanation": "Linearity and time invariance are the key properties that enable the use of transform methods. LTI (Linear Time-Invariant) systems can be completely characterized by their impulse response and analyzed using convolution or transform techniques."
+  },
+  {
+    "id": "m1-q3",
+    "question": "According to Euler's formula, what is e^(jθ)?",
+    "options": [
+      "cos(θ) - j·sin(θ)",
+      "cos(θ) + j·sin(θ)",
+      "sin(θ) + j·cos(θ)",
+      "1 + j·θ"
+    ],
+    "correctIndex": 1,
+    "explanation": "Euler's formula states that e^(jθ) = cos(θ) + j·sin(θ). This fundamental relationship connects exponential and trigonometric functions and is essential for understanding the Laplace Transform."
+  },
+  {
+    "id": "m1-q4",
+    "question": "Why are transform methods preferred over direct time-domain solutions for differential equations?",
+    "options": [
+      "They always give more accurate results",
+      "They convert differential equations into algebraic equations",
+      "They only work for simple systems",
+      "They eliminate the need for initial conditions"
+    ],
+    "correctIndex": 1,
+    "explanation": "Transform methods like the Laplace Transform convert differential equations into algebraic equations, which are much easier to solve. They also naturally incorporate initial conditions into the solution process."
+  },
+  {
+    "id": "m1-q5",
+    "question": "In the complex variable s = σ + jω, what does σ represent?",
+    "options": [
+      "Oscillation frequency",
+      "Exponential growth or decay rate",
+      "Phase angle",
+      "Signal amplitude"
+    ],
+    "correctIndex": 1,
+    "explanation": "The real part σ represents exponential growth (σ > 0) or decay (σ < 0). The imaginary part ω represents oscillation frequency. This is fundamental to understanding system behavior in the s-plane."
+  }
+]
