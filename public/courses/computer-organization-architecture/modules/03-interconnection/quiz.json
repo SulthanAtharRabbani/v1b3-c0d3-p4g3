@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m3-q1",
+    "question": "What are the three main phases of the instruction cycle?",
+    "options": [
+      "Load, Store, Execute",
+      "Fetch, Decode, Execute",
+      "Read, Write, Process",
+      "Input, Process, Output"
+    ],
+    "correctIndex": 1,
+    "explanation": "The instruction cycle consists of three main phases: Fetch (retrieve instruction from memory), Decode (determine the operation to perform), and Execute (carry out the operation)."
+  },
+  {
+    "id": "m3-q2",
+    "question": "What is the purpose of an interrupt?",
+    "options": [
+      "To speed up program execution",
+      "To signal that an event needs immediate attention",
+      "To increase clock speed",
+      "To manage memory allocation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Interrupts are signals to the processor that an event needs immediate attention. They allow the processor to respond to external events efficiently without continuously polling devices."
+  },
+  {
+    "id": "m3-q3",
+    "question": "Which register contains the address of the next instruction to be executed?",
+    "options": [
+      "Memory Address Register (MAR)",
+      "Instruction Register (IR)",
+      "Program Counter (PC)",
+      "Memory Buffer Register (MBR)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Program Counter (PC) contains the address of the next instruction to be fetched from memory. It is automatically incremented after each fetch operation."
+  },
+  {
+    "id": "m3-q4",
+    "question": "What is the advantage of nested interrupts over disabled interrupts?",
+    "options": [
+      "Simpler implementation",
+      "Faster execution",
+      "Better responsiveness for critical events",
+      "Lower power consumption"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nested interrupts allow higher priority interrupts to interrupt lower priority handlers, providing better responsiveness for critical events. This requires a priority system but ensures important events are handled promptly."
+  },
+  {
+    "id": "m3-q5",
+    "question": "What type of interrupt is caused by arithmetic overflow?",
+    "options": [
+      "I/O Interrupt",
+      "Program Interrupt",
+      "Timer Interrupt",
+      "Hardware Failure Interrupt"
+    ],
+    "correctIndex": 1,
+    "explanation": "Program interrupts are caused by internal conditions such as arithmetic overflow, division by zero, or invalid opcodes. These are distinct from external interrupts like I/O or timer interrupts."
+  }
+]

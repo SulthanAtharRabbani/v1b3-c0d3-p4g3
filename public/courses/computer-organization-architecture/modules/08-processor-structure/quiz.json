@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m8-q1",
+    "question": "What is the primary benefit of instruction pipelining?",
+    "options": [
+      "Reduced power consumption",
+      "Increased instruction throughput",
+      "Simpler CPU design",
+      "Reduced memory usage"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pipelining increases instruction throughput by overlapping the execution of multiple instructions. While each instruction still takes multiple cycles, the processor completes more instructions per unit time."
+  },
+  {
+    "id": "m8-q2",
+    "question": "What is a data hazard in pipelining?",
+    "options": [
+      "Hardware cannot support instruction combination",
+      "An instruction depends on a result from a previous instruction",
+      "Branch instruction outcome is unknown",
+      "Memory access conflicts"
+    ],
+    "correctIndex": 1,
+    "explanation": "A data hazard occurs when an instruction depends on the result of a previous instruction that hasn't completed yet. For example, a SUB instruction needs the result from a previous ADD instruction."
+  },
+  {
+    "id": "m8-q3",
+    "question": "What is forwarding (bypassing) used for in pipelining?",
+    "options": [
+      "Predicting branch outcomes",
+      "Resolving data hazards by routing data directly between stages",
+      "Preventing structural hazards",
+      "Increasing clock frequency"
+    ],
+    "correctIndex": 1,
+    "explanation": "Forwarding (bypassing) resolves data hazards by routing the result of an instruction directly to dependent instructions in the pipeline, without waiting for it to be written to the register file."
+  },
+  {
+    "id": "m8-q4",
+    "question": "What is a control hazard?",
+    "options": [
+      "Multiple instructions need the same resource",
+      "An instruction needs data from a previous instruction",
+      "Branch instruction makes next instruction address unknown",
+      "Memory bandwidth is exceeded"
+    ],
+    "correctIndex": 2,
+    "explanation": "A control hazard occurs when the pipeline cannot determine the next instruction address due to a branch instruction. The processor doesn't know whether to fetch the next sequential instruction or branch to a different location."
+  },
+  {
+    "id": "m8-q5",
+    "question": "What is a characteristic of superscalar processors?",
+    "options": [
+      "Execute one instruction at a time",
+      "Execute multiple instructions simultaneously",
+      "Always use in-order execution",
+      "Have single execution units"
+    ],
+    "correctIndex": 1,
+    "explanation": "Superscalar processors can execute multiple instructions simultaneously by having multiple execution units and using instruction-level parallelism. They can achieve higher throughput than pipelined processors."
+  }
+]

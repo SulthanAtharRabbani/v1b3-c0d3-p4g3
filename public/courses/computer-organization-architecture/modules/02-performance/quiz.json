@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m2-q1",
+    "question": "According to Amdahl's Law, if 50% of a program can be parallelized, what is the maximum speedup achievable with infinite processors?",
+    "options": [
+      "50%",
+      "2x",
+      "Infinite",
+      "4x"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using Amdahl's Law, maximum speedup = 1/(1-f) = 1/(1-0.5) = 1/0.5 = 2. The sequential portion (50%) limits the maximum speedup to 2x regardless of how many processors are used."
+  },
+  {
+    "id": "m2-q2",
+    "question": "What does Little's Law state?",
+    "options": [
+      "Speedup is limited by the sequential portion of code",
+      "L = λW (average items = arrival rate × wait time)",
+      "Performance doubles every 18 months",
+      "Cache size affects hit ratio"
+    ],
+    "correctIndex": 1,
+    "explanation": "Little's Law states that L = λW, where L is the average number of items in the system, λ is the arrival rate, and W is the average wait time. This is fundamental for analyzing queuing systems and memory requirements."
+  },
+  {
+    "id": "m2-q3",
+    "question": "What is MIPS?",
+    "options": [
+      "Memory Instructions Per Second",
+      "Millions of Instructions Per Second",
+      "Multiple Instruction Pipeline Stages",
+      "Micro Instructions Per State"
+    ],
+    "correctIndex": 1,
+    "explanation": "MIPS stands for Millions of Instructions Per Second. It is calculated as Instruction Count / (Execution Time × 10^6) and is a common measure of processor performance, though it has limitations when comparing different architectures."
+  },
+  {
+    "id": "m2-q4",
+    "question": "What does GPGPU stand for?",
+    "options": [
+      "General Purpose Graphics Processing Unit",
+      "Graphical Processing General Purpose Unit",
+      "General Performance Graphics Processor Unit",
+      "Global Parallel Graphics Unit"
+    ],
+    "correctIndex": 0,
+    "explanation": "GPGPU stands for General-Purpose Graphics Processing Unit. Originally designed for graphics, GPUs are now used for general computation due to their highly parallel architecture with thousands of cores."
+  },
+  {
+    "id": "m2-q5",
+    "question": "Which geometric mean is preferred when comparing normalized performance ratios?",
+    "options": [
+      "Arithmetic Mean",
+      "Geometric Mean",
+      "Harmonic Mean",
+      "Median"
+    ],
+    "correctIndex": 1,
+    "explanation": "Geometric mean is preferred for normalized performance ratios because it provides consistent results regardless of which system is used as the reference, making it ideal for comparing performance across multiple benchmarks."
+  }
+]

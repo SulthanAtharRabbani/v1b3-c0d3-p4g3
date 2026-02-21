@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m7-q1",
+    "question": "What does the opcode in an instruction specify?",
+    "options": [
+      "The memory address of the operand",
+      "The operation to be performed",
+      "The next instruction address",
+      "The number of operands"
+    ],
+    "correctIndex": 1,
+    "explanation": "The opcode (operation code) specifies what operation the processor should perform, such as ADD, SUB, LOAD, STORE, or JUMP. It is the most essential part of every instruction."
+  },
+  {
+    "id": "m7-q2",
+    "question": "In which addressing mode is the operand part of the instruction itself?",
+    "options": [
+      "Direct addressing",
+      "Register addressing",
+      "Immediate addressing",
+      "Indirect addressing"
+    ],
+    "correctIndex": 2,
+    "explanation": "In immediate addressing, the operand value is encoded directly in the instruction. For example, 'ADD R1, #5' adds the immediate value 5 to R1. This is fast but limited by instruction size."
+  },
+  {
+    "id": "m7-q3",
+    "question": "What is register indirect addressing?",
+    "options": [
+      "Operand is in the register",
+      "Register contains the memory address of the operand",
+      "Operand is an immediate value",
+      "Operand is in memory at a fixed address"
+    ],
+    "correctIndex": 1,
+    "explanation": "In register indirect addressing, the register contains the memory address where the operand is stored. For example, 'LOAD R1, (R2)' loads into R1 the value at the memory address stored in R2."
+  },
+  {
+    "id": "m7-q4",
+    "question": "Which characteristic is typical of RISC processors like ARM?",
+    "options": [
+      "Variable-length instructions",
+      "Memory-to-memory operations",
+      "Load/Store architecture",
+      "Complex instructions"
+    ],
+    "correctIndex": 2,
+    "explanation": "RISC processors like ARM use a Load/Store architecture where only LOAD and STORE instructions access memory, while arithmetic operations work only on registers. This simplifies the processor design."
+  },
+  {
+    "id": "m7-q5",
+    "question": "In a two-address instruction format, what happens to operands?",
+    "options": [
+      "Both operands are sources only",
+      "One operand is both source and destination",
+      "There are no operands",
+      "Three operands are used"
+    ],
+    "correctIndex": 1,
+    "explanation": "In two-address format, one operand serves as both source and destination. For example, 'ADD R1, R2' means R1 ← R1 + R2. R1 provides one source and receives the result."
+  }
+]

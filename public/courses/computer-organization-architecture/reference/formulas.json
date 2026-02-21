@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ref-1",
+    "title": "Amdahl's Law",
+    "formula": "Speedup = 1 / [(1-f) + f/s]",
+    "description": "Where f = fraction enhanced, s = speedup of enhanced portion. This law shows overall speedup is limited by the sequential portion."
+  },
+  {
+    "id": "ref-2",
+    "title": "Little's Law",
+    "formula": "L = λW",
+    "description": "Where L = average items in system, λ = arrival rate, W = average wait time. Used for analyzing queuing systems."
+  },
+  {
+    "id": "ref-3",
+    "title": "Cache Hit Ratio",
+    "formula": "Hit Ratio = Hits / Total Accesses",
+    "description": "The fraction of memory accesses that are found in cache. Higher hit ratio means better cache performance."
+  },
+  {
+    "id": "ref-4",
+    "title": "Average Access Time",
+    "formula": "t_avg = h × t_c + (1-h) × t_m",
+    "description": "Where h = hit ratio, t_c = cache access time, t_m = main memory access time. Measures effective memory access time."
+  },
+  {
+    "id": "ref-5",
+    "title": "Disk Access Time",
+    "formula": "t_access = t_seek + t_rotational + t_transfer",
+    "description": "Total time to access data on disk includes seek time, rotational latency, and transfer time."
+  },
+  {
+    "id": "ref-6",
+    "title": "Two's Complement Negative",
+    "formula": "-N = complement(N) + 1",
+    "description": "To negate a number in two's complement, complement all bits and add 1."
+  },
+  {
+    "id": "ref-7",
+    "title": "IEEE 754 Floating-Point Value",
+    "formula": "Value = (-1)^S × M × 2^(E-bias)",
+    "description": "Where S = sign bit, M = mantissa, E = biased exponent. Standard for floating-point representation."
+  },
+  {
+    "id": "ref-8",
+    "title": "Binary to Decimal",
+    "formula": "Value = Σ(b_i × 2^i)",
+    "description": "Convert binary to decimal by summing each bit multiplied by its positional power of 2."
+  },
+  {
+    "id": "ref-9",
+    "title": "MIPS Calculation",
+    "formula": "MIPS = Instruction Count / (Execution Time × 10^6)",
+    "description": "Millions of Instructions Per Second - a measure of processor performance."
+  },
+  {
+    "id": "ref-10",
+    "title": "Direct Mapping",
+    "formula": "Line = Block mod Number_of_Lines",
+    "description": "In directly mapped cache, each block maps to exactly one cache line determined by modulo."
+  },
+  {
+    "id": "ref-11",
+    "title": "Set Associative Mapping",
+    "formula": "Set = Block mod Number_of_Sets",
+    "description": "In set associative cache, blocks map to a set containing multiple lines."
+  },
+  {
+    "id": "ref-12",
+    "title": "IEEE 754 Single Precision Bias",
+    "formula": "Bias = 127 (2^(k-1) - 1, where k=8)",
+    "description": "The exponent bias for single precision (32-bit) floating-point representation."
+  },
+  {
+    "id": "ref-13",
+    "title": "IEEE 754 Double Precision Bias",
+    "formula": "Bias = 1023 (2^(k-1) - 1, where k=11)",
+    "description": "The exponent bias for double precision (64-bit) floating-point representation."
+  },
+  {
+    "id": "ref-14",
+    "title": "Pipeline Speedup",
+    "formula": "Speedup = Time_without_pipeline / Time_with_pipeline",
+    "description": "Ideal speedup equals the number of pipeline stages, but is reduced by hazards."
+  },
+  {
+    "id": "ref-15",
+    "title": "Integer Range (Two's Complement)",
+    "formula": "Range: -2^(n-1) to 2^(n-1)-1",
+    "description": "Range of values for n-bit signed integer in two's complement representation."
+  }
+]

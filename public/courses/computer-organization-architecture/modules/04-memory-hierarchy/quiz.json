@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m4-q1",
+    "question": "What is temporal locality?",
+    "options": [
+      "Accessing memory locations that are far apart",
+      "Recently accessed items are likely to be accessed again soon",
+      "Items near recently accessed items are likely to be accessed",
+      "Accessing memory at regular intervals"
+    ],
+    "correctIndex": 1,
+    "explanation": "Temporal locality means that recently accessed items are likely to be accessed again soon. Examples include loop counters, frequently called functions, and stack operations."
+  },
+  {
+    "id": "m4-q2",
+    "question": "In a 4-way set associative cache, how many lines are in each set?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "8"
+    ],
+    "correctIndex": 2,
+    "explanation": "In a 4-way set associative cache, each set contains 4 lines. A block can be placed in any of the 4 lines within its designated set, providing a balance between flexibility and complexity."
+  },
+  {
+    "id": "m4-q3",
+    "question": "Which replacement algorithm replaces the block that has not been used for the longest time?",
+    "options": [
+      "FIFO",
+      "LRU",
+      "Random",
+      "LFU"
+    ],
+    "correctIndex": 1,
+    "explanation": "LRU (Least Recently Used) replaces the block that has not been accessed for the longest time. This best matches the principle of locality and typically provides better hit ratios than simpler algorithms."
+  },
+  {
+    "id": "m4-q4",
+    "question": "What is the main advantage of write-back over write-through?",
+    "options": [
+      "Simpler implementation",
+      "Better data consistency",
+      "Lower memory traffic",
+      "Faster cache access"
+    ],
+    "correctIndex": 2,
+    "explanation": "Write-back reduces memory traffic because writes only go to cache initially, and modified blocks are written to main memory only when replaced. This is more efficient but requires tracking dirty blocks."
+  },
+  {
+    "id": "m4-q5",
+    "question": "If cache hit ratio is 0.9, cache access time is 10ns, and main memory access time is 100ns, what is the average access time?",
+    "options": [
+      "10ns",
+      "19ns",
+      "90ns",
+      "100ns"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using t_avg = h × t_c + (1-h) × t_m: t_avg = 0.9 × 10 + 0.1 × 100 = 9 + 10 = 19ns. The cache significantly reduces average access time from 100ns to 19ns."
+  }
+]

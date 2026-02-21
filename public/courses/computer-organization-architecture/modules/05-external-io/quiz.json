@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m5-q1",
+    "question": "What are the three components of disk access time?",
+    "options": [
+      "Read time, write time, seek time",
+      "Seek time, rotational latency, transfer time",
+      "Access time, seek time, latency",
+      "Transfer rate, latency, seek time"
+    ],
+    "correctIndex": 1,
+    "explanation": "Disk access time consists of: Seek time (positioning the head), Rotational latency (waiting for sector), and Transfer time (reading/writing data). Total access time = Seek + Rotational + Transfer."
+  },
+  {
+    "id": "m5-q2",
+    "question": "Which RAID level provides full redundancy by mirroring all data?",
+    "options": [
+      "RAID 0",
+      "RAID 1",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "correctIndex": 1,
+    "explanation": "RAID 1 (Mirroring) duplicates all data on two disks, providing full redundancy. The main drawback is 50% storage efficiency - half of total disk capacity is used for redundancy."
+  },
+  {
+    "id": "m5-q3",
+    "question": "What is the main advantage of DMA over interrupt-driven I/O?",
+    "options": [
+      "Simpler implementation",
+      "Lower hardware cost",
+      "CPU is not involved in data transfer",
+      "Faster device response"
+    ],
+    "correctIndex": 2,
+    "explanation": "DMA (Direct Memory Access) allows the DMA controller to transfer data directly between device and memory without CPU involvement. The CPU only initializes the transfer and handles completion, greatly improving efficiency for large transfers."
+  },
+  {
+    "id": "m5-q4",
+    "question": "What type of memory is used in Solid-State Drives (SSD)?",
+    "options": [
+      "SRAM",
+      "DRAM",
+      "NAND Flash",
+      "ROM"
+    ],
+    "correctIndex": 2,
+    "explanation": "SSDs use NAND flash memory, which is non-volatile and provides fast random access without mechanical delays. However, it has limited write cycles and requires wear leveling to extend lifespan."
+  },
+  {
+    "id": "m5-q5",
+    "question": "In RAID 5, how is parity information stored?",
+    "options": [
+      "On a dedicated parity disk",
+      "Distributed across all disks",
+      "Only on the first disk",
+      "Not stored (no redundancy)"
+    ],
+    "correctIndex": 1,
+    "explanation": "RAID 5 distributes parity information across all disks in the array. This avoids the bottleneck of a dedicated parity disk and allows RAID 5 to survive the failure of any single disk."
+  }
+]

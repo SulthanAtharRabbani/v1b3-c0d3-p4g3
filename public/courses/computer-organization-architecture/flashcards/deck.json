@@ -1,0 +1,77 @@
+[
+  {
+    "id": "card-1",
+    "front": "What is the difference between computer architecture and computer organization?",
+    "back": "**Architecture** refers to attributes visible to the programmer (instruction set, data types, addressing modes).\n\n**Organization** refers to operational units transparent to the programmer (control signals, interfaces, memory technology).\n\nThe same architecture can have different organizational implementations."
+  },
+  {
+    "id": "card-2",
+    "front": "What are the four basic functions of a computer?",
+    "back": "1. **Data Processing** - Operations performed by the ALU\n2. **Data Storage** - Short-term (registers, cache) and long-term (memory, disk)\n3. **Data Movement** - I/O operations and data communications\n4. **Control** - Managing resources and orchestrating execution"
+  },
+  {
+    "id": "card-3",
+    "front": "What does Amdahl's Law state?",
+    "back": "**Amdahl's Law**: Speedup = 1 / [(1-f) + f/s]\n\nWhere f = fraction enhanced, s = speedup of enhanced portion.\n\nKey insight: Overall speedup is limited by the sequential (non-enhanced) portion. Even with infinite processors, max speedup = 1/(1-f)."
+  },
+  {
+    "id": "card-4",
+    "front": "What is temporal locality?",
+    "back": "**Temporal Locality**: Recently accessed items are likely to be accessed again soon.\n\nExamples:\n- Loop counters\n- Frequently called functions\n- Stack operations\n\nThis principle enables cache memory to work effectively."
+  },
+  {
+    "id": "card-5",
+    "front": "What is spatial locality?",
+    "back": "**Spatial Locality**: Items whose addresses are near one another tend to be referenced close together in time.\n\nExamples:\n- Sequential array access\n- Sequential instruction execution\n- Structure/record field access\n\nThis enables cache line fetching and prefetching."
+  },
+  {
+    "id": "card-6",
+    "front": "Compare the three cache mapping techniques.",
+    "back": "**Direct Mapping**: Each block maps to exactly one line. Simple but higher conflict rate.\n\n**Fully Associative**: Block can go anywhere. Flexible but complex hardware.\n\n**Set Associative**: Block maps to a set of lines. Balance between flexibility and complexity."
+  },
+  {
+    "id": "card-7",
+    "front": "What are the three types of pipeline hazards?",
+    "back": "1. **Structural Hazards**: Hardware cannot support the combination of instructions (e.g., memory access conflicts)\n\n2. **Data Hazards**: Instruction depends on result from previous instruction (RAW, WAR, WAW)\n\n3. **Control Hazards**: Branch instruction makes next instruction address unknown"
+  },
+  {
+    "id": "card-8",
+    "front": "How is a negative number represented in two's complement?",
+    "back": "To represent -N in two's complement:\n1. Start with positive N in binary\n2. Complement all bits (0→1, 1→0)\n3. Add 1 to the result\n\nExample: -5 in 8-bit\n- 5 = 00000101\n- Complement = 11111010\n- Add 1 = 11111011"
+  },
+  {
+    "id": "card-9",
+    "front": "What are the components of IEEE 754 floating-point format?",
+    "back": "**Single Precision (32-bit)**:\n- Sign: 1 bit\n- Exponent: 8 bits (bias = 127)\n- Mantissa: 23 bits\n\n**Double Precision (64-bit)**:\n- Sign: 1 bit\n- Exponent: 11 bits (bias = 1023)\n- Mantissa: 52 bits\n\nValue = (-1)^S × M × 2^(E-bias)"
+  },
+  {
+    "id": "card-10",
+    "front": "What are the main addressing modes?",
+    "back": "**Immediate**: Operand in instruction\n**Direct**: Address in instruction\n**Indirect**: Address points to operand address\n**Register**: Operand in register\n**Register Indirect**: Register contains address\n**Displacement**: Address = Register + offset\n**Stack**: Implicit stack pointer addressing"
+  },
+  {
+    "id": "card-11",
+    "front": "What is the difference between RAID 0, RAID 1, and RAID 5?",
+    "back": "**RAID 0 (Striping)**: Data split across disks. High performance but no redundancy.\n\n**RAID 1 (Mirroring)**: Full data duplication. 50% efficiency but complete redundancy.\n\n**RAID 5**: Distributed parity across disks. Can survive single disk failure with only 1 disk overhead."
+  },
+  {
+    "id": "card-12",
+    "front": "Compare Programmed I/O, Interrupt-Driven I/O, and DMA.",
+    "back": "**Programmed I/O**: CPU polls and transfers. Simple but inefficient.\n\n**Interrupt-Driven I/O**: Device signals when ready. CPU free during wait but still handles transfer.\n\n**DMA**: DMA controller transfers directly between device and memory. CPU only initializes. Most efficient for large transfers."
+  },
+  {
+    "id": "card-13",
+    "front": "What are the phases of the instruction cycle?",
+    "back": "1. **Fetch**: Retrieve instruction from memory\n2. **Decode**: Determine the operation and operands\n3. **Execute**: Perform the operation\n4. **Interrupt Check**: Handle any pending interrupts\n\nWith interrupts, the cycle includes saving/restoring state."
+  },
+  {
+    "id": "card-14",
+    "front": "What is instruction pipelining?",
+    "back": "Pipelining overlaps execution of multiple instructions by breaking the instruction cycle into stages:\n\n- IF: Instruction Fetch\n- ID: Instruction Decode\n- EX: Execute\n- MEM: Memory Access\n- WB: Write Back\n\nIncreases throughput but hazards can reduce efficiency."
+  },
+  {
+    "id": "card-15",
+    "front": "What is the difference between write-through and write-back cache policies?",
+    "back": "**Write-Through**: All writes go to both cache and main memory immediately. Simple, maintains consistency, but higher memory traffic.\n\n**Write-Back**: Writes only go to cache initially; modified blocks written to memory on replacement. Lower traffic but requires dirty bit tracking."
+  }
+]

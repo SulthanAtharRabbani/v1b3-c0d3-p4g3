@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m6-q1",
+    "question": "What is the range of an 8-bit signed integer using two's complement?",
+    "options": [
+      "0 to 255",
+      "-128 to 127",
+      "-127 to 127",
+      "-256 to 255"
+    ],
+    "correctIndex": 1,
+    "explanation": "An 8-bit two's complement signed integer has a range of -128 to 127. The minimum value is -2^(n-1) = -128, and the maximum is 2^(n-1) - 1 = 127."
+  },
+  {
+    "id": "m6-q2",
+    "question": "How is -5 represented in 8-bit two's complement?",
+    "options": [
+      "10000101",
+      "11111010",
+      "11111011",
+      "00000101"
+    ],
+    "correctIndex": 2,
+    "explanation": "To find -5 in two's complement: Start with 5 (00000101), complement all bits (11111010), add 1 (11111011). This gives -5 = 11111011."
+  },
+  {
+    "id": "m6-q3",
+    "question": "In IEEE 754 single precision, how many bits are allocated to the exponent?",
+    "options": [
+      "1 bit",
+      "8 bits",
+      "23 bits",
+      "11 bits"
+    ],
+    "correctIndex": 1,
+    "explanation": "IEEE 754 single precision (32-bit) allocates: 1 bit for sign, 8 bits for exponent (biased by 127), and 23 bits for mantissa. Double precision uses 11 bits for exponent."
+  },
+  {
+    "id": "m6-q4",
+    "question": "What is the bias value for IEEE 754 double precision exponent?",
+    "options": [
+      "127",
+      "255",
+      "1023",
+      "2047"
+    ],
+    "correctIndex": 2,
+    "explanation": "IEEE 754 double precision uses 11 bits for the exponent with a bias of 1023 (2^10 - 1). Single precision uses 8 bits with a bias of 127."
+  },
+  {
+    "id": "m6-q5",
+    "question": "What does NaN represent in IEEE 754?",
+    "options": [
+      "Zero",
+      "Infinity",
+      "Not a Number",
+      "Negative number"
+    ],
+    "correctIndex": 2,
+    "explanation": "NaN (Not a Number) represents undefined or unrepresentable results, such as 0/0 or sqrt(-1). It is represented with all 1s in the exponent and a non-zero mantissa."
+  }
+]

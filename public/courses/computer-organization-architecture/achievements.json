@@ -1,0 +1,66 @@
+[
+  {
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
+  },
+  {
+    "id": "foundation-master",
+    "title": "Foundation Master",
+    "description": "Complete the Introduction module",
+    "icon": "Award",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "performance-expert",
+    "title": "Performance Expert",
+    "description": "Complete the Performance Concepts module",
+    "icon": "Gauge",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "memory-master",
+    "title": "Memory Master",
+    "description": "Complete the Memory Hierarchy module",
+    "icon": "Database",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "arithmetic-wizard",
+    "title": "Arithmetic Wizard",
+    "description": "Complete the Computer Arithmetic module",
+    "icon": "Calculator",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "isa-expert",
+    "title": "ISA Expert",
+    "description": "Complete the Instruction Set Architecture module",
+    "icon": "Code",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "quiz-perfect",
+    "title": "Perfect Score",
+    "description": "Get 100% on any quiz",
+    "icon": "Star",
+    "type": "quiz",
+    "requirement": "score-100"
+  },
+  {
+    "id": "course-graduate",
+    "title": "Course Graduate",
+    "description": "Complete all lessons in this course",
+    "icon": "GraduationCap",
+    "type": "course",
+    "requirement": "complete-all"
+  }
+]

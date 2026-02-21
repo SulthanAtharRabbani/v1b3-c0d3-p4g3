@@ -1,0 +1,62 @@
+[
+  {
+    "id": "m1-q1",
+    "question": "What is the primary difference between computer architecture and computer organization?",
+    "options": [
+      "Architecture refers to hardware, organization refers to software",
+      "Architecture refers to programmer-visible attributes, organization refers to implementation details",
+      "Architecture is about performance, organization is about cost",
+      "There is no significant difference"
+    ],
+    "correctIndex": 1,
+    "explanation": "Computer architecture refers to attributes visible to the programmer (instruction set, data types, addressing modes), while organization refers to operational units and interconnections transparent to the programmer (control signals, interfaces, memory technology)."
+  },
+  {
+    "id": "m1-q2",
+    "question": "What are the four basic functions of a computer?",
+    "options": [
+      "Input, Process, Output, Storage",
+      "Data Processing, Data Storage, Data Movement, Control",
+      "Fetch, Decode, Execute, Store",
+      "Read, Write, Calculate, Display"
+    ],
+    "correctIndex": 1,
+    "explanation": "The four basic functions are: Data Processing (performed by ALU), Data Storage (short-term and long-term), Data Movement (I/O and communications), and Control (managing resources and orchestrating execution)."
+  },
+  {
+    "id": "m1-q3",
+    "question": "What is the hexadecimal representation of binary 11010110?",
+    "options": [
+      "C6",
+      "D6",
+      "E6",
+      "B6"
+    ],
+    "correctIndex": 1,
+    "explanation": "Group the binary in fours from right: 1101 0110. Convert each group: 1101 = D, 0110 = 6. Therefore, 11010110₂ = D6₁₆."
+  },
+  {
+    "id": "m1-q4",
+    "question": "Which of the following is NOT a main structural component of a computer?",
+    "options": [
+      "CPU",
+      "Main Memory",
+      "Operating System",
+      "System Interconnection"
+    ],
+    "correctIndex": 2,
+    "explanation": "The four main structural components are: CPU (processor), Main Memory, I/O, and System Interconnection. The Operating System is software, not a hardware structural component."
+  },
+  {
+    "id": "m1-q5",
+    "question": "What decimal value does the binary number 1011 represent?",
+    "options": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "correctIndex": 2,
+    "explanation": "1011₂ = 1×2³ + 0×2² + 1×2¹ + 1×2⁰ = 8 + 0 + 2 + 1 = 11₁₀"
+  }
+]
