@@ -1,0 +1,152 @@
+[
+  {
+    "id": "ref-transfer-function",
+    "title": "Transfer Function",
+    "formula": "G(s) = \\frac{Y(s)}{U(s)}",
+    "description": "Ratio of Laplace transform of output to input with zero initial conditions"
+  },
+  {
+    "id": "ref-characteristic-eq",
+    "title": "Characteristic Equation",
+    "formula": "a_0 s^n + a_1 s^{n-1} + \\cdots + a_n = 0",
+    "description": "Denominator of transfer function set to zero; roots are system poles"
+  },
+  {
+    "id": "ref-laplace-derivative",
+    "title": "Laplace Transform of Derivative",
+    "formula": "\\mathcal{L}\\left\\{\\frac{df}{dt}\\right\\} = sF(s) - f(0)",
+    "description": "Laplace transform of first derivative with initial condition"
+  },
+  {
+    "id": "ref-laplace-integral",
+    "title": "Laplace Transform of Integral",
+    "formula": "\\mathcal{L}\\left\\{\\int_0^t f(\\tau)d\\tau\\right\\} = \\frac{F(s)}{s}",
+    "description": "Laplace transform of definite integral"
+  },
+  {
+    "id": "ref-first-order-tf",
+    "title": "First-Order Transfer Function",
+    "formula": "G(s) = \\frac{K}{\\tau s + 1}",
+    "description": "Standard form where K is gain and τ is time constant"
+  },
+  {
+    "id": "ref-second-order-tf",
+    "title": "Second-Order Transfer Function",
+    "formula": "G(s) = \\frac{\\omega_n^2}{s^2 + 2\\zeta\\omega_n s + \\omega_n^2}",
+    "description": "Standard form with natural frequency ωn and damping ratio ζ"
+  },
+  {
+    "id": "ref-time-constant",
+    "title": "Time Constant Response",
+    "formula": "y(t) = K(1 - e^{-t/\\tau})",
+    "description": "Step response of first-order system; reaches 63.2% at t = τ"
+  },
+  {
+    "id": "ref-damping-ratio",
+    "title": "Damping Ratio Classification",
+    "formula": "\\zeta = \\frac{\\text{Actual damping}}{\\text{Critical damping}}",
+    "description": "ζ<1 underdamped, ζ=1 critically damped, ζ>1 overdamped"
+  },
+  {
+    "id": "ref-settling-time",
+    "title": "Settling Time (2%)",
+    "formula": "t_s \\approx \\frac{4}{\\zeta\\omega_n}",
+    "description": "Time to reach and stay within 2% of final value"
+  },
+  {
+    "id": "ref-peak-time",
+    "title": "Peak Time",
+    "formula": "t_p = \\frac{\\pi}{\\omega_d} = \\frac{\\pi}{\\omega_n\\sqrt{1-\\zeta^2}}",
+    "description": "Time to reach first peak in underdamped response"
+  },
+  {
+    "id": "ref-overshoot",
+    "title": "Maximum Overshoot",
+    "formula": "M_p = e^{-\\zeta\\pi/\\sqrt{1-\\zeta^2}}",
+    "description": "Maximum peak value as fraction of final value"
+  },
+  {
+    "id": "ref-steady-state-error-step",
+    "title": "Steady-State Error (Step Input)",
+    "formula": "e_{ss} = \\frac{1}{1 + K_p}",
+    "description": "For unity feedback system with step input; Kp is position error constant"
+  },
+  {
+    "id": "ref-steady-state-error-ramp",
+    "title": "Steady-State Error (Ramp Input)",
+    "formula": "e_{ss} = \\frac{1}{K_v}",
+    "description": "For unity feedback system with ramp input; Kv is velocity error constant"
+  },
+  {
+    "id": "ref-steady-state-error-parabola",
+    "title": "Steady-State Error (Parabolic Input)",
+    "formula": "e_{ss} = \\frac{1}{K_a}",
+    "description": "For unity feedback system with parabolic input; Ka is acceleration error constant"
+  },
+  {
+    "id": "ref-routh-stable",
+    "title": "Routh Stability Criterion",
+    "formula": "\\text{Necessary: } a_i > 0 \\text{ for all } i",
+    "description": "All coefficients of characteristic equation must be positive"
+  },
+  {
+    "id": "ref-gain-margin",
+    "title": "Gain Margin",
+    "formula": "GM = \\frac{1}{|G(j\\omega_{180})|}",
+    "description": "Factor by which gain can increase before instability"
+  },
+  {
+    "id": "ref-phase-margin",
+    "title": "Phase Margin",
+    "formula": "PM = 180° + \\angle G(j\\omega_c)",
+    "description": "Additional phase lag before instability; ωc is gain crossover frequency"
+  },
+  {
+    "id": "ref-pid-controller",
+    "title": "PID Controller Transfer Function",
+    "formula": "G_c(s) = K_p + \\frac{K_i}{s} + K_d s",
+    "description": "Parallel form with proportional, integral, and derivative gains"
+  },
+  {
+    "id": "ref-state-space",
+    "title": "State-Space Representation",
+    "formula": "\\dot{x} = Ax + Bu, \\quad y = Cx + Du",
+    "description": "Linear time-invariant system in matrix form"
+  },
+  {
+    "id": "ref-closed-loop-tf",
+    "title": "Closed-Loop Transfer Function",
+    "formula": "T(s) = \\frac{G(s)}{1 + G(s)H(s)}",
+    "description": "For negative feedback with forward path G(s) and feedback H(s)"
+  },
+  {
+    "id": "ref-nyquist-criterion",
+    "title": "Nyquist Stability Criterion",
+    "formula": "Z = N + P",
+    "description": "Z=closed-loop RHP poles, N=clockwise encirclements of -1, P=open-loop RHP poles"
+  },
+  {
+    "id": "ref-root-locus-magnitude",
+    "title": "Root Locus Magnitude Condition",
+    "formula": "|K G(s)H(s)| = 1",
+    "description": "Points on root locus satisfy this magnitude condition"
+  },
+  {
+    "id": "ref-root-locus-angle",
+    "title": "Root Locus Angle Condition",
+    "formula": "\\angle G(s)H(s) = \\pm 180°(2k+1)",
+    "description": "Phase condition for points on root locus"
+  },
+  {
+    "id": "ref-asymptote-centroid",
+    "title": "Asymptote Centroid",
+    "formula": "\\sigma_A = \\frac{\\sum \\text{poles} - \\sum \\text{zeros}}{n - m}",
+    "description": "Intersection point of asymptotes on real axis"
+  },
+  {
+    "id": "ref-asymptote-angles",
+    "title": "Asymptote Angles",
+    "formula": "\\phi_A = \\frac{\\pm 180°(2k+1)}{n - m}",
+    "description": "Angles of asymptotes for k = 0, 1, 2, ..."
+  }
+]

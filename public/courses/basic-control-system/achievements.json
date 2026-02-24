@@ -1,0 +1,66 @@
+[
+  {
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson in this course",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
+  },
+  {
+    "id": "modeling-master",
+    "title": "Modeling Master",
+    "description": "Complete all lessons in Mathematical Modeling module",
+    "icon": "Calculator",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "stability-expert",
+    "title": "Stability Expert",
+    "description": "Complete the Stability Analysis module and pass the quiz",
+    "icon": "Shield",
+    "type": "module",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "halfway-there",
+    "title": "Halfway There",
+    "description": "Complete 50% of the course lessons",
+    "icon": "TrendingUp",
+    "type": "lesson",
+    "requirement": "complete-50"
+  },
+  {
+    "id": "course-graduate",
+    "title": "Control Systems Graduate",
+    "description": "Complete all lessons in this course",
+    "icon": "GraduationCap",
+    "type": "course",
+    "requirement": "complete-all"
+  },
+  {
+    "id": "quiz-master",
+    "title": "Quiz Master",
+    "description": "Get 100% on any quiz in this course",
+    "icon": "Target",
+    "type": "quiz",
+    "requirement": "score-100"
+  },
+  {
+    "id": "flashcard-pro",
+    "title": "Flashcard Pro",
+    "description": "Review all flashcards in this course",
+    "icon": "Layers",
+    "type": "custom",
+    "requirement": "review-all-flashcards"
+  },
+  {
+    "id": "note-taker",
+    "title": "Note Taker",
+    "description": "Create your first note in this course",
+    "icon": "FileText",
+    "type": "custom",
+    "requirement": "first-note"
+  }
+]

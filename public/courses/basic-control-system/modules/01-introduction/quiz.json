@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-1-1",
+    "question": "What are the three essential components of any control system?",
+    "options": [
+      "Sensing, Computing, and Actuating",
+      "Input, Process, and Output",
+      "Sensor, Controller, and Display",
+      "Motor, Gear, and Shaft"
+    ],
+    "correctIndex": 0,
+    "explanation": "Every control system involves three essential operations: Sensing (measuring the current state), Computing (determining appropriate action), and Actuating (applying the corrective action)."
+  },
+  {
+    "id": "quiz-1-2",
+    "question": "What is the main difference between open-loop and closed-loop control systems?",
+    "options": [
+      "Open-loop systems use feedback; closed-loop systems do not",
+      "Closed-loop systems use feedback; open-loop systems do not",
+      "Open-loop systems are always unstable",
+      "Closed-loop systems have no sensors"
+    ],
+    "correctIndex": 1,
+    "explanation": "Closed-loop (feedback) control systems measure the output and feed it back for comparison with the reference input, while open-loop systems have no feedback path."
+  },
+  {
+    "id": "quiz-1-3",
+    "question": "Which of the following is an advantage of closed-loop control over open-loop control?",
+    "options": [
+      "Lower cost and simpler design",
+      "No stability problems",
+      "Ability to reject disturbances automatically",
+      "No need for sensors"
+    ],
+    "correctIndex": 2,
+    "explanation": "A key advantage of closed-loop control is its ability to automatically compensate for disturbances and maintain desired output despite external influences."
+  },
+  {
+    "id": "quiz-1-4",
+    "question": "James Watt's flyball governor is an early example of:",
+    "options": [
+      "Open-loop control system",
+      "Digital control system",
+      "Feedback control system for speed regulation",
+      "Feedforward control system"
+    ],
+    "correctIndex": 2,
+    "explanation": "Watt's flyball governor (1788) was a pioneering feedback control system that automatically regulated steam engine speed using centrifugal force to adjust the steam valve."
+  },
+  {
+    "id": "quiz-1-5",
+    "question": "In a feedback control system, the error signal is:",
+    "options": [
+      "The output signal from the plant",
+      "The difference between reference input and feedback signal",
+      "The signal sent to the actuator",
+      "The sensor measurement"
+    ],
+    "correctIndex": 1,
+    "explanation": "The error signal e(t) = r(t) - b(t) is computed by comparing the reference input with the feedback signal. This error drives the controller to reduce the difference between desired and actual output."
+  },
+  {
+    "id": "quiz-1-6",
+    "question": "What is the primary disadvantage of open-loop control systems?",
+    "options": [
+      "They are too complex",
+      "They cannot correct for disturbances or errors",
+      "They are always unstable",
+      "They require expensive sensors"
+    ],
+    "correctIndex": 1,
+    "explanation": "Open-loop systems cannot sense or correct for disturbances or errors because they have no feedback path. Any disturbance directly affects the output without compensation."
+  },
+  {
+    "id": "quiz-1-7",
+    "question": "A washing machine that operates on a timer without sensing cleanliness is an example of:",
+    "options": [
+      "Closed-loop control system",
+      "Feedback control system",
+      "Open-loop control system",
+      "Adaptive control system"
+    ],
+    "correctIndex": 2,
+    "explanation": "A washing machine running on fixed time cycles without measuring the actual cleanliness is an open-loop system. It has no feedback about the actual output (cleanliness)."
+  },
+  {
+    "id": "quiz-1-8",
+    "question": "What happens in negative feedback when the output exceeds the setpoint?",
+    "options": [
+      "The control action increases the output further",
+      "The control action decreases to bring output back toward setpoint",
+      "The system becomes unstable",
+      "The sensor is turned off"
+    ],
+    "correctIndex": 1,
+    "explanation": "In negative feedback, when output exceeds setpoint, the error becomes negative, causing the control action to decrease, which brings the output back toward the desired value."
+  }
+]

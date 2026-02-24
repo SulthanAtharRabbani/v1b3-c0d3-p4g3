@@ -1,0 +1,147 @@
+[
+  {
+    "id": "flash-control-definition",
+    "front": "What is a control system?",
+    "back": "A control system is an interconnection of components designed to achieve a desired response through manipulation of inputs, where the output is maintained at a desired value despite disturbances."
+  },
+  {
+    "id": "flash-open-loop",
+    "front": "What is an open-loop control system?",
+    "back": "A system where the output has no effect on the control action. The output is neither measured nor fed back for comparison with the input. Example: A washing machine that runs on a timer."
+  },
+  {
+    "id": "flash-closed-loop",
+    "front": "What is a closed-loop (feedback) control system?",
+    "back": "A system that measures the output and feeds it back to compare with the reference input, using the difference (error) to control the system. This reduces sensitivity to disturbances."
+  },
+  {
+    "id": "flash-transfer-function",
+    "front": "Define transfer function.",
+    "back": "$$G(s) = \\frac{Y(s)}{U(s)}$$\n\nThe ratio of the Laplace transform of the output to the Laplace transform of the input, with all initial conditions assumed to be zero."
+  },
+  {
+    "id": "flash-poles-zeros",
+    "front": "What are poles and zeros of a transfer function?",
+    "back": "**Poles**: Roots of the denominator (characteristic equation) - determine system stability and natural response.\n\n**Zeros**: Roots of the numerator - affect transient response shape."
+  },
+  {
+    "id": "flash-first-order",
+    "front": "What is the standard form of a first-order transfer function?",
+    "back": "$$G(s) = \\frac{K}{\\tau s + 1}$$\n\nWhere:\n- K = DC gain\n- τ = time constant\n\nStep response: $y(t) = K(1 - e^{-t/τ})$"
+  },
+  {
+    "id": "flash-time-constant",
+    "front": "What is the significance of the time constant τ?",
+    "back": "The time constant τ is the time required for the step response to reach 63.2% of its final value. After 4τ, the response is within 2% of the final value."
+  },
+  {
+    "id": "flash-second-order",
+    "front": "What is the standard form of a second-order transfer function?",
+    "back": "$$G(s) = \\frac{\\omega_n^2}{s^2 + 2\\zeta\\omega_n s + \\omega_n^2}$$\n\nWhere:\n- ωn = natural frequency\n- ζ = damping ratio"
+  },
+  {
+    "id": "flash-damping-ratio",
+    "front": "How does damping ratio ζ affect system response?",
+    "back": "- **ζ < 1**: Underdamped (oscillatory)\n- **ζ = 1**: Critically damped (fastest non-oscillatory)\n- **ζ > 1**: Overdamped (slow, no oscillation)"
+  },
+  {
+    "id": "flash-stability",
+    "front": "What is BIBO stability?",
+    "back": "A system is BIBO (Bounded-Input Bounded-Output) stable if every bounded input produces a bounded output. For LTI systems: all poles must have negative real parts (lie in left half-plane)."
+  },
+  {
+    "id": "flash-routh",
+    "front": "What is the Routh-Hurwitz stability criterion?",
+    "back": "A necessary and sufficient condition for stability: all elements in the first column of the Routh array must be positive. The number of sign changes equals the number of RHP poles."
+  },
+  {
+    "id": "flash-steady-state-error",
+    "front": "What is steady-state error?",
+    "back": "The difference between the desired output and actual output as time approaches infinity. It measures the accuracy of a control system in tracking reference inputs."
+  },
+  {
+    "id": "flash-error-constants",
+    "front": "Name the three static error constants.",
+    "back": "- **Kp** (Position): $\\lim_{s\\to 0} G(s)H(s)$\n- **Kv** (Velocity): $\\lim_{s\\to 0} sG(s)H(s)$\n- **Ka** (Acceleration): $\\lim_{s\\to 0} s^2G(s)H(s)$"
+  },
+  {
+    "id": "flash-root-locus",
+    "front": "What is the root locus?",
+    "back": "A plot showing how the closed-loop poles move in the s-plane as a parameter (usually gain K) varies from 0 to ∞. Used for stability analysis and controller design."
+  },
+  {
+    "id": "flash-bode-plot",
+    "front": "What are Bode plots?",
+    "back": "Two plots showing frequency response:\n1. **Magnitude** (dB) vs frequency (log scale)\n2. **Phase** (degrees) vs frequency (log scale)\n\nUsed for stability analysis and controller design."
+  },
+  {
+    "id": "flash-gain-margin",
+    "front": "Define gain margin.",
+    "back": "The factor by which the open-loop gain can be increased before the system becomes unstable. Measured at the phase crossover frequency where ∠G(jω) = -180°."
+  },
+  {
+    "id": "flash-phase-margin",
+    "front": "Define phase margin.",
+    "back": "The additional phase lag required to bring the system to the verge of instability. Measured at the gain crossover frequency where |G(jω)| = 1 (0 dB)."
+  },
+  {
+    "id": "flash-pid",
+    "front": "What is a PID controller?",
+    "back": "A controller with three terms:\n- **P (Proportional)**: $K_p e(t)$ - reduces error\n- **I (Integral)**: $K_i\\int e(t)dt$ - eliminates steady-state error\n- **D (Derivative)**: $K_d\\frac{de}{dt}$ - improves damping"
+  },
+  {
+    "id": "flash-ziegler-nichols",
+    "front": "What are Ziegler-Nichols tuning rules?",
+    "back": "Empirical methods to determine PID controller parameters:\n1. **Step Response Method**: Based on reaction curve\n2. **Ultimate Cycle Method**: Based on ultimate gain and period"
+  },
+  {
+    "id": "flash-state-space",
+    "front": "What is state-space representation?",
+    "back": "A mathematical model using first-order differential equations:\n$$\\dot{x} = Ax + Bu$$\n$$y = Cx + Du$$\n\nWhere x is the state vector, u is input, y is output."
+  },
+  {
+    "id": "flash-nyquist",
+    "front": "State the Nyquist stability criterion.",
+    "back": "Z = N + P\n\nWhere:\n- Z = number of unstable closed-loop poles\n- N = number of clockwise encirclements of -1\n- P = number of unstable open-loop poles\n\nFor stability: Z must equal 0."
+  },
+  {
+    "id": "flash-laplace-unit-step",
+    "front": "What is the Laplace transform of a unit step function?",
+    "back": "$$\\mathcal{L}\\{u(t)\\} = \\frac{1}{s}$$\n\nThe unit step function u(t) = 1 for t ≥ 0, and 0 for t < 0."
+  },
+  {
+    "id": "flash-laplace-impulse",
+    "front": "What is the Laplace transform of a unit impulse function?",
+    "back": "$$\\mathcal{L}\\{\\delta(t)\\} = 1$$\n\nThe unit impulse δ(t) has infinite amplitude at t=0 and zero elsewhere, with total area = 1."
+  },
+  {
+    "id": "flash-laplace-ramp",
+    "front": "What is the Laplace transform of a unit ramp function?",
+    "back": "$$\\mathcal{L}\\{t \\cdot u(t)\\} = \\frac{1}{s^2}$$\n\nThe unit ramp function increases linearly with time."
+  },
+  {
+    "id": "flash-feedback-advantages",
+    "front": "What are the main advantages of feedback control?",
+    "back": "1. Reduces sensitivity to parameter variations\n2. Rejects disturbances effectively\n3. Improves transient response\n4. Reduces steady-state error\n5. Stabilizes unstable systems"
+  },
+  {
+    "id": "flash-type-number",
+    "front": "What is the system type number?",
+    "back": "The number of integrators (poles at origin) in the open-loop transfer function G(s)H(s).\n\n- Type 0: finite Kp, Kv = Ka = 0\n- Type 1: Kp = ∞, finite Kv, Ka = 0\n- Type 2: Kp = Kv = ∞, finite Ka"
+  },
+  {
+    "id": "flash-overshoot-formula",
+    "front": "What is the formula for maximum percent overshoot?",
+    "back": "$$M_p = e^{-\\zeta\\pi/\\sqrt{1-\\zeta^2}} \\times 100\\%$$\n\nDepends only on damping ratio ζ. Higher ζ means lower overshoot."
+  },
+  {
+    "id": "flash-settling-time",
+    "front": "What is the formula for settling time (2% criterion)?",
+    "back": "$$t_s \\approx \\frac{4}{\\zeta\\omega_n}$$\n\nTime to reach and stay within 2% of the final value. For 5% criterion: $t_s \\approx 3/(\\zeta\\omega_n)$."
+  },
+  {
+    "id": "flash-natural-frequency",
+    "front": "What is natural frequency ωn?",
+    "back": "The frequency of oscillation of a second-order system with no damping (ζ = 0). In a damped system, the actual oscillation frequency is:\n$$\\omega_d = \\omega_n\\sqrt{1-\\zeta^2}$$"
+  }
+]

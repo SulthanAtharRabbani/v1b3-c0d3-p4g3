@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-6-1",
+    "question": "What does the root locus show?",
+    "options": [
+      "The movement of open-loop poles as gain varies",
+      "The movement of closed-loop poles as gain varies",
+      "The frequency response of the system",
+      "The steady-state error"
+    ],
+    "correctIndex": 1,
+    "explanation": "The root locus shows how the closed-loop poles move in the s-plane as a parameter (typically gain K) varies from 0 to infinity."
+  },
+  {
+    "id": "quiz-6-2",
+    "question": "What is the angle condition for points on the root locus?",
+    "options": [
+      "∠G(s)H(s) = 0°",
+      "∠G(s)H(s) = 90°",
+      "∠G(s)H(s) = ±180°(2k+1)",
+      "∠G(s)H(s) = 360°"
+    ],
+    "correctIndex": 2,
+    "explanation": "The angle condition states that for a point s to be on the root locus, the total angle contribution of G(s)H(s) must equal ±180°(2k+1), for k = 0, 1, 2, ..."
+  },
+  {
+    "id": "quiz-6-3",
+    "question": "Where does the root locus start (K=0)?",
+    "options": [
+      "At the open-loop zeros",
+      "At the open-loop poles",
+      "At infinity",
+      "At the origin"
+    ],
+    "correctIndex": 1,
+    "explanation": "The root locus starts at the open-loop poles when K = 0 and ends at the open-loop zeros (or infinity) when K → ∞."
+  },
+  {
+    "id": "quiz-6-4",
+    "question": "For a system with 4 poles and 1 zero, how many asymptotes does the root locus have?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correctIndex": 2,
+    "explanation": "The number of asymptotes equals n - m = 4 - 1 = 3. Three branches go to infinity along asymptotes."
+  },
+  {
+    "id": "quiz-6-5",
+    "question": "What is the centroid formula for asymptotes?",
+    "options": [
+      "(Σzeros - Σpoles)/(n-m)",
+      "(Σpoles - Σzeros)/(n-m)",
+      "(Σpoles + Σzeros)/(n+m)",
+      "(Σpoles)/(n)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The centroid is calculated as σA = (Σpoles - Σzeros)/(n-m), where n is the number of poles and m is the number of zeros."
+  },
+  {
+    "id": "quiz-6-6",
+    "question": "What does a lead compensator primarily improve?",
+    "options": [
+      "Steady-state error",
+      "Transient response (damping, speed)",
+      "Low-frequency gain",
+      "System order"
+    ],
+    "correctIndex": 1,
+    "explanation": "A lead compensator (zero before pole) primarily improves transient response by increasing damping ratio and reducing settling time."
+  },
+  {
+    "id": "quiz-6-7",
+    "question": "On the real axis, the root locus exists:",
+    "options": [
+      "To the left of an even number of poles and zeros",
+      "To the left of an odd number of poles and zeros",
+      "Between every pole and zero",
+      "Only at poles and zeros"
+    ],
+    "correctIndex": 1,
+    "explanation": "The root locus exists on the real axis to the left of an odd number of poles and zeros."
+  },
+  {
+    "id": "quiz-6-8",
+    "question": "What is the effect of adding a pole to the open-loop transfer function?",
+    "options": [
+      "Attracts the root locus toward it",
+      "Repels the root locus away from it",
+      "Has no effect on the root locus",
+      "Only affects the gain"
+    ],
+    "correctIndex": 1,
+    "explanation": "Adding a pole repels the root locus away from it, which can push branches toward the right half-plane and potentially destabilize the system."
+  }
+]

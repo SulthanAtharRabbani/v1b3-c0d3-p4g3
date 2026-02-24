@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-5-1",
+    "question": "For a stable linear time-invariant system, where must all poles be located?",
+    "options": [
+      "On the imaginary axis",
+      "In the right half-plane",
+      "In the left half-plane",
+      "At the origin"
+    ],
+    "correctIndex": 2,
+    "explanation": "For stability, all poles must have negative real parts, meaning they must lie in the left half of the s-plane (LHP)."
+  },
+  {
+    "id": "quiz-5-2",
+    "question": "According to the Routh-Hurwitz criterion, when is a system stable?",
+    "options": [
+      "When there are no sign changes in any row",
+      "When all elements in the first column of the Routh array are positive",
+      "When the characteristic equation has all positive coefficients",
+      "When there is one sign change in the first column"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Routh-Hurwitz criterion states that a system is stable if and only if all elements in the first column of the Routh array are positive."
+  },
+  {
+    "id": "quiz-5-3",
+    "question": "What does the number of sign changes in the first column of the Routh array indicate?",
+    "options": [
+      "The number of stable poles",
+      "The number of poles on the imaginary axis",
+      "The number of right half-plane poles",
+      "The system order"
+    ],
+    "correctIndex": 2,
+    "explanation": "The number of sign changes in the first column equals the number of poles in the right half-plane (unstable poles)."
+  },
+  {
+    "id": "quiz-5-4",
+    "question": "A system with poles at s = -2, s = ±j3 is:",
+    "options": [
+      "Stable",
+      "Unstable",
+      "Marginally stable",
+      "Cannot determine"
+    ],
+    "correctIndex": 2,
+    "explanation": "The system has one stable pole at s = -2 and simple (non-repeated) poles on the imaginary axis at s = ±j3. This indicates marginal stability."
+  },
+  {
+    "id": "quiz-5-5",
+    "question": "If an entire row of the Routh array is zero, what does this indicate?",
+    "options": [
+      "The system is definitely stable",
+      "The system is definitely unstable",
+      "There are roots symmetric about the origin",
+      "The calculations are wrong"
+    ],
+    "correctIndex": 2,
+    "explanation": "A row of zeros indicates roots that are symmetric about the origin, such as pairs on the imaginary axis or real roots with opposite signs."
+  },
+  {
+    "id": "quiz-5-6",
+    "question": "For the characteristic equation s³ + 3s² + 3s + K = 0, what is the range of K for stability?",
+    "options": [
+      "K > 0",
+      "0 < K < 9",
+      "K > 9",
+      "K < 0"
+    ],
+    "correctIndex": 1,
+    "explanation": "From the Routh array, stability requires: K > 0 and (9-K)/3 > 0, giving 0 < K < 9."
+  },
+  {
+    "id": "quiz-5-7",
+    "question": "What is the necessary condition for stability (before applying Routh criterion)?",
+    "options": [
+      "All coefficients must be non-zero",
+      "All coefficients must be positive",
+      "At least one coefficient must be positive",
+      "Coefficients must alternate in sign"
+    ],
+    "correctIndex": 1,
+    "explanation": "A necessary condition for stability is that all coefficients of the characteristic equation must be positive (and non-zero)."
+  },
+  {
+    "id": "quiz-5-8",
+    "question": "What method is used when the first element of a row in the Routh array is zero?",
+    "options": [
+      "Ignore the row and continue",
+      "Set the entire row to zero",
+      "Replace zero with a small ε and take the limit",
+      "Multiply the equation by s"
+    ],
+    "correctIndex": 2,
+    "explanation": "The epsilon method replaces the zero with a small value ε, completes the array, then examines signs as ε approaches zero from positive and negative directions."
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-8-1",
+    "question": "What is the main purpose of the integral term in a PID controller?",
+    "options": [
+      "To speed up the response",
+      "To eliminate steady-state error",
+      "To reduce overshoot",
+      "To add damping"
+    ],
+    "correctIndex": 1,
+    "explanation": "The integral term accumulates error over time and drives it to zero, eliminating steady-state error. It adds a pole at the origin, increasing the system type number."
+  },
+  {
+    "id": "quiz-8-2",
+    "question": "What does the derivative term in a PID controller respond to?",
+    "options": [
+      "Current error magnitude",
+      "Accumulated past errors",
+      "Rate of change of error",
+      "Setpoint value"
+    ],
+    "correctIndex": 2,
+    "explanation": "The derivative term responds to the rate of change of error, providing anticipatory action and improving damping."
+  },
+  {
+    "id": "quiz-8-3",
+    "question": "In the Ziegler-Nichols ultimate cycle method, what is Ku?",
+    "options": [
+      "The process gain",
+      "The ultimate gain that causes sustained oscillations",
+      "The proportional gain",
+      "The derivative gain"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ku (ultimate gain) is the proportional gain value that causes the closed-loop system to oscillate with sustained oscillations when using only P control."
+  },
+  {
+    "id": "quiz-8-4",
+    "question": "What is integrator windup?",
+    "options": [
+      "The integrator not working",
+      "The integrator continuing to accumulate error during saturation",
+      "The integrator causing oscillations",
+      "The integrator becoming unstable"
+    ],
+    "correctIndex": 1,
+    "explanation": "Integrator windup occurs when the actuator saturates but the integrator continues accumulating error, causing overshoot and slow recovery."
+  },
+  {
+    "id": "quiz-8-5",
+    "question": "According to Ziegler-Nichols ultimate cycle PID tuning, what is Kp as a fraction of Ku?",
+    "options": [
+      "0.45 Ku",
+      "0.5 Ku",
+      "0.6 Ku",
+      "Ku"
+    ],
+    "correctIndex": 2,
+    "explanation": "For PID tuning using the Ziegler-Nichols ultimate cycle method, Kp = 0.6 × Ku."
+  },
+  {
+    "id": "quiz-8-6",
+    "question": "Why is a filtered derivative used instead of a pure derivative?",
+    "options": [
+      "To reduce implementation cost",
+      "To reduce noise amplification",
+      "To increase response speed",
+      "To eliminate steady-state error"
+    ],
+    "correctIndex": 1,
+    "explanation": "A pure derivative amplifies high-frequency noise. Adding a filter reduces this sensitivity while still providing derivative action at lower frequencies."
+  },
+  {
+    "id": "quiz-8-7",
+    "question": "What is 'derivative kick' and how is it avoided?",
+    "options": [
+      "Overshoot from derivative; avoided by reducing Kd",
+      "Large impulse from step setpoint change; avoided by applying derivative to measurement",
+      "Noise amplification; avoided by filtering",
+      "Integrator windup; avoided by anti-windup schemes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Derivative kick occurs when a setpoint step causes a large derivative output. It's avoided by applying the derivative to the measured output (PV) instead of error."
+  },
+  {
+    "id": "quiz-8-8",
+    "question": "What is the transfer function of a standard parallel-form PID controller?",
+    "options": [
+      "Kp + Ki + Kd",
+      "Kp(1 + 1/Tis + Tds)",
+      "Kp + Ki/s + Kd·s",
+      "(Kp + Ki)(Kd·s)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The parallel form PID transfer function is Gc(s) = Kp + Ki/s + Kd·s, where each gain acts independently on its respective term."
+  }
+]

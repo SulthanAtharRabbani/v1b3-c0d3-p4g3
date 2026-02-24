@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-3-1",
+    "question": "What is a transfer function?",
+    "options": [
+      "The ratio of input to output in time domain",
+      "The ratio of output to input Laplace transforms with zero initial conditions",
+      "The product of poles and zeros",
+      "The inverse Laplace transform of the output"
+    ],
+    "correctIndex": 1,
+    "explanation": "A transfer function is defined as G(s) = Y(s)/U(s), the ratio of the Laplace transform of the output to the Laplace transform of the input, with all initial conditions assumed to be zero."
+  },
+  {
+    "id": "quiz-3-2",
+    "question": "What do the poles of a transfer function determine?",
+    "options": [
+      "The gain of the system",
+      "The stability and natural response of the system",
+      "The input signal shape",
+      "The number of zeros"
+    ],
+    "correctIndex": 1,
+    "explanation": "Poles (roots of the denominator) determine system stability and the form of the natural response. Poles in the left half-plane indicate stability, while poles in the right half-plane indicate instability."
+  },
+  {
+    "id": "quiz-3-3",
+    "question": "What is the closed-loop transfer function for a negative feedback system with forward path G(s) and feedback H(s)?",
+    "options": [
+      "G(s)H(s)",
+      "G(s)/(1-H(s)G(s))",
+      "G(s)/(1+G(s)H(s))",
+      "1/(1+G(s)H(s))"
+    ],
+    "correctIndex": 2,
+    "explanation": "For negative feedback, the closed-loop transfer function is G(s)/(1+G(s)H(s)), where G(s) is the forward path transfer function and H(s) is the feedback transfer function."
+  },
+  {
+    "id": "quiz-3-4",
+    "question": "In state-space representation, what does matrix A represent?",
+    "options": [
+      "Input matrix",
+      "Output matrix",
+      "System (state) matrix describing internal dynamics",
+      "Feedforward matrix"
+    ],
+    "correctIndex": 2,
+    "explanation": "Matrix A is the system or state matrix that describes how the states interact with each other (internal dynamics). The state equation is ẋ = Ax + Bu."
+  },
+  {
+    "id": "quiz-3-5",
+    "question": "If all poles of a transfer function have negative real parts, the system is:",
+    "options": [
+      "Unstable",
+      "Stable",
+      "Marginally stable",
+      "Oscillating"
+    ],
+    "correctIndex": 1,
+    "explanation": "A system is stable if all poles have negative real parts (lie in the left half of the s-plane). This means all natural response modes decay to zero over time."
+  },
+  {
+    "id": "quiz-3-6",
+    "question": "What is the relationship between transfer function G(s) and state-space matrices?",
+    "options": [
+      "G(s) = C(sI-A)⁻¹B + D",
+      "G(s) = (sI-A)⁻¹",
+      "G(s) = CB + D",
+      "G(s) = A + Bs + C"
+    ],
+    "correctIndex": 0,
+    "explanation": "The transfer function can be obtained from state-space representation using G(s) = C(sI-A)⁻¹B + D, where I is the identity matrix."
+  },
+  {
+    "id": "quiz-3-7",
+    "question": "For two blocks G₁(s) and G₂(s) connected in series (cascade), the equivalent transfer function is:",
+    "options": [
+      "G₁(s) + G₂(s)",
+      "G₁(s) × G₂(s)",
+      "G₁(s)/G₂(s)",
+      "G₁(s) - G₂(s)"
+    ],
+    "correctIndex": 1,
+    "explanation": "For series (cascade) connection, the equivalent transfer function is the product: G_eq(s) = G₁(s) × G₂(s)."
+  },
+  {
+    "id": "quiz-3-8",
+    "question": "What does the characteristic equation of a system determine?",
+    "options": [
+      "The zeros of the system",
+      "The poles and hence the stability of the system",
+      "The steady-state gain",
+      "The input signal"
+    ],
+    "correctIndex": 1,
+    "explanation": "The characteristic equation is the denominator of the closed-loop transfer function set equal to zero. Its roots are the poles, which determine system stability and dynamic behavior."
+  }
+]

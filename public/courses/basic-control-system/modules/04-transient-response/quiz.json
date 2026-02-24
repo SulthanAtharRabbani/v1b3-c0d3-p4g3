@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-4-1",
+    "question": "What is the time constant τ of a first-order system?",
+    "options": [
+      "Time to reach the final value",
+      "Time to reach 63.2% of the final value",
+      "Time to reach 90% of the final value",
+      "The period of oscillation"
+    ],
+    "correctIndex": 1,
+    "explanation": "The time constant τ is the time required for the step response to reach 63.2% (1-1/e) of its final value. It characterizes the speed of the first-order response."
+  },
+  {
+    "id": "quiz-4-2",
+    "question": "For a second-order system, what does the damping ratio ζ = 1 indicate?",
+    "options": [
+      "Undamped oscillation",
+      "Underdamped oscillation",
+      "Critically damped response",
+      "Unstable system"
+    ],
+    "correctIndex": 2,
+    "explanation": "When ζ = 1, the system is critically damped, meaning it has the fastest non-oscillatory response. The poles are repeated and real."
+  },
+  {
+    "id": "quiz-4-3",
+    "question": "What is the formula for settling time (2% criterion) of a second-order system?",
+    "options": [
+      "ts = 1/(ζωn)",
+      "ts = 4/(ζωn)",
+      "ts = π/ωd",
+      "ts = π/ωn"
+    ],
+    "correctIndex": 1,
+    "explanation": "The settling time for 2% criterion is approximately ts = 4/(ζωn). This is derived from the exponential envelope decay e^(-ζωnt)."
+  },
+  {
+    "id": "quiz-4-4",
+    "question": "A Type 1 system has what steady-state error for a step input?",
+    "options": [
+      "Infinity",
+      "Finite and non-zero",
+      "Zero",
+      "Equal to the input amplitude"
+    ],
+    "correctIndex": 2,
+    "explanation": "A Type 1 system has one integrator, making Kp = ∞, which results in zero steady-state error for a step input."
+  },
+  {
+    "id": "quiz-4-5",
+    "question": "What is the damped natural frequency ωd for a second-order system with ωn = 10 and ζ = 0.6?",
+    "options": [
+      "10 rad/s",
+      "6 rad/s",
+      "8 rad/s",
+      "4 rad/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "ωd = ωn√(1-ζ²) = 10√(1-0.36) = 10√(0.64) = 10(0.8) = 8 rad/s"
+  },
+  {
+    "id": "quiz-4-6",
+    "question": "For a Type 0 system with Kp = 9, what is the steady-state error for a unit step input?",
+    "options": [
+      "0",
+      "0.1",
+      "0.9",
+      "Infinity"
+    ],
+    "correctIndex": 1,
+    "explanation": "For a Type 0 system, ess = 1/(1+Kp) = 1/(1+9) = 0.1 for a unit step input."
+  },
+  {
+    "id": "quiz-4-7",
+    "question": "What does maximum overshoot depend on?",
+    "options": [
+      "Only natural frequency ωn",
+      "Only damping ratio ζ",
+      "Both ωn and ζ",
+      "Neither ωn nor ζ"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maximum overshoot Mp = e^(-ζπ/√(1-ζ²)) depends only on the damping ratio ζ. A larger ζ gives smaller overshoot."
+  },
+  {
+    "id": "quiz-4-8",
+    "question": "What is the settling time (2% criterion) for a first-order system with τ = 0.5 seconds?",
+    "options": [
+      "0.5 seconds",
+      "1.0 second",
+      "2.0 seconds",
+      "4.0 seconds"
+    ],
+    "correctIndex": 2,
+    "explanation": "For a first-order system, ts ≈ 4τ = 4 × 0.5 = 2.0 seconds for the 2% criterion."
+  }
+]

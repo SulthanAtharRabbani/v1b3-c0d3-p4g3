@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-2-1",
+    "question": "What is the primary advantage of using Laplace transforms to solve differential equations?",
+    "options": [
+      "It eliminates the need for initial conditions",
+      "It converts differential equations into algebraic equations",
+      "It makes all solutions real-valued",
+      "It reduces the order of the system"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Laplace transform converts differential equations in the time domain into algebraic equations in the s-domain, making them much easier to manipulate and solve."
+  },
+  {
+    "id": "quiz-2-2",
+    "question": "What is the Laplace transform of a unit step function u(t)?",
+    "options": [
+      "1",
+      "1/s",
+      "s",
+      "1/s²"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Laplace transform of a unit step function u(t) is 1/s. This is derived from integrating e^(-st) from 0 to infinity."
+  },
+  {
+    "id": "quiz-2-3",
+    "question": "According to the differentiation theorem, what is L{df/dt}?",
+    "options": [
+      "F(s)/s",
+      "sF(s)",
+      "sF(s) - f(0)",
+      "F(s) - f(0)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Laplace transform of the first derivative is sF(s) - f(0), where f(0) is the initial condition. This property allows initial conditions to be automatically incorporated."
+  },
+  {
+    "id": "quiz-2-4",
+    "question": "In partial fraction expansion, what method is used to find coefficients for distinct real roots?",
+    "options": [
+      "Integration method",
+      "Residue (cover-up) method",
+      "Differentiation method",
+      "Substitution method"
+    ],
+    "correctIndex": 1,
+    "explanation": "For distinct real roots, the residue or cover-up method is used: Ai = (s+pi)F(s) evaluated at s = -pi."
+  },
+  {
+    "id": "quiz-2-5",
+    "question": "What is the inverse Laplace transform of 1/(s+2)?",
+    "options": [
+      "e^(2t)",
+      "e^(-2t)",
+      "2e^(-t)",
+      "e^(t/2)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the standard transform pair, L{e^(-at)} = 1/(s+a). Therefore, the inverse of 1/(s+2) is e^(-2t)."
+  },
+  {
+    "id": "quiz-2-6",
+    "question": "Which transform pair represents a damped sinusoid?",
+    "options": [
+      "L{sin(ωt)} = ω/(s²+ω²)",
+      "L{e^(-at)sin(ωt)} = ω/[(s+a)²+ω²]",
+      "L{cos(ωt)} = s/(s²+ω²)",
+      "L{e^(-at)} = 1/(s+a)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The damped sinusoid e^(-at)sin(ωt) has Laplace transform ω/[(s+a)²+ω²]. The exponential decay (e^-at) introduces the shift (s+a) in the denominator."
+  },
+  {
+    "id": "quiz-2-7",
+    "question": "What does the Final Value Theorem allow us to find?",
+    "options": [
+      "The initial value of a function",
+      "The steady-state value as t → ∞",
+      "The maximum value of a function",
+      "The derivative at t = 0"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Final Value Theorem states that lim(t→∞)f(t) = lim(s→0)sF(s), allowing us to find the steady-state value without computing the complete inverse transform."
+  },
+  {
+    "id": "quiz-2-8",
+    "question": "For repeated roots in partial fraction expansion, how are the coefficients found?",
+    "options": [
+      "Simple cover-up method",
+      "Using derivatives of the function",
+      "Direct substitution only",
+      "Integration of the function"
+    ],
+    "correctIndex": 1,
+    "explanation": "For repeated roots, coefficients are found using derivatives: Ak = (1/(r-k)!) × (d^(r-k)/ds^(r-k))[(s+p)^r × F(s)] evaluated at s = -p."
+  }
+]

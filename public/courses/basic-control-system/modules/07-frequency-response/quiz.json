@@ -1,0 +1,98 @@
+[
+  {
+    "id": "quiz-7-1",
+    "question": "What does a Bode plot show?",
+    "options": [
+      "Root locations as gain varies",
+      "Magnitude and phase vs frequency",
+      "Time domain response",
+      "Pole-zero locations"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Bode plot consists of two graphs: magnitude (in dB) vs frequency and phase (in degrees) vs frequency, both using logarithmic frequency scales."
+  },
+  {
+    "id": "quiz-7-2",
+    "question": "What is the slope of a first-order pole's magnitude plot at high frequencies?",
+    "options": [
+      "0 dB/decade",
+      "+20 dB/decade",
+      "-20 dB/decade",
+      "-40 dB/decade"
+    ],
+    "correctIndex": 2,
+    "explanation": "A first-order pole contributes -20 dB/decade slope at frequencies above its corner frequency."
+  },
+  {
+    "id": "quiz-7-3",
+    "question": "According to the Nyquist criterion, what does Z = N + P represent?",
+    "options": [
+      "Z = stable poles, N = encirclements, P = zeros",
+      "Z = unstable closed-loop poles, N = encirclements of -1, P = unstable open-loop poles",
+      "Z = zeros, N = poles, P = gain",
+      "Z = gain margin, N = phase margin, P = bandwidth"
+    ],
+    "correctIndex": 1,
+    "explanation": "In the Nyquist criterion: Z is the number of unstable closed-loop poles, N is the number of clockwise encirclements of -1, and P is the number of unstable open-loop poles."
+  },
+  {
+    "id": "quiz-7-4",
+    "question": "What is the gain margin for a stable system?",
+    "options": [
+      "GM < 0 dB",
+      "GM = 0 dB",
+      "GM > 0 dB",
+      "GM = ∞"
+    ],
+    "correctIndex": 2,
+    "explanation": "For a stable system, the gain margin must be positive (GM > 0 dB), meaning the gain can increase before instability occurs."
+  },
+  {
+    "id": "quiz-7-5",
+    "question": "What is phase margin?",
+    "options": [
+      "The phase at the phase crossover frequency",
+      "The additional phase lag needed to cause instability",
+      "The phase at DC",
+      "The phase at infinite frequency"
+    ],
+    "correctIndex": 1,
+    "explanation": "Phase margin is the additional phase lag required to bring the system to the verge of instability. PM = 180° + ∠G(jωc) where ωc is the gain crossover frequency."
+  },
+  {
+    "id": "quiz-7-6",
+    "question": "For a second-order system, a phase margin of 45° corresponds approximately to what damping ratio?",
+    "options": [
+      "ζ ≈ 0.15",
+      "ζ ≈ 0.45",
+      "ζ ≈ 0.70",
+      "ζ ≈ 1.0"
+    ],
+    "correctIndex": 1,
+    "explanation": "The approximation ζ ≈ PM/100° gives ζ ≈ 45°/100° = 0.45 for a phase margin of 45°."
+  },
+  {
+    "id": "quiz-7-7",
+    "question": "At the corner frequency of a first-order pole, the magnitude is approximately:",
+    "options": [
+      "0 dB",
+      "+3 dB",
+      "-3 dB",
+      "-20 dB"
+    ],
+    "correctIndex": 2,
+    "explanation": "At the corner frequency ωc, the actual magnitude is -3 dB (the asymptotic approximation has the largest error at this point)."
+  },
+  {
+    "id": "quiz-7-8",
+    "question": "A system has GM = 6 dB. What does this mean?",
+    "options": [
+      "The system is unstable",
+      "The gain can be doubled before instability",
+      "The gain must be halved for stability",
+      "The phase margin is 6 degrees"
+    ],
+    "correctIndex": 1,
+    "explanation": "GM = 6 dB means GM = 2 in linear scale, so the gain can be increased by a factor of 2 before the system becomes unstable."
+  }
+]
