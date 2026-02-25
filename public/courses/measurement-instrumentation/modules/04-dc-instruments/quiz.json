@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q4-1",
+    "question": "The deflection of a PMMC movement is proportional to:",
+    "options": [
+      "The square of the current",
+      "The current through the coil",
+      "The voltage across the coil",
+      "The power dissipated in the coil"
+    ],
+    "correctIndex": 1,
+    "explanation": "The PMMC movement produces deflection proportional to current: θ = (G/Ks) × I. This linear relationship is fundamental to PMMC operation and produces a uniform scale."
+  },
+  {
+    "id": "q4-2",
+    "question": "A PMMC movement has 50 μA full-scale current and 2000 Ω internal resistance. What multiplier resistance is needed for a 10V voltmeter?",
+    "options": [
+      "20 kΩ",
+      "198 kΩ",
+      "200 kΩ",
+      "500 kΩ"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rs = Vfs/Ifsd - Rm = 10V/50μA - 2000Ω = 200,000 - 2,000 = 198,000 Ω = 198 kΩ"
+  },
+  {
+    "id": "q4-3",
+    "question": "The sensitivity of a voltmeter with 50 μA full-scale movement is:",
+    "options": [
+      "50 Ω/V",
+      "500 Ω/V",
+      "20,000 Ω/V",
+      "50,000 Ω/V"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sensitivity = 1/Ifsd = 1/(50×10⁻⁶) = 20,000 Ω/V. Higher sensitivity means less circuit loading."
+  },
+  {
+    "id": "q4-4",
+    "question": "Which type of error occurs when a voltmeter draws current from the circuit being measured?",
+    "options": [
+      "Systematic error",
+      "Random error",
+      "Loading error",
+      "Gross error"
+    ],
+    "correctIndex": 2,
+    "explanation": "Loading error occurs because the voltmeter draws current from the circuit, changing the voltage being measured. Higher voltmeter resistance (sensitivity) reduces loading error."
+  },
+  {
+    "id": "q4-5",
+    "question": "A shunt resistor for an ammeter is connected:",
+    "options": [
+      "In series with the meter movement",
+      "In parallel with the meter movement",
+      "In series with the circuit being measured only",
+      "Between the positive and negative terminals"
+    ],
+    "correctIndex": 1,
+    "explanation": "The shunt resistor is connected in parallel with the PMMC movement. It diverts most of the current around the movement, allowing measurement of currents larger than the movement can handle directly."
+  },
+  {
+    "id": "q4-6",
+    "question": "A 1 mA, 100 Ω movement is used to make a 1A ammeter. What is the required shunt resistance?",
+    "options": [
+      "0.01 Ω",
+      "0.1 Ω",
+      "1.0 Ω",
+      "10 Ω"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rsh = (Im × Rm)/(Ifs - Im) = (0.001 × 100)/(1 - 0.001) = 0.1/0.999 ≈ 0.1 Ω"
+  },
+  {
+    "id": "q4-7",
+    "question": "The burden voltage of an ammeter refers to:",
+    "options": [
+      "The maximum current it can measure",
+      "The voltage drop across the ammeter when current flows",
+      "The battery voltage required for operation",
+      "The voltage rating of the shunt"
+    ],
+    "correctIndex": 1,
+    "explanation": "Burden voltage is the voltage drop across the ammeter when current flows through it. Vb = I × Rammeter. This voltage drop can affect circuit operation."
+  },
+  {
+    "id": "q4-8",
+    "question": "Which is NOT an advantage of a digital multimeter over an analog meter?",
+    "options": [
+      "Higher accuracy",
+      "Higher input impedance",
+      "Better trend indication",
+      "Easier to read"
+    ],
+    "correctIndex": 2,
+    "explanation": "Analog meters excel at showing trends because the pointer position gives immediate visual feedback about whether a value is increasing or decreasing. Digital meters show only numerical values."
+  },
+  {
+    "id": "q4-9",
+    "question": "A DMM with 4½-digit display on the 20V range has a resolution of:",
+    "options": [
+      "0.1 V",
+      "0.01 V",
+      "0.001 V",
+      "0.0001 V"
+    ],
+    "correctIndex": 2,
+    "explanation": "A 4½-digit display shows 0-19999 counts. Resolution = 20V/20000 = 0.001V = 1mV. The half-digit means the most significant digit can only be 0 or 1."
+  },
+  {
+    "id": "q4-10",
+    "question": "The PMMC movement can only measure DC directly because:",
+    "options": [
+      "The coil has too much inductance",
+      "The pointer cannot follow rapid reversals and averages to zero for AC",
+      "The magnet loses its field with AC",
+      "The springs only work with DC"
+    ],
+    "correctIndex": 1,
+    "explanation": "The PMMC movement responds to the average value of current. For AC, the average over a complete cycle is zero, so the pointer doesn't move. Rectifiers are needed to convert AC to DC for measurement."
+  }
+]

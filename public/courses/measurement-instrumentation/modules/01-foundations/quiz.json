@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1-1",
+    "question": "What is the fundamental process involved in every measurement?",
+    "options": [
+      "Comparison of an unknown quantity with a known standard",
+      "Calculation of a numerical value",
+      "Recording data in a computer",
+      "Amplifying an electrical signal"
+    ],
+    "correctIndex": 0,
+    "explanation": "Measurement is fundamentally the process of comparing an unknown quantity to a known standard of the same kind to determine how many times the standard is contained in the unknown."
+  },
+  {
+    "id": "q1-2",
+    "question": "Which component of a measurement system responds directly to the physical measurand?",
+    "options": [
+      "Signal conditioner",
+      "Display device",
+      "Sensor or transducer",
+      "Analog-to-digital converter"
+    ],
+    "correctIndex": 2,
+    "explanation": "The sensor or transducer is the component that responds to the physical measurand and produces an output signal proportional to the input quantity."
+  },
+  {
+    "id": "q1-3",
+    "question": "How many base units are defined in the International System of Units (SI)?",
+    "options": [
+      "Five",
+      "Seven",
+      "Nine",
+      "Twelve"
+    ],
+    "correctIndex": 1,
+    "explanation": "The SI defines seven base units: meter (length), kilogram (mass), second (time), ampere (electric current), kelvin (temperature), mole (amount of substance), and candela (luminous intensity)."
+  },
+  {
+    "id": "q1-4",
+    "question": "What is the correct relationship between accuracy and precision?",
+    "options": [
+      "Accuracy and precision are the same thing",
+      "High precision always means high accuracy",
+      "Accuracy is closeness to true value; precision is consistency of repeated measurements",
+      "Precision is closeness to true value; accuracy is consistency"
+    ],
+    "correctIndex": 2,
+    "explanation": "Accuracy describes closeness to the true value, while precision describes the consistency of repeated measurements. An instrument can be precise without being accurate (systematic error) or accurate without being precise (random error)."
+  },
+  {
+    "id": "q1-5",
+    "question": "What is the resolution of a 4½-digit digital multimeter on the 20V range?",
+    "options": [
+      "0.1 V",
+      "0.01 V",
+      "0.001 V",
+      "0.0001 V"
+    ],
+    "correctIndex": 2,
+    "explanation": "A 4½-digit display can show 0-19999 counts. On the 20V range, the resolution is 20V/20000 = 0.001V = 1mV."
+  },
+  {
+    "id": "q1-6",
+    "question": "What does traceability ensure in measurement?",
+    "options": [
+      "That measurements are always accurate",
+      "That measurements can be linked to primary standards through an unbroken chain",
+      "That instruments are inexpensive",
+      "That measurements are always digital"
+    ],
+    "correctIndex": 1,
+    "explanation": "Traceability is the unbroken chain of comparisons linking a measurement to a primary standard. Each link has documented uncertainty, ensuring measurements are comparable across different places and times."
+  },
+  {
+    "id": "q1-7",
+    "question": "Which of the following is NOT a function of signal conditioning?",
+    "options": [
+      "Amplification",
+      "Filtering",
+      "Linearization",
+      "Displaying the result"
+    ],
+    "correctIndex": 3,
+    "explanation": "Signal conditioning includes amplification, filtering, linearization, and analog-to-digital conversion. Displaying the result is the function of the display/output device, which comes after signal conditioning."
+  },
+  {
+    "id": "q1-8",
+    "question": "If an instrument consistently reads 2% higher than the true value, this is an example of:",
+    "options": [
+      "Random error affecting precision",
+      "Systematic error affecting accuracy",
+      "Resolution error",
+      "Hysteresis error"
+    ],
+    "correctIndex": 1,
+    "explanation": "A consistent error in one direction is a systematic error. Systematic errors affect accuracy but not precision because the measurements are consistent—they're just consistently wrong."
+  },
+  {
+    "id": "q1-9",
+    "question": "What is the SI unit for electric resistance?",
+    "options": [
+      "Volt (V)",
+      "Ampere (A)",
+      "Ohm (Ω)",
+      "Watt (W)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The ohm (Ω) is the SI derived unit for electrical resistance. It is defined as V/A (volts per ampere)."
+  },
+  {
+    "id": "q1-10",
+    "question": "Hysteresis in a measurement instrument means:",
+    "options": [
+      "The instrument has poor resolution",
+      "The output differs depending on the direction from which the measurand was approached",
+      "The instrument has high accuracy",
+      "The instrument responds very slowly"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hysteresis is the difference in measurement results when the measurand is approached from different directions. It represents a form of systematic error that depends on measurement history."
+  }
+]

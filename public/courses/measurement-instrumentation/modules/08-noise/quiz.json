@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the thermal noise voltage of a 10 kΩ resistor at room temperature (300K) in a 1 kHz bandwidth?",
+    "options": [
+      "0.4 μV",
+      "1.3 μV",
+      "4.0 μV",
+      "12.7 μV"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Vn = √(4kTRB) = √(4 × 1.38×10^-23 × 300 × 10000 × 1000) ≈ 1.3 μV"
+  },
+  {
+    "id": "q2",
+    "question": "Which type of noise has a 1/f power spectral density?",
+    "options": [
+      "Thermal noise",
+      "Shot noise",
+      "Flicker noise",
+      "White noise"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Flicker noise (also called 1/f noise or pink noise) has a power spectral density that varies as 1/f, with more power at lower frequencies."
+  },
+  {
+    "id": "q3",
+    "question": "A measurement system has signal power of 100 mW and noise power of 1 mW. What is the SNR in dB?",
+    "options": [
+      "10 dB",
+      "20 dB",
+      "40 dB",
+      "100 dB"
+    ],
+    "correctAnswer": 1,
+    "explanation": "SNR(dB) = 10 log₁₀(100/1) = 10 × 2 = 20 dB"
+  },
+  {
+    "id": "q4",
+    "question": "What happens to the signal-to-noise ratio when averaging 100 measurements?",
+    "options": [
+      "SNR improves by a factor of 10",
+      "SNR improves by a factor of 100",
+      "SNR improves by a factor of 2",
+      "SNR remains unchanged"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Averaging N measurements improves SNR by √N. For N=100, SNR improves by √100 = 10."
+  },
+  {
+    "id": "q5",
+    "question": "What is the primary cause of ground loops in measurement systems?",
+    "options": [
+      "Insufficient shielding",
+      "Multiple ground paths with different potentials",
+      "High-frequency signals",
+      "Temperature variations"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Ground loops occur when there are multiple paths to ground, and these paths have different potentials, causing unwanted current flow that adds noise to measurements."
+  },
+  {
+    "id": "q6",
+    "question": "For shot noise calculation, what is the noise current for a 1 mA DC current in a 10 kHz bandwidth?",
+    "options": [
+      "1.8 nA",
+      "5.7 nA",
+      "18 nA",
+      "57 nA"
+    ],
+    "correctAnswer": 1,
+    "explanation": "In = √(2qIDCB) = √(2 × 1.6×10^-19 × 10^-3 × 10000) ≈ 5.7 nA"
+  },
+  {
+    "id": "q7",
+    "question": "Which shielding material is most effective for low-frequency magnetic fields?",
+    "options": [
+      "Copper",
+      "Aluminum",
+      "Mu-metal",
+      "Stainless steel"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Mu-metal is a high-permeability nickel-iron alloy that is particularly effective at shielding low-frequency magnetic fields due to its high magnetic permeability."
+  },
+  {
+    "id": "q8",
+    "question": "What is the corner frequency for a low-pass RC filter with R = 10 kΩ and C = 1 μF?",
+    "options": [
+      "1.6 Hz",
+      "16 Hz",
+      "160 Hz",
+      "1.6 kHz"
+    ],
+    "correctAnswer": 1,
+    "explanation": "fc = 1/(2πRC) = 1/(2π × 10000 × 10^-6) ≈ 15.9 Hz ≈ 16 Hz"
+  },
+  {
+    "id": "q9",
+    "question": "If two uncorrelated noise sources have RMS values of 3 μV and 4 μV, what is the total noise?",
+    "options": [
+      "7 μV",
+      "5 μV",
+      "12 μV",
+      "1 μV"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Uncorrelated noise sources add in quadrature: Vtotal = √(3² + 4²) = √(9 + 16) = √25 = 5 μV"
+  },
+  {
+    "id": "q10",
+    "question": "What technique does a lock-in amplifier use to extract signals from noise?",
+    "options": [
+      "High-pass filtering",
+      "Signal modulation and synchronous detection",
+      "Signal averaging only",
+      "Temperature cooling"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Lock-in amplifiers use synchronous detection: the signal is modulated at a known frequency, and the detector measures only at that frequency, rejecting noise at all other frequencies."
+  }
+]

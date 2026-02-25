@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q5-1",
+    "question": "The RMS value of a sinusoidal voltage with 170V peak is:",
+    "options": [
+      "85 V",
+      "108 V",
+      "120 V",
+      "170 V"
+    ],
+    "correctIndex": 2,
+    "explanation": "Vrms = Vpeak/√2 = 170/1.414 = 120.2V ≈ 120V. This is why North American 120V AC has 170V peak."
+  },
+  {
+    "id": "q5-2",
+    "question": "What does RMS represent?",
+    "options": [
+      "The maximum instantaneous value",
+      "The average of absolute values",
+      "The DC equivalent for heating effect",
+      "The peak-to-peak value divided by 2"
+    ],
+    "correctIndex": 2,
+    "explanation": "RMS (Root Mean Square) represents the equivalent DC value that would produce the same heating effect in a resistive load. This is why it's the standard measure for AC voltage and current."
+  },
+  {
+    "id": "q5-3",
+    "question": "The form factor for a sine wave is:",
+    "options": [
+      "0.707",
+      "1.0",
+      "1.11",
+      "1.414"
+    ],
+    "correctIndex": 2,
+    "explanation": "Form Factor = Vrms/Vavg = (0.707Vp)/(0.637Vp) = 1.11 for a sine wave. This factor is used to scale average-responding meters to display RMS values."
+  },
+  {
+    "id": "q5-4",
+    "question": "An average-responding meter calibrated for sine waves measures a square wave. The reading will be:",
+    "options": [
+      "Correct",
+      "11% high",
+      "11% low",
+      "41% high"
+    ],
+    "correctIndex": 1,
+    "explanation": "A square wave has form factor = 1.0. The meter multiplies average by 1.11 (sine wave form factor). Since actual form factor is 1.0, the reading is 11% high."
+  },
+  {
+    "id": "q5-5",
+    "question": "A full-wave rectifier instrument compared to a half-wave type has:",
+    "options": [
+      "Half the sensitivity",
+      "The same sensitivity",
+      "Twice the sensitivity",
+      "Four times the sensitivity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Full-wave rectification uses both half-cycles, producing twice the average output compared to half-wave. This results in twice the sensitivity."
+  },
+  {
+    "id": "q5-6",
+    "question": "The crest factor of a sinusoidal waveform is:",
+    "options": [
+      "0.707",
+      "1.0",
+      "1.11",
+      "1.414"
+    ],
+    "correctIndex": 3,
+    "explanation": "Crest Factor = Vpeak/Vrms = Vp/(0.707Vp) = 1.414 for a sine wave. Higher crest factors indicate more peaked waveforms."
+  },
+  {
+    "id": "q5-7",
+    "question": "The frequency limitation of rectifier instruments is primarily due to:",
+    "options": [
+      "The meter movement inductance",
+      "Diode junction capacitance and reverse recovery time",
+      "The multiplier resistor values",
+      "The power supply frequency"
+    ],
+    "correctIndex": 1,
+    "explanation": "Diode junction capacitance bypasses the rectifier at high frequencies, and reverse recovery time limits how fast diodes can switch. These factors limit frequency response."
+  },
+  {
+    "id": "q5-8",
+    "question": "True RMS measurement is essential for:",
+    "options": [
+      "Only pure sine wave measurements",
+      "DC voltage measurements",
+      "Non-sinusoidal and distorted waveforms",
+      "Low frequency measurements only"
+    ],
+    "correctIndex": 2,
+    "explanation": "True RMS meters measure actual RMS value regardless of waveform shape. They are essential for switching power supplies, motor drives, and other sources of non-sinusoidal waveforms."
+  },
+  {
+    "id": "q5-9",
+    "question": "A thermal RMS converter determines RMS value by:",
+    "options": [
+      "Computing the square root of samples",
+      "Measuring the heating effect of the signal",
+      "Rectifying and averaging",
+      "Measuring peak value and dividing by √2"
+    ],
+    "correctIndex": 1,
+    "explanation": "Thermal RMS converters use the heating effect of the signal. The signal heats a resistive element, and the temperature rise is compared to a DC reference. When temperatures match, DC equals RMS."
+  },
+  {
+    "id": "q5-10",
+    "question": "A waveform has peak value 100V and crest factor 5. What is its RMS value?",
+    "options": [
+      "20 V",
+      "50 V",
+      "71 V",
+      "500 V"
+    ],
+    "correctIndex": 0,
+    "explanation": "Crest Factor = Vpeak/Vrms, so Vrms = Vpeak/Crest Factor = 100/5 = 20V. High crest factor waveforms have much lower RMS than peak values."
+  }
+]

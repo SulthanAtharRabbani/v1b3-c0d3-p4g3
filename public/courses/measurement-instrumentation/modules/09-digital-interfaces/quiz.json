@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the maximum number of devices that can be connected on a single GPIB bus?",
+    "options": [
+      "7 devices",
+      "15 devices",
+      "31 devices",
+      "127 devices"
+    ],
+    "correctAnswer": 1,
+    "explanation": "GPIB (IEEE-488) supports up to 15 devices on a single bus, including the controller."
+  },
+  {
+    "id": "q2",
+    "question": "What is the primary advantage of RS-485 over RS-232?",
+    "options": [
+      "Higher voltage levels",
+      "Differential signaling for noise immunity and multi-drop capability",
+      "Faster maximum baud rate at long distances",
+      "Simpler wiring requirements"
+    ],
+    "correctAnswer": 1,
+    "explanation": "RS-485 uses differential signaling which provides excellent noise immunity and enables multi-drop networks with up to 32 devices on a single bus."
+  },
+  {
+    "id": "q3",
+    "question": "What SCPI command is used to query the identity of an instrument?",
+    "options": [
+      "*RST?",
+      "*IDN?",
+      "*CLS?",
+      "*ERR?"
+    ],
+    "correctAnswer": 1,
+    "explanation": "*IDN? (Identify) is the standard SCPI command that queries the instrument's identification string, typically returning manufacturer, model, and serial number."
+  },
+  {
+    "id": "q4",
+    "question": "In VISA, what resource string format is used for a GPIB instrument at address 7?",
+    "options": [
+      "GPIB::7::INSTR",
+      "GPIB0::7::INSTR",
+      "GPIB:7",
+      "GPIB0/7/INSTR"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The VISA resource string for GPIB follows the format GPIB[board]::address::INSTR. For board 0 and address 7, it's GPIB0::7::INSTR."
+  },
+  {
+    "id": "q5",
+    "question": "What is the maximum cable length for a USB 2.0 connection?",
+    "options": [
+      "3 meters",
+      "5 meters",
+      "15 meters",
+      "100 meters"
+    ],
+    "correctAnswer": 1,
+    "explanation": "USB 2.0 has a maximum cable length of 5 meters due to signal timing requirements. This can be extended using hubs or active extenders."
+  },
+  {
+    "id": "q6",
+    "question": "Which LXI class includes hardware triggering capabilities?",
+    "options": [
+      "LXI Class C",
+      "LXI Class B",
+      "LXI Class A",
+      "LXI Class H"
+    ],
+    "correctAnswer": 2,
+    "explanation": "LXI Class A includes all features of Class B plus hardware triggering capability, making it suitable for applications requiring precise timing synchronization."
+  },
+  {
+    "id": "q7",
+    "question": "What is the voltage level for logic 0 (space) in RS-232?",
+    "options": [
+      "0V",
+      "+3V to +15V",
+      "-3V to -15V",
+      "+5V"
+    ],
+    "correctAnswer": 1,
+    "explanation": "In RS-232, logic 0 (space) is represented by a positive voltage between +3V and +15V, while logic 1 (mark) is between -3V and -15V."
+  },
+  {
+    "id": "q8",
+    "question": "What protocol does LXI use for precise time synchronization between instruments?",
+    "options": [
+      "NTP (Network Time Protocol)",
+      "IEEE 1588 (Precision Time Protocol)",
+      "SNTP (Simple Network Time Protocol)",
+      "GPS timing"
+    ],
+    "correctAnswer": 1,
+    "explanation": "LXI instruments use IEEE 1588 Precision Time Protocol (PTP) for time synchronization, achieving accuracy of 1 microsecond or better."
+  },
+  {
+    "id": "q9",
+    "question": "What is the purpose of the GPIB Service Request (SRQ) line?",
+    "options": [
+      "To request device identification",
+      "To indicate a device needs attention from the controller",
+      "To request more data",
+      "To reset the bus"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The SRQ (Service Request) line allows devices to request attention from the controller, typically when they have data ready or an error condition."
+  },
+  {
+    "id": "q10",
+    "question": "What USB device class is specifically designed for test and measurement instruments?",
+    "options": [
+      "USB CDC (Communications Device Class)",
+      "USB HID (Human Interface Device)",
+      "USB TMC (Test and Measurement Class)",
+      "USB Mass Storage"
+    ],
+    "correctAnswer": 2,
+    "explanation": "USB TMC (Test and Measurement Class) is specifically designed for instruments, providing standardized communication including SCPI command support."
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ref-1",
+    "title": "PMMC Deflection",
+    "formula": "\\theta = \\frac{G}{K_s} \\cdot I",
+    "description": "Angular deflection equals coil constant divided by spring constant, multiplied by current"
+  },
+  {
+    "id": "ref-2",
+    "title": "Voltmeter Multiplier Resistance",
+    "formula": "R_s = \\frac{V_{fs}}{I_{fsd}} - R_m",
+    "description": "Series resistance needed for voltmeter with full-scale voltage Vfs and meter resistance Rm"
+  },
+  {
+    "id": "ref-3",
+    "title": "Voltmeter Sensitivity",
+    "formula": "S = \\frac{1}{I_{fsd}} \\text{ (\\Omega/V)}",
+    "description": "Sensitivity in ohms per volt equals inverse of full-scale deflection current"
+  },
+  {
+    "id": "ref-4",
+    "title": "Ammeter Shunt Resistance",
+    "formula": "R_{sh} = \\frac{I_m \\cdot R_m}{I_{fs} - I_m}",
+    "description": "Shunt resistance needed for full-scale current Ifs with meter current Im"
+  },
+  {
+    "id": "ref-5",
+    "title": "RMS Voltage (Sinusoidal)",
+    "formula": "V_{rms} = \\frac{V_{peak}}{\\sqrt{2}} = 0.707 \\cdot V_{peak}",
+    "description": "RMS value of sine wave is peak divided by square root of 2"
+  },
+  {
+    "id": "ref-6",
+    "title": "Average Voltage (Half-Cycle)",
+    "formula": "V_{avg} = \\frac{2V_{peak}}{\\pi} = 0.637 \\cdot V_{peak}",
+    "description": "Average value of sine wave over one half-cycle"
+  },
+  {
+    "id": "ref-7",
+    "title": "Form Factor",
+    "formula": "FF = \\frac{V_{rms}}{V_{avg}} = 1.11 \\text{ (sine wave)}",
+    "description": "Ratio of RMS to average value; used for scaling average-responding meters"
+  },
+  {
+    "id": "ref-8",
+    "title": "Crest Factor",
+    "formula": "CF = \\frac{V_{peak}}{V_{rms}} = 1.414 \\text{ (sine wave)}",
+    "description": "Ratio of peak to RMS value; indicates waveform peakedness"
+  },
+  {
+    "id": "ref-9",
+    "title": "Thermal Noise Voltage",
+    "formula": "V_n = \\sqrt{4kTRB}",
+    "description": "Johnson noise in a resistor; k=Boltzmann constant, T=temperature, R=resistance, B=bandwidth"
+  },
+  {
+    "id": "ref-10",
+    "title": "Shot Noise Current",
+    "formula": "I_n = \\sqrt{2qI_{dc}B}",
+    "description": "Noise from discrete charge carriers; q=electron charge, Idc=DC current, B=bandwidth"
+  },
+  {
+    "id": "ref-11",
+    "title": "Signal-to-Noise Ratio",
+    "formula": "SNR_{dB} = 20 \\log_{10}\\left(\\frac{V_{signal}}{V_{noise}}\\right)",
+    "description": "Ratio of signal power to noise power expressed in decibels"
+  },
+  {
+    "id": "ref-12",
+    "title": "Standard Deviation",
+    "formula": "s = \\sqrt{\\frac{\\sum_{i=1}^{n}(x_i - \\bar{x})^2}{n-1}}",
+    "description": "Measure of spread of measurement values around the mean"
+  },
+  {
+    "id": "ref-13",
+    "title": "Standard Error of Mean",
+    "formula": "SE = \\frac{s}{\\sqrt{n}}",
+    "description": "Precision of the mean value from n measurements"
+  },
+  {
+    "id": "ref-14",
+    "title": "Oscilloscope Bandwidth-Rise Time",
+    "formula": "T_r = \\frac{0.35}{BW}",
+    "description": "Relationship between oscilloscope bandwidth and measurable rise time"
+  },
+  {
+    "id": "ref-15",
+    "title": "Wheatstone Bridge Balance",
+    "formula": "R_x = R_3 \\cdot \\frac{R_2}{R_1}",
+    "description": "Unknown resistance at balance condition"
+  },
+  {
+    "id": "ref-16",
+    "title": "Quality Factor (Inductor)",
+    "formula": "Q = \\frac{\\omega L}{R_s}",
+    "description": "Ratio of reactive to resistive impedance; indicates inductor quality"
+  },
+  {
+    "id": "ref-17",
+    "title": "Dissipation Factor (Capacitor)",
+    "formula": "D = ESR \\cdot \\omega C = \\frac{1}{Q}",
+    "description": "Ratio of resistive to reactive impedance; reciprocal of Q"
+  },
+  {
+    "id": "ref-18",
+    "title": "Nyquist Sampling Rate",
+    "formula": "f_s > 2 \\cdot f_{max}",
+    "description": "Minimum sampling frequency to avoid aliasing"
+  },
+  {
+    "id": "ref-19",
+    "title": "Power in AC Circuit",
+    "formula": "P = V_{rms} \\cdot I_{rms} \\cdot \\cos\\phi",
+    "description": "Real power with power factor cos(phi)"
+  },
+  {
+    "id": "ref-20",
+    "title": "Combined Uncertainty",
+    "formula": "u_c = \\sqrt{\\sum_{i=1}^{n}\\left(\\frac{\\partial f}{\\partial x_i}\\right)^2 u^2(x_i)}",
+    "description": "Law of propagation of uncertainty for independent quantities"
+  }
+]

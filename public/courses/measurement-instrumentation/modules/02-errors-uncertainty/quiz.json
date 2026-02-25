@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q2-1",
+    "question": "A measurement error that causes all readings to be consistently 2% higher than the true value is classified as:",
+    "options": [
+      "Random error",
+      "Systematic error",
+      "Gross error",
+      "Statistical error"
+    ],
+    "correctIndex": 1,
+    "explanation": "Systematic errors are consistent, repeatable errors that cause measurements to deviate from the true value in a predictable direction. A consistent 2% high reading is a systematic error (bias)."
+  },
+  {
+    "id": "q2-2",
+    "question": "Which method is most effective for reducing the effect of random errors?",
+    "options": [
+      "Calibrating the instrument",
+      "Taking multiple measurements and averaging",
+      "Using a more expensive instrument",
+      "Adjusting the zero point"
+    ],
+    "correctIndex": 1,
+    "explanation": "Random errors are unpredictable variations that scatter measurements around the mean. Averaging multiple measurements reduces random errors because they tend to cancel out, with the standard error decreasing as 1/√n."
+  },
+  {
+    "id": "q2-3",
+    "question": "Five measurements of a voltage give: 5.02, 4.98, 5.01, 5.03, 4.96 V. What is the mean value?",
+    "options": [
+      "4.99 V",
+      "5.00 V",
+      "5.01 V",
+      "5.02 V"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mean = (5.02 + 4.98 + 5.01 + 5.03 + 4.96)/5 = 25.00/5 = 5.00 V"
+  },
+  {
+    "id": "q2-4",
+    "question": "For the data in question 3, if the standard deviation is 0.028 V, what is the standard error of the mean?",
+    "options": [
+      "0.0056 V",
+      "0.0125 V",
+      "0.028 V",
+      "0.063 V"
+    ],
+    "correctIndex": 1,
+    "explanation": "Standard error = s/√n = 0.028/√5 = 0.028/2.236 = 0.0125 V"
+  },
+  {
+    "id": "q2-5",
+    "question": "Power is calculated as P = V²/R. If V = 10.0 ± 0.1 V and R = 100 ± 2 Ω, which uncertainty contributes more to the uncertainty in P?",
+    "options": [
+      "The uncertainty in V contributes more",
+      "The uncertainty in R contributes more",
+      "They contribute equally",
+      "Cannot be determined"
+    ],
+    "correctIndex": 0,
+    "explanation": "For P = V²/R, the relative uncertainty from V is 2 × (0.1/10.0) = 2%, while from R it is 2/100 = 2%. They contribute equally because the power of V is 2, doubling its relative uncertainty contribution."
+  },
+  {
+    "id": "q2-6",
+    "question": "A 95% confidence interval means:",
+    "options": [
+      "95% of measurements fall within this interval",
+      "There is 95% probability the true value is in this interval",
+      "95% of such intervals from repeated experiments would contain the true value",
+      "The measurement is 95% accurate"
+    ],
+    "correctIndex": 2,
+    "explanation": "A 95% confidence interval means that if the measurement process were repeated many times, 95% of the calculated intervals would contain the true value. The true value is fixed; the interval varies with each experiment."
+  },
+  {
+    "id": "q2-7",
+    "question": "Type A uncertainty evaluation is based on:",
+    "options": [
+      "Manufacturer specifications",
+      "Statistical analysis of repeated measurements",
+      "Calibration certificates",
+      "Expert judgment"
+    ],
+    "correctIndex": 1,
+    "explanation": "Type A uncertainty is evaluated by statistical analysis of series of observations, typically using the standard deviation and standard error. Type B uses other sources like specifications and certificates."
+  },
+  {
+    "id": "q2-8",
+    "question": "If a specification states ±0.5% with 95% confidence, the standard uncertainty is approximately:",
+    "options": [
+      "0.5%",
+      "0.25%",
+      "1.0%",
+      "0.1%"
+    ],
+    "correctIndex": 1,
+    "explanation": "For a 95% confidence interval with a normal distribution, the standard uncertainty is obtained by dividing by the coverage factor k≈2. So standard uncertainty ≈ 0.5%/2 = 0.25%."
+  },
+  {
+    "id": "q2-9",
+    "question": "Gross errors are best described as:",
+    "options": [
+      "Small random variations in measurements",
+      "Consistent biases in all measurements",
+      "Large, obvious mistakes from human error or malfunction",
+      "Errors due to environmental factors"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gross errors are large, obvious mistakes that result from human error (reading wrong, recording wrong), equipment malfunction, or procedural failures. Unlike systematic and random errors, they can often be identified and eliminated."
+  },
+  {
+    "id": "q2-10",
+    "question": "When combining uncertainties from two independent sources with values 0.3 and 0.4, the combined standard uncertainty is:",
+    "options": [
+      "0.7",
+      "0.5",
+      "0.35",
+      "0.12"
+    ],
+    "correctIndex": 1,
+    "explanation": "Independent uncertainties combine in quadrature: u_c = √(0.3² + 0.4²) = √(0.09 + 0.16) = √0.25 = 0.5"
+  }
+]

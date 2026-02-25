@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the main limitation of two-wire resistance measurement?",
+    "options": [
+      "It cannot measure resistances above 1 MΩ",
+      "Lead resistance is included in the measurement result",
+      "It requires an external power source",
+      "It only works for AC signals"
+    ],
+    "correctAnswer": 1,
+    "explanation": "In two-wire measurement, the current-carrying leads also serve as voltage-sensing leads, so the lead resistance adds to the measured resistance value."
+  },
+  {
+    "id": "q2",
+    "question": "In a four-wire (Kelvin) measurement, how is the lead resistance error eliminated?",
+    "options": [
+      "By using thicker gauge wire",
+      "By separating current-carrying and voltage-sensing connections",
+      "By using a higher measurement current",
+      "By measuring at a lower temperature"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The four-wire method uses separate force leads for current and sense leads for voltage measurement. Since the voltmeter draws negligible current, there's no voltage drop across the sense leads."
+  },
+  {
+    "id": "q3",
+    "question": "A Wheatstone bridge is balanced when R1=100Ω, R2=200Ω, and R3=50Ω. What is the value of Rx?",
+    "options": [
+      "25 Ω",
+      "50 Ω",
+      "100 Ω",
+      "200 Ω"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Using the balance equation: Rx = R3 × R2/R1 = 50 × 200/100 = 100 Ω"
+  },
+  {
+    "id": "q4",
+    "question": "What does the Q factor represent for an inductor?",
+    "options": [
+      "The ratio of resistance to reactance",
+      "The ratio of stored energy to dissipated energy per cycle",
+      "The parasitic capacitance of the inductor",
+      "The temperature coefficient of inductance"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Q factor is defined as Q = 2π × Estored/Edissipated, representing the quality of the component in terms of its energy storage efficiency."
+  },
+  {
+    "id": "q5",
+    "question": "For a capacitor with parallel resistance Rp = 10 kΩ and reactance Xc = 1 kΩ at a given frequency, what is the dissipation factor?",
+    "options": [
+      "0.01",
+      "0.1",
+      "10",
+      "100"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Dissipation factor D = Xc/Rp = 1000/10000 = 0.1 (or alternatively D = 1/Q)"
+  },
+  {
+    "id": "q6",
+    "question": "What is the impedance of an ideal 10 μH inductor at 1 MHz?",
+    "options": [
+      "10 Ω",
+      "62.8 Ω",
+      "628 Ω",
+      "6.28 kΩ"
+    ],
+    "correctAnswer": 1,
+    "explanation": "ZL = ωL = 2πfL = 2π × 10^6 × 10 × 10^-6 = 62.8 Ω"
+  },
+  {
+    "id": "q7",
+    "question": "Why might an LCR meter give different capacitance values at different test frequencies?",
+    "options": [
+      "The measurement accuracy varies with frequency",
+      "Capacitor parameters are inherently frequency-dependent due to ESR, dielectric absorption, and parasitic inductance",
+      "Higher frequencies always give higher capacitance readings",
+      "The test voltage changes with frequency"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Real capacitors have frequency-dependent behavior due to equivalent series resistance (ESR), dielectric absorption, and parasitic inductance, causing measured values to vary with test frequency."
+  },
+  {
+    "id": "q8",
+    "question": "What is the relationship between Q factor and bandwidth in a resonant circuit?",
+    "options": [
+      "Q = BW / f₀",
+      "Q = f₀ / BW",
+      "Q = f₀ × BW",
+      "Q = 1 / (f₀ × BW)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Q factor equals the resonant frequency divided by the -3 dB bandwidth: Q = f₀/BW. Higher Q means narrower bandwidth."
+  },
+  {
+    "id": "q9",
+    "question": "What is the primary purpose of open/short compensation in LCR meter measurements?",
+    "options": [
+      "To increase the measurement speed",
+      "To remove the effects of test fixture and cable parasitics",
+      "To extend the measurement frequency range",
+      "To protect the instrument from overload"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Open/short compensation measures and subtracts the parasitic impedance of the test fixture and cables, improving measurement accuracy."
+  },
+  {
+    "id": "q10",
+    "question": "If a two-wire resistance measurement shows 1.20 Ω with lead resistance of 0.05 Ω each, what is the true resistance value?",
+    "options": [
+      "1.10 Ω",
+      "1.15 Ω",
+      "1.20 Ω",
+      "1.30 Ω"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The measured value includes both leads: Rmeasured = Rtrue + 2Rlead. Therefore, Rtrue = 1.20 - 2(0.05) = 1.10 Ω"
+  }
+]

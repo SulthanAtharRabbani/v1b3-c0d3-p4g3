@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q3-1",
+    "question": "What is the primary purpose of calibration?",
+    "options": [
+      "To adjust an instrument to read correctly",
+      "To determine the relationship between indicated and true values",
+      "To repair a damaged instrument",
+      "To increase the sensitivity of an instrument"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration determines how an instrument's readings compare to reference values. It documents the relationship between indicated and true values. Adjustment may follow calibration, but calibration itself is a measurement process."
+  },
+  {
+    "id": "q3-2",
+    "question": "What is the key difference between calibration and adjustment?",
+    "options": [
+      "Calibration is more expensive than adjustment",
+      "Calibration documents performance; adjustment modifies the instrument",
+      "Adjustment is required annually; calibration is optional",
+      "Adjustment is for new instruments; calibration is for old ones"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration is the process of determining how readings compare to reference values—it documents current performance. Adjustment is the process of modifying the instrument to reduce errors. An instrument can be calibrated without being adjusted."
+  },
+  {
+    "id": "q3-3",
+    "question": "What does traceability ensure?",
+    "options": [
+      "That measurements are always perfect",
+      "That instruments never need recalibration",
+      "That measurements can be linked to primary standards through an unbroken chain",
+      "That calibration is free"
+    ],
+    "correctIndex": 2,
+    "explanation": "Traceability is the unbroken chain of comparisons linking a measurement to a primary standard. Each link has documented uncertainty, enabling the total uncertainty to be determined and measurements to be comparable."
+  },
+  {
+    "id": "q3-4",
+    "question": "Primary standards are maintained by:",
+    "options": [
+      "Local hardware stores",
+      "National Metrology Institutes (NMIs)",
+      "Individual calibration laboratories",
+      "Manufacturing companies"
+    ],
+    "correctIndex": 1,
+    "explanation": "National Metrology Institutes (NMIs) like NIST, NPL, and PTB maintain primary standards. These have the highest metrological quality and are used to calibrate secondary standards."
+  },
+  {
+    "id": "q3-5",
+    "question": "What is the recommended Test Uncertainty Ratio (TUR) for calibration?",
+    "options": [
+      "1:1",
+      "2:1",
+      "4:1 or better",
+      "10:1 or better"
+    ],
+    "correctIndex": 2,
+    "explanation": "A Test Uncertainty Ratio (TUR) of 4:1 or better is typically recommended. This means the uncertainty of the standard should be at least 4 times smaller than the accuracy required of the instrument under test."
+  },
+  {
+    "id": "q3-6",
+    "question": "Which standard would be used for routine calibration of measuring instruments?",
+    "options": [
+      "Primary standard",
+      "Secondary standard",
+      "Working standard",
+      "Transfer standard"
+    ],
+    "correctIndex": 2,
+    "explanation": "Working standards are used for routine calibration of measuring instruments. They are calibrated against secondary standards and are practical for everyday use."
+  },
+  {
+    "id": "q3-7",
+    "question": "ISO/IEC 17025 accreditation for a calibration laboratory demonstrates:",
+    "options": [
+      "The laboratory is the cheapest option",
+      "Technical competence and proper quality management",
+      "The laboratory is government-owned",
+      "The laboratory only calibrates new instruments"
+    ],
+    "correctIndex": 1,
+    "explanation": "ISO/IEC 17025 accreditation demonstrates that a calibration laboratory has technical competence, a proper quality management system, traceability to national standards, and valid uncertainty calculations."
+  },
+  {
+    "id": "q3-8",
+    "question": "Factors affecting calibration intervals include:",
+    "options": [
+      "Only the cost of calibration",
+      "Instrument type, usage intensity, criticality, and historical data",
+      "Only regulatory requirements",
+      "The color of the instrument"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration intervals depend on multiple factors: instrument type (some drift faster), usage intensity (heavy use requires more calibration), criticality of measurements, historical stability data, and manufacturer recommendations."
+  },
+  {
+    "id": "q3-9",
+    "question": "When should an instrument be calibrated?",
+    "options": [
+      "Only when it breaks",
+      "Only when it is new",
+      "At regular intervals and after events that may affect accuracy",
+      "Only when required by law"
+    ],
+    "correctIndex": 2,
+    "explanation": "Instruments should be calibrated at regular intervals and also when new, after repair or adjustment, after shock or damage, before critical measurements, and when measurements seem incorrect."
+  },
+  {
+    "id": "q3-10",
+    "question": "What should a calibration certificate include?",
+    "options": [
+      "Only the instrument serial number",
+      "Measurement results, uncertainties, standards used, and traceability information",
+      "Only the price of calibration",
+      "Only the date of calibration"
+    ],
+    "correctIndex": 1,
+    "explanation": "A proper calibration certificate includes measurement results, uncertainties, identification of standards used, environmental conditions, traceability information, and other data needed to establish the validity of the calibration."
+  }
+]

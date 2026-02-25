@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the primary function of the vertical deflection system in an oscilloscope?",
+    "options": [
+      "To generate the time base for horizontal sweep",
+      "To process and scale the input signal for amplitude display",
+      "To synchronize the display with the input signal",
+      "To store the waveform data in digital memory"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The vertical deflection system processes the input signal through attenuators and amplifiers to scale it appropriately for display on the screen."
+  },
+  {
+    "id": "q2",
+    "question": "In oscilloscope triggering, what does the 'trigger level' control?",
+    "options": [
+      "The amplitude of the displayed signal",
+      "The voltage at which the sweep begins",
+      "The time per division setting",
+      "The number of samples taken per second"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The trigger level sets the voltage threshold at which the horizontal sweep begins, ensuring stable waveform display."
+  },
+  {
+    "id": "q3",
+    "question": "According to the Nyquist criterion, what is the minimum sampling frequency required to accurately capture a 100 MHz signal?",
+    "options": [
+      "100 MHz",
+      "150 MHz",
+      "200 MHz",
+      "400 MHz"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The Nyquist criterion requires the sampling frequency to be at least 2× the highest frequency component. For 100 MHz, this means f_s ≥ 200 MHz."
+  },
+  {
+    "id": "q4",
+    "question": "What is the relationship between bandwidth (BW) and rise time (t_r) for a first-order system?",
+    "options": [
+      "BW = t_r / 0.35",
+      "BW = 0.35 / t_r",
+      "BW = 0.35 × t_r",
+      "BW = 1 / t_r"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The bandwidth-rise time relationship for a first-order system is BW = 0.35/tr, where bandwidth is in Hz and rise time is in seconds."
+  },
+  {
+    "id": "q5",
+    "question": "What phenomenon occurs when the sampling rate is too low relative to the signal frequency?",
+    "options": [
+      "Quantization error",
+      "Aliasing",
+      "Trigger instability",
+      "Vertical saturation"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Aliasing occurs when the sampling rate violates the Nyquist criterion, causing high-frequency signal components to appear as lower frequencies in the sampled data."
+  },
+  {
+    "id": "q6",
+    "question": "An oscilloscope has 8-bit vertical resolution and a full-scale range of 10V. What is the theoretical resolution?",
+    "options": [
+      "10 mV",
+      "25 mV",
+      "39 mV",
+      "78 mV"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Resolution = Full Scale / 2^n = 10V / 256 = 39 mV for an 8-bit ADC."
+  },
+  {
+    "id": "q7",
+    "question": "What is the advantage of AC coupling on an oscilloscope input?",
+    "options": [
+      "It increases the input impedance",
+      "It blocks the DC component and displays only AC variations",
+      "It improves the trigger stability",
+      "It increases the bandwidth"
+    ],
+    "correctAnswer": 1,
+    "explanation": "AC coupling uses a series capacitor to block the DC component, allowing examination of small AC signals riding on large DC offsets."
+  },
+  {
+    "id": "q8",
+    "question": "If a DSO has a sample rate of 1 GSa/s and memory depth of 10 Mpoints, how long is the maximum capture time?",
+    "options": [
+      "1 ms",
+      "10 ms",
+      "100 ms",
+      "1 second"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Capture Time = Memory Depth / Sample Rate = 10 Mpoints / 1 GSa/s = 10 milliseconds."
+  },
+  {
+    "id": "q9",
+    "question": "For measuring a signal with 10 ns rise time, what minimum oscilloscope bandwidth is recommended for accurate results?",
+    "options": [
+      "35 MHz",
+      "70 MHz",
+      "350 MHz",
+      "1 GHz"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Using BW = 0.35/tr = 0.35/10ns = 35 MHz. For minimal error, the scope bandwidth should be at least this value, ideally 3× higher."
+  },
+  {
+    "id": "q10",
+    "question": "What is the purpose of the trigger holdoff function in an oscilloscope?",
+    "options": [
+      "To prevent triggering on the wrong edge of complex waveforms",
+      "To delay the start of the horizontal sweep",
+      "To filter noise from the trigger signal",
+      "To adjust the trigger sensitivity"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Trigger holdoff adds a delay after each sweep before the trigger can fire again, preventing multiple triggers on complex waveforms with multiple edges per cycle."
+  }
+]

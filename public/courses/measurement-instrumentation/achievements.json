@@ -1,0 +1,156 @@
+[
+  {
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson in the Measurement and Instrumentation course",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
+  },
+  {
+    "id": "foundation-builder",
+    "title": "Foundation Builder",
+    "description": "Complete Module 1: Foundations of Measurement",
+    "icon": "Building",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "01-foundations"
+  },
+  {
+    "id": "error-expert",
+    "title": "Error Expert",
+    "description": "Complete Module 2: Errors and Uncertainty in Measurement",
+    "icon": "Target",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "02-errors-uncertainty"
+  },
+  {
+    "id": "calibration-master",
+    "title": "Calibration Master",
+    "description": "Complete Module 3: Calibration of Measuring Instruments",
+    "icon": "Settings",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "03-calibration"
+  },
+  {
+    "id": "dc-specialist",
+    "title": "DC Specialist",
+    "description": "Complete Module 4: DC Measuring Instruments",
+    "icon": "Zap",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "04-dc-instruments"
+  },
+  {
+    "id": "ac-specialist",
+    "title": "AC Specialist",
+    "description": "Complete Module 5: AC Measuring Instruments",
+    "icon": "Waveform",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "05-ac-instruments"
+  },
+  {
+    "id": "oscilloscope-operator",
+    "title": "Oscilloscope Operator",
+    "description": "Complete Module 6: The Oscilloscope",
+    "icon": "Monitor",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "06-oscilloscope"
+  },
+  {
+    "id": "component-measurer",
+    "title": "Component Measurer",
+    "description": "Complete Module 7: Measurement of Electrical Components",
+    "icon": "Cpu",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "07-electrical-components"
+  },
+  {
+    "id": "noise-analyst",
+    "title": "Noise Analyst",
+    "description": "Complete Module 8: Noise in Measurement Systems",
+    "icon": "Radio",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "08-noise"
+  },
+  {
+    "id": "interface-engineer",
+    "title": "Interface Engineer",
+    "description": "Complete Module 9: Digital Interfaces in Measurement Systems",
+    "icon": "Cable",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "09-digital-interfaces"
+  },
+  {
+    "id": "data-specialist",
+    "title": "Data Specialist",
+    "description": "Complete Module 10: Display, Recording, and Data Representation",
+    "icon": "Database",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "10-display-recording"
+  },
+  {
+    "id": "halfway-there",
+    "title": "Halfway There",
+    "description": "Complete 50% of the course lessons",
+    "icon": "TrendingUp",
+    "type": "course",
+    "requirement": "complete-50"
+  },
+  {
+    "id": "quiz-ace",
+    "title": "Quiz Ace",
+    "description": "Score 100% on any module quiz",
+    "icon": "Award",
+    "type": "quiz",
+    "requirement": "score-100"
+  },
+  {
+    "id": "quiz-consistency",
+    "title": "Quiz Consistency",
+    "description": "Score 80% or higher on all module quizzes",
+    "icon": "Star",
+    "type": "quiz",
+    "requirement": "score-80-all"
+  },
+  {
+    "id": "note-taker",
+    "title": "Note Taker",
+    "description": "Create your first personal note",
+    "icon": "FileText",
+    "type": "custom",
+    "requirement": "first-note"
+  },
+  {
+    "id": "flashcard-reviewer",
+    "title": "Flashcard Reviewer",
+    "description": "Review all flashcards in the deck",
+    "icon": "Layers",
+    "type": "custom",
+    "requirement": "review-all-flashcards"
+  },
+  {
+    "id": "quick-reference-user",
+    "title": "Quick Reference User",
+    "description": "Access the quick reference formulas",
+    "icon": "BookOpen",
+    "type": "custom",
+    "requirement": "use-quick-reference"
+  },
+  {
+    "id": "course-graduate",
+    "title": "Course Graduate",
+    "description": "Complete all lessons in the Measurement and Instrumentation course",
+    "icon": "GraduationCap",
+    "type": "course",
+    "requirement": "complete-all"
+  }
+]
