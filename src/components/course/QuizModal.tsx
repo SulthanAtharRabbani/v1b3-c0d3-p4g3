@@ -68,8 +68,11 @@ export function QuizModal({ course, module, questions, open, onClose }: QuizModa
   const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex((prev) => prev + 1);
-      setSelectedOption(answers[currentIndex + 1] ?? null);
-      setShowResult(answers[currentIndex + 1] !== null);
+      // Only restore answer if it exists in the answers array
+      const nextAnswer = answers[currentIndex + 1];
+      const hasNextAnswer = nextAnswer !== undefined;
+      setSelectedOption(hasNextAnswer ? nextAnswer : null);
+      setShowResult(hasNextAnswer);
     } else {
       // Quiz finished
       const finalScore = Math.round((correctCount / questions.length) * 100);
