@@ -1,0 +1,112 @@
+[
+  {
+    "question": "What is the effect of the operation y(t) = x(t) + 5?",
+    "options": [
+      "Signal is amplified by factor 5",
+      "Signal is shifted up by 5 units (DC offset added)",
+      "Signal is delayed by 5 seconds",
+      "Signal is compressed by factor 5"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Adding a constant to a signal shifts it vertically (adds DC offset). All amplitude values increase by 5."
+  },
+  {
+    "question": "For y(t) = x(2t), what happens to the signal?",
+    "options": [
+      "Signal is shifted right by 2",
+      "Signal is shifted left by 2",
+      "Signal is compressed by factor 2 (duration halved)",
+      "Signal is expanded by factor 2 (duration doubled)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Time scaling with factor a > 1 compresses the signal. The signal duration becomes T/a = T/2, where T is the original duration."
+  },
+  {
+    "question": "What is the phase shift equivalent of a time delay of 0.5 ms for a 1 kHz sinusoid?",
+    "options": [
+      "π radians",
+      "π/2 radians",
+      "π/4 radians",
+      "2π radians"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Phase shift φ = ω × t₀ = 2πf × t₀ = 2π(1000)(0.5×10⁻³) = π radians."
+  },
+  {
+    "question": "For y(t) = x(t - 3), the signal is:",
+    "options": [
+      "Advanced by 3 (shifts left)",
+      "Delayed by 3 (shifts right)",
+      "Compressed by factor 3",
+      "Reversed about the vertical axis"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A positive shift in the argument (t - 3) causes a delay, shifting the signal to the right on the time axis."
+  },
+  {
+    "question": "If x(t) = 3cos(2πt + π/4), what is the period of the signal?",
+    "options": [
+      "2π seconds",
+      "π/4 seconds",
+      "1 second",
+      "3 seconds"
+    ],
+    "correctAnswer": 2,
+    "explanation": "From the expression, ω₀ = 2π rad/s. Period T₀ = 2π/ω₀ = 2π/2π = 1 second."
+  },
+  {
+    "question": "What is the result of the time reversal operation y(t) = x(-t)?",
+    "options": [
+      "Signal is shifted right",
+      "Signal is compressed",
+      "Signal is reflected about the vertical axis",
+      "Signal amplitude is inverted"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Time reversal flips the time axis. What was at t = +a moves to t = -a, reflecting the signal horizontally about t = 0."
+  },
+  {
+    "question": "The operation y(t) = -2x(t) represents:",
+    "options": [
+      "Signal delayed by 2 and inverted",
+      "Signal amplified by 2 and inverted (phase reversal)",
+      "Signal compressed by factor 2",
+      "Signal shifted down by 2"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Amplitude scaling by -2 means the signal is amplified by factor 2 (doubled in magnitude) and inverted (multiplied by -1)."
+  },
+  {
+    "question": "For the sinusoid x(t) = 5sin(10πt), what is the RMS value?",
+    "options": [
+      "5",
+      "5/√2",
+      "5√2",
+      "10"
+    ],
+    "correctAnswer": 1,
+    "explanation": "For a sinusoid with amplitude A, the RMS value is A/√2 = 5/√2 ≈ 3.54."
+  },
+  {
+    "question": "According to Euler's formula, cos(θ) equals:",
+    "options": [
+      "(e^jθ - e^-jθ)/2j",
+      "(e^jθ + e^-jθ)/2",
+      "e^jθ + e^-jθ",
+      "(e^jθ - e^-jθ)/2"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Euler's formula gives: cos(θ) = (e^jθ + e^-jθ)/2, which is the real part of e^jθ."
+  },
+  {
+    "question": "For y(t) = x(-t + 2), what operations are performed (in order)?",
+    "options": [
+      "Shift right by 2, then reverse",
+      "Shift left by 2, then reverse",
+      "Reverse, then shift right by 2",
+      "Reverse, then shift left by 2"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Rewrite as y(t) = x(-(t-2)). First reverse (the -t), then shift right by 2 (the t-2 becomes t after reversal means right shift)."
+  }
+]

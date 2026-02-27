@@ -1,0 +1,112 @@
+[
+  {
+    "question": "A linear system must satisfy which two properties?",
+    "options": [
+      "Causality and stability",
+      "Homogeneity and additivity",
+      "Time-invariance and causality",
+      "Memory and invertibility"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Linearity requires both homogeneity (scaling) and additivity (superposition) properties to be satisfied."
+  },
+  {
+    "question": "If a system is linear, then for inputs ax₁(t) and bx₂(t), the output is:",
+    "options": [
+      "a·y₁(t) + b·y₂(t)",
+      "y₁(t) + y₂(t)",
+      "a·b·y₁(t)·y₂(t)",
+      "(a+b)·y₁(t)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The superposition principle states that the response to ax₁(t) + bx₂(t) equals ay₁(t) + by₂(t)."
+  },
+  {
+    "question": "Which of the following systems is nonlinear?",
+    "options": [
+      "y(t) = 3x(t)",
+      "y(t) = dx(t)/dt",
+      "y(t) = x²(t)",
+      "y(t) = x(t - 5)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The system y(t) = x²(t) is nonlinear because squaring does not satisfy the superposition principle."
+  },
+  {
+    "question": "A time-invariant system satisfies:",
+    "options": [
+      "x(t) → y(t) implies x(t-t₀) → y(t)",
+      "x(t) → y(t) implies x(t-t₀) → y(t-t₀)",
+      "x(t) → y(t) implies x(t) → y(t-t₀)",
+      "x(t) → y(t) implies ax(t) → ay(t)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Time-invariance means that delaying the input by t₀ produces the same output delayed by t₀."
+  },
+  {
+    "question": "Which system is time-varying?",
+    "options": [
+      "y(t) = 5x(t)",
+      "y(t) = x(t)·cos(ωt)",
+      "y(t) = x(t-3)",
+      "y(t) = ∫x(τ)dτ"
+    ],
+    "correctAnswer": 1,
+    "explanation": "y(t) = x(t)·cos(ωt) is time-varying because the carrier cos(ωt) explicitly depends on time."
+  },
+  {
+    "question": "The impulse response h(t) of an LTI system is defined as:",
+    "options": [
+      "The output when input is a unit step",
+      "The output when input is a Dirac delta",
+      "The input when output is a unit impulse",
+      "The transfer function of the system"
+    ],
+    "correctAnswer": 1,
+    "explanation": "By definition, impulse response is the output of a system when the input is δ(t)."
+  },
+  {
+    "question": "A causal LTI system has impulse response that satisfies:",
+    "options": [
+      "h(t) = 0 for t > 0",
+      "h(t) = 0 for t < 0",
+      "h(t) = 0 for all t",
+      "h(t) ≠ 0 for all t"
+    ],
+    "correctAnswer": 1,
+    "explanation": "For a causal system, the impulse response is zero for negative time (before the impulse is applied)."
+  },
+  {
+    "question": "The sifting property of the Dirac delta function states:",
+    "options": [
+      "∫x(t)δ(t)dt = 1",
+      "∫x(t)δ(t-t₀)dt = x(t₀)",
+      "∫δ(t)dt = 0",
+      "∫x(t)δ(t)dt = x(0)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The sifting property: ∫x(t)δ(t-t₀)dt = x(t₀), which extracts the value of x(t) at t = t₀."
+  },
+  {
+    "question": "For a BIBO stable LTI system, the impulse response must satisfy:",
+    "options": [
+      "∫|h(t)|dt = 0",
+      "∫|h(t)|dt = ∞",
+      "∫|h(t)|dt < ∞",
+      "h(t) = 0 for t < 0"
+    ],
+    "correctAnswer": 2,
+    "explanation": "BIBO stability requires the impulse response to be absolutely integrable: ∫|h(t)|dt < ∞."
+  },
+  {
+    "question": "Which of the following is an LTI system?",
+    "options": [
+      "y(t) = x(t)·sin(t)",
+      "y(t) = x³(t)",
+      "y(t) = 2x(t) + 3∫x(τ)dτ",
+      "y(t) = x(t) + t"
+    ],
+    "correctAnswer": 2,
+    "explanation": "y(t) = 2x(t) + 3∫x(τ)dτ is both linear (satisfies superposition) and time-invariant (no explicit time dependence)."
+  }
+]

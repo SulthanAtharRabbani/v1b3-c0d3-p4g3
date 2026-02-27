@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q10-1",
+    "question": "The frequency response H(ω) of an LTI system is defined as:",
+    "options": [
+      "H(ω) = X(ω)/Y(ω)",
+      "H(ω) = Y(ω)/X(ω)",
+      "H(ω) = X(ω) · Y(ω)",
+      "H(ω) = X(ω) + Y(ω)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Frequency response is the ratio of output spectrum to input spectrum: H(ω) = Y(ω)/X(ω). It characterizes how the system transforms each frequency component."
+  },
+  {
+    "id": "q10-2",
+    "question": "The frequency response H(ω) equals the Fourier transform of:",
+    "options": [
+      "Input signal x(t)",
+      "Output signal y(t)",
+      "Impulse response h(t)",
+      "Step response s(t)"
+    ],
+    "correctIndex": 2,
+    "explanation": "H(ω) = F{h(t)}. The frequency response is the Fourier transform of the impulse response, providing equivalent system characterization in frequency domain."
+  },
+  {
+    "id": "q10-3",
+    "question": "A low-pass filter:",
+    "options": [
+      "Passes high frequencies, attenuates low frequencies",
+      "Passes low frequencies, attenuates high frequencies",
+      "Passes all frequencies equally",
+      "Blocks all frequencies"
+    ],
+    "correctIndex": 1,
+    "explanation": "A low-pass filter allows low-frequency components to pass through while attenuating high-frequency components. It's commonly used for noise reduction."
+  },
+  {
+    "id": "q10-4",
+    "question": "In the frequency domain, the output Y(ω) is:",
+    "options": [
+      "Y(ω) = H(ω) + X(ω)",
+      "Y(ω) = H(ω) - X(ω)",
+      "Y(ω) = H(ω) · X(ω)",
+      "Y(ω) = H(ω) / X(ω)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Y(ω) = H(ω) · X(ω). Convolution in time domain (y = x * h) becomes multiplication in frequency domain. This simplifies system analysis."
+  },
+  {
+    "id": "q10-5",
+    "question": "The cutoff frequency of an RC low-pass filter is:",
+    "options": [
+      "ωc = RC",
+      "ωc = 1/(RC)",
+      "ωc = R + C",
+      "ωc = R/C"
+    ],
+    "correctIndex": 1,
+    "explanation": "The cutoff frequency ωc = 1/(RC) = 1/τ, where τ is the time constant. At this frequency, |H(ω)| = 1/√2 ≈ 0.707 (the -3dB point)."
+  },
+  {
+    "id": "q10-6",
+    "question": "A band-pass filter passes frequencies:",
+    "options": [
+      "Above a certain frequency",
+      "Below a certain frequency",
+      "Within a specific range",
+      "Outside a specific range"
+    ],
+    "correctIndex": 2,
+    "explanation": "A band-pass filter passes frequencies within a specific range (bandwidth) and attenuates frequencies outside this range. Used in radio tuning and signal extraction."
+  },
+  {
+    "id": "q10-7",
+    "question": "The magnitude response shows:",
+    "options": [
+      "Phase shift at each frequency",
+      "Gain at each frequency",
+      "Time delay at each frequency",
+      "Energy at each frequency"
+    ],
+    "correctIndex": 1,
+    "explanation": "The magnitude response |H(ω)| shows the gain (amplification factor) at each frequency. Values > 1 indicate gain; values < 1 indicate attenuation."
+  },
+  {
+    "id": "q10-8",
+    "question": "In a Bode plot, magnitude is expressed in:",
+    "options": [
+      "Volts",
+      "Watts",
+      "Decibels (dB)",
+      "Hertz"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bode magnitude plots use dB = 20 log₁₀|H(ω)|. This logarithmic scale conveniently displays wide ranges of magnitude values."
+  },
+  {
+    "id": "q10-9",
+    "question": "An ideal filter has:",
+    "options": [
+      "Gradual transition between passband and stopband",
+      "Zero gain in passband",
+      "Sharp cutoff at the cutoff frequency",
+      "Nonlinear phase response"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ideal filters have perfectly sharp cutoffs (instant transition from passband to stopband). Practical filters have transition bands, making them realizable."
+  },
+  {
+    "id": "q10-10",
+    "question": "At the -3dB point, the magnitude response equals:",
+    "options": [
+      "1",
+      "0.707",
+      "0.5",
+      "0"
+    ],
+    "correctIndex": 1,
+    "explanation": "At -3dB, the magnitude equals 1/√2 ≈ 0.707. This is also called the half-power point since power is proportional to magnitude squared."
+  }
+]

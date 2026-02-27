@@ -1,0 +1,154 @@
+[
+  {
+    "id": "first-steps",
+    "title": "First Steps",
+    "description": "Complete your first lesson in Signal and System 2025",
+    "icon": "Footprints",
+    "type": "lesson",
+    "requirement": "complete-first"
+  },
+  {
+    "id": "signal-fundamentals",
+    "title": "Signal Fundamentals",
+    "description": "Complete Module 1: Introduction to Signals and Systems",
+    "icon": "Waveform",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "01-introduction"
+  },
+  {
+    "id": "sampling-expert",
+    "title": "Sampling Expert",
+    "description": "Complete Module 2: Sampling and Quantization",
+    "icon": "Sampler",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "02-sampling-quantization"
+  },
+  {
+    "id": "signal-operator",
+    "title": "Signal Operator",
+    "description": "Complete Module 3: Signal Operations",
+    "icon": "Settings",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "03-signal-operations"
+  },
+  {
+    "id": "energy-power-master",
+    "title": "Energy & Power Master",
+    "description": "Complete Module 4: Energy and Power Signals",
+    "icon": "Zap",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "04-energy-power"
+  },
+  {
+    "id": "lti-specialist",
+    "title": "LTI Specialist",
+    "description": "Complete Module 5: Linear Time-Invariant Systems",
+    "icon": "Cpu",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "05-lti-systems"
+  },
+  {
+    "id": "convolution-pro",
+    "title": "Convolution Pro",
+    "description": "Complete Module 6: Convolution",
+    "icon": "Sigma",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "06-convolution"
+  },
+  {
+    "id": "fourier-analyst",
+    "title": "Fourier Analyst",
+    "description": "Complete Modules 7-9: Fourier Analysis",
+    "icon": "Activity",
+    "type": "custom",
+    "requirement": "complete-fourier-modules"
+  },
+  {
+    "id": "system-analyst",
+    "title": "System Analyst",
+    "description": "Complete Module 10: System Analysis with Fourier Transform",
+    "icon": "Network",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "10-system-analysis"
+  },
+  {
+    "id": "applications-engineer",
+    "title": "Applications Engineer",
+    "description": "Complete Module 11: Applications",
+    "icon": "Radio",
+    "type": "module",
+    "requirement": "complete-module",
+    "moduleId": "11-applications"
+  },
+  {
+    "id": "halfway-there",
+    "title": "Halfway There",
+    "description": "Complete 50% of the course lessons",
+    "icon": "TrendingUp",
+    "type": "course",
+    "requirement": "complete-50"
+  },
+  {
+    "id": "quiz-ace",
+    "title": "Quiz Ace",
+    "description": "Score 100% on any module quiz",
+    "icon": "Award",
+    "type": "quiz",
+    "requirement": "score-100"
+  },
+  {
+    "id": "consistent-scorer",
+    "title": "Consistent Scorer",
+    "description": "Score 80% or higher on all module quizzes",
+    "icon": "Star",
+    "type": "quiz",
+    "requirement": "score-80-all"
+  },
+  {
+    "id": "note-taker",
+    "title": "Note Taker",
+    "description": "Create your first personal note",
+    "icon": "FileText",
+    "type": "custom",
+    "requirement": "first-note"
+  },
+  {
+    "id": "flashcard-reviewer",
+    "title": "Flashcard Reviewer",
+    "description": "Review all flashcards in the deck",
+    "icon": "Layers",
+    "type": "custom",
+    "requirement": "review-all-flashcards"
+  },
+  {
+    "id": "formula-master",
+    "title": "Formula Master",
+    "description": "Access the quick reference formulas",
+    "icon": "BookOpen",
+    "type": "custom",
+    "requirement": "use-quick-reference"
+  },
+  {
+    "id": "nyquist-expert",
+    "title": "Nyquist Expert",
+    "description": "Correctly answer all sampling theory quiz questions",
+    "icon": "Target",
+    "type": "custom",
+    "requirement": "perfect-sampling-quiz"
+  },
+  {
+    "id": "course-graduate",
+    "title": "Course Graduate",
+    "description": "Complete all lessons in Signal and System 2025",
+    "icon": "GraduationCap",
+    "type": "course",
+    "requirement": "complete-all"
+  }
+]

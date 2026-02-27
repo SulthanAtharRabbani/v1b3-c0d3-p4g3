@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q11-1",
+    "question": "In amplitude modulation, the carrier signal is typically:",
+    "options": [
+      "A low-frequency signal",
+      "A high-frequency sinusoidal signal",
+      "A random noise signal",
+      "A DC signal"
+    ],
+    "correctIndex": 1,
+    "explanation": "The carrier in AM is a high-frequency sinusoidal signal c(t) = Ac·cos(ωct). Its frequency is much higher than the message signal frequencies."
+  },
+  {
+    "id": "q11-2",
+    "question": "The AM signal spectrum consists of:",
+    "options": [
+      "Only the carrier frequency",
+      "Carrier and one sideband",
+      "Carrier and two sidebands (USB and LSB)",
+      "Only sidebands"
+    ],
+    "correctIndex": 2,
+    "explanation": "AM spectrum has the carrier at ±ωc and two sidebands: upper sideband (USB) above carrier and lower sideband (LSB) below carrier. Both sidebands carry the same information."
+  },
+  {
+    "id": "q11-3",
+    "question": "The bandwidth required for AM is:",
+    "options": [
+      "Equal to message bandwidth",
+      "Twice the message bandwidth",
+      "Half the message bandwidth",
+      "Independent of message bandwidth"
+    ],
+    "correctIndex": 1,
+    "explanation": "AM bandwidth B = 2W, where W is the message bandwidth. The spectrum extends from (fc-W) to (fc+W), spanning twice the original message bandwidth."
+  },
+  {
+    "id": "q11-4",
+    "question": "The modulation index for AM should be:",
+    "options": [
+      "Greater than 1",
+      "Between 0 and 1",
+      "Exactly 1",
+      "Negative"
+    ],
+    "correctIndex": 1,
+    "explanation": "For proper envelope detection, μ should be between 0 and 1. If μ > 1, overmodulation occurs causing distortion and inability to recover the message by envelope detection."
+  },
+  {
+    "id": "q11-5",
+    "question": "Demodulation is the process of:",
+    "options": [
+      "Modulating the signal",
+      "Recovering the original message from the modulated signal",
+      "Amplifying the carrier",
+      "Generating sidebands"
+    ],
+    "correctIndex": 1,
+    "explanation": "Demodulation extracts the original message signal from the modulated carrier. It's the reverse of modulation, essential for communication receivers."
+  },
+  {
+    "id": "q11-6",
+    "question": "An anti-aliasing filter is used:",
+    "options": [
+      "After sampling",
+      "Before sampling",
+      "During quantization",
+      "After reconstruction"
+    ],
+    "correctIndex": 1,
+    "explanation": "Anti-aliasing filter (low-pass) is applied before sampling to limit signal bandwidth to less than fs/2, preventing aliasing distortion in the sampled signal."
+  },
+  {
+    "id": "q11-7",
+    "question": "The purpose of a reconstruction filter is:",
+    "options": [
+      "To remove noise",
+      "To convert discrete samples back to continuous signal",
+      "To compress the signal",
+      "To modulate the signal"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reconstruction (interpolation) filter converts discrete samples back to continuous-time signal by removing spectral images and smoothing the staircase output from DAC."
+  },
+  {
+    "id": "q11-8",
+    "question": "Double-sideband suppressed carrier (DSB-SC) differs from AM in that:",
+    "options": [
+      "DSB-SC has wider bandwidth",
+      "DSB-SC has no carrier component",
+      "DSB-SC has better noise immunity",
+      "DSB-SC uses single sideband"
+    ],
+    "correctIndex": 1,
+    "explanation": "DSB-SC suppresses the carrier component, transmitting only sidebands. This saves power (carrier wastes ~2/3 of AM power) but requires coherent detection for demodulation."
+  },
+  {
+    "id": "q11-9",
+    "question": "A band-pass filter is used in radio receivers to:",
+    "options": [
+      "Remove all signals",
+      "Select the desired station frequency",
+      "Amplify all frequencies equally",
+      "Generate carrier signals"
+    ],
+    "correctIndex": 1,
+    "explanation": "Band-pass filters in receivers select the desired station by passing its frequency band while rejecting other stations. This is essential for tuning."
+  },
+  {
+    "id": "q11-10",
+    "question": "The main advantage of single-sideband (SSB) modulation is:",
+    "options": [
+      "Simpler receiver design",
+      "Half the bandwidth of AM or DSB",
+      "Better audio quality",
+      "Higher carrier power"
+    ],
+    "correctIndex": 1,
+    "explanation": "SSB transmits only one sideband, requiring half the bandwidth of AM or DSB-SC (B = W instead of 2W). This doubles spectrum efficiency for communication systems."
+  }
+]

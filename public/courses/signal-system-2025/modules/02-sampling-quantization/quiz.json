@@ -1,0 +1,112 @@
+[
+  {
+    "question": "According to the Nyquist-Shannon sampling theorem, what is the minimum sampling rate for a signal with maximum frequency f_max?",
+    "options": [
+      "f_max",
+      "2 × f_max",
+      "f_max / 2",
+      "π × f_max"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Nyquist rate is 2 × f_max. To perfectly reconstruct a band-limited signal, the sampling frequency must be greater than twice the maximum frequency component."
+  },
+  {
+    "question": "What is the Nyquist frequency when sampling at 48 kHz?",
+    "options": [
+      "48 kHz",
+      "24 kHz",
+      "96 kHz",
+      "12 kHz"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The Nyquist frequency is half the sampling frequency: f_N = f_s/2 = 48/2 = 24 kHz."
+  },
+  {
+    "question": "A signal with bandwidth 15 kHz is sampled at 20 kHz. What phenomenon occurs?",
+    "options": [
+      "Perfect reconstruction",
+      "Oversampling",
+      "Aliasing",
+      "Quantization noise"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The Nyquist rate should be 2 × 15 = 30 kHz. Since 20 kHz < 30 kHz, the signal is undersampled and aliasing occurs."
+  },
+  {
+    "question": "A 70 Hz sinusoid is sampled at 80 Hz. What frequency will be observed after sampling?",
+    "options": [
+      "70 Hz",
+      "10 Hz",
+      "40 Hz",
+      "80 Hz"
+    ],
+    "correctAnswer": 1,
+    "explanation": "With f_s = 80 Hz, Nyquist frequency is 40 Hz. The 70 Hz signal folds: f_alias = 80 - 70 = 10 Hz."
+  },
+  {
+    "question": "What is the purpose of an anti-aliasing filter?",
+    "options": [
+      "To increase signal amplitude",
+      "To remove frequencies above the Nyquist frequency before sampling",
+      "To convert digital signals to analog",
+      "To reduce quantization noise"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Anti-aliasing filters are low-pass filters that remove frequency components above the Nyquist frequency before sampling to prevent aliasing."
+  },
+  {
+    "question": "For uniform quantization with step size Δ, what is the maximum quantization error?",
+    "options": [
+      "Δ",
+      "Δ/2",
+      "2Δ",
+      "Δ/4"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The quantization error ranges from -Δ/2 to +Δ/2, so the maximum absolute error is Δ/2."
+  },
+  {
+    "question": "How many quantization levels are available with 10-bit encoding?",
+    "options": [
+      "10",
+      "100",
+      "512",
+      "1024"
+    ],
+    "correctAnswer": 3,
+    "explanation": "The number of quantization levels is L = 2^N = 2^10 = 1024 levels."
+  },
+  {
+    "question": "What is the approximate SQNR improvement per additional quantization bit?",
+    "options": [
+      "3 dB per bit",
+      "6 dB per bit",
+      "10 dB per bit",
+      "1 dB per bit"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The SQNR formula SQNR_dB ≈ 6.02N + 1.76 dB shows approximately 6 dB improvement per additional bit."
+  },
+  {
+    "question": "In PCM, if the sampling rate is 8 kHz and each sample is encoded with 8 bits, what is the bit rate?",
+    "options": [
+      "8 kbps",
+      "64 kbps",
+      "16 kbps",
+      "1 Mbps"
+    ],
+    "correctAnswer": 1,
+    "explanation": "PCM bit rate R = N × f_s = 8 × 8000 = 64,000 bps = 64 kbps."
+  },
+  {
+    "question": "Why is companding used in telephony?",
+    "options": [
+      "To reduce the number of bits needed",
+      "To improve SQNR for small signals and handle wide dynamic range",
+      "To increase the sampling rate",
+      "To eliminate the need for anti-aliasing filters"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Companding (μ-law or A-law) provides non-uniform quantization that gives better SQNR for small signals while maintaining good dynamic range, making 8-bit telephony quality equivalent to ~12-bit uniform quantization."
+  }
+]

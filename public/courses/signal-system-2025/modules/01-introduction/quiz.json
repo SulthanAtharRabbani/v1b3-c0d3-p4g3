@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1-1",
+    "question": "A signal is defined as:",
+    "options": [
+      "A physical quantity only",
+      "A function of one or more independent variables that carries information",
+      "Only an electrical voltage or current",
+      "A constant value"
+    ],
+    "correctIndex": 1,
+    "explanation": "A signal is mathematically defined as a function of one or more independent variables (typically time) that carries information. The independent variable maps to a dependent variable representing the signal's amplitude or intensity."
+  },
+  {
+    "id": "q1-2",
+    "question": "What is the key difference between continuous-time and discrete-time signals?",
+    "options": [
+      "Continuous-time signals are always periodic",
+      "Discrete-time signals are defined only at discrete time instants",
+      "Continuous-time signals have finite energy",
+      "Discrete-time signals have infinite bandwidth"
+    ],
+    "correctIndex": 1,
+    "explanation": "Continuous-time signals x(t) are defined for all real values of time t, while discrete-time signals x[n] are defined only at integer sample indices n."
+  },
+  {
+    "id": "q1-3",
+    "question": "A digital signal has:",
+    "options": [
+      "Continuous time and continuous amplitude",
+      "Discrete time and continuous amplitude",
+      "Continuous time and discrete amplitude",
+      "Discrete time and discrete amplitude"
+    ],
+    "correctIndex": 3,
+    "explanation": "Digital signals have both discrete time (defined at specific time instants) and discrete amplitude (can only take values from a finite set of levels)."
+  },
+  {
+    "id": "q1-4",
+    "question": "A signal x(t) is periodic if:",
+    "options": [
+      "x(t) = 0 for all t",
+      "x(t) = x(t + T₀) for some positive T₀ and all t",
+      "x(t) has finite energy",
+      "x(t) is always positive"
+    ],
+    "correctIndex": 1,
+    "explanation": "A signal is periodic if there exists a positive T₀ such that x(t) = x(t + T₀) for all t. The smallest such T₀ is called the fundamental period."
+  },
+  {
+    "id": "q1-5",
+    "question": "What is the fundamental period of x(t) = sin(2πt)?",
+    "options": [
+      "π seconds",
+      "1 second",
+      "2π seconds",
+      "0.5 seconds"
+    ],
+    "correctIndex": 1,
+    "explanation": "For x(t) = sin(ω₀t), the fundamental period is T₀ = 2π/ω₀. Here ω₀ = 2π, so T₀ = 2π/(2π) = 1 second."
+  },
+  {
+    "id": "q1-6",
+    "question": "An even signal satisfies:",
+    "options": [
+      "x(t) = -x(-t)",
+      "x(t) = x(-t)",
+      "x(t) = x(t + T)",
+      "x(t) = 0 for t < 0"
+    ],
+    "correctIndex": 1,
+    "explanation": "An even signal is symmetric about the vertical axis, meaning x(t) = x(-t). Cosine is an example of an even signal."
+  },
+  {
+    "id": "q1-7",
+    "question": "A system T is linear if:",
+    "options": [
+      "T{ax(t)} = aT{x(t)} only",
+      "T{x₁(t) + x₂(t)} = T{x₁(t)} + T{x₂(t)} only",
+      "T{ax₁(t) + bx₂(t)} = aT{x₁(t)} + bT{x₂(t)}",
+      "Output is always proportional to input"
+    ],
+    "correctIndex": 2,
+    "explanation": "Linearity requires both additivity and homogeneity. The combined condition T{ax₁(t) + bx₂(t)} = aT{x₁(t)} + bT{x₂(t)} encompasses both properties (superposition principle)."
+  },
+  {
+    "id": "q1-8",
+    "question": "A causal system is one where:",
+    "options": [
+      "Output depends on future inputs",
+      "Output depends only on present and past inputs",
+      "Output is always zero",
+      "Output equals input"
+    ],
+    "correctIndex": 1,
+    "explanation": "A causal system's output at any time depends only on inputs at that time and earlier times. The system cannot anticipate future inputs."
+  },
+  {
+    "id": "q1-9",
+    "question": "Which of the following is an example of an energy signal?",
+    "options": [
+      "x(t) = cos(t)",
+      "x(t) = 5 (constant)",
+      "x(t) = e⁻ᵗu(t)",
+      "x(t) = sin(t) + sin(2t)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The decaying exponential x(t) = e⁻ᵗu(t) has finite total energy: E = ∫₀^∞ e⁻²ᵗdt = 1/2 < ∞. Periodic signals and constant signals are power signals (infinite energy, finite power)."
+  },
+  {
+    "id": "q1-10",
+    "question": "The impulse response h(t) of a system represents:",
+    "options": [
+      "The system's response to a step input",
+      "The system's response to a unit impulse input",
+      "The frequency response",
+      "The steady-state output"
+    ],
+    "correctIndex": 1,
+    "explanation": "The impulse response h(t) = T{δ(t)} is the output of a system when the input is a unit impulse δ(t). For LTI systems, the impulse response completely characterizes the system behavior."
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ref-1",
+    "title": "Sampling Frequency",
+    "formula": "f_s = \\frac{1}{T_s}",
+    "description": "Sampling frequency equals reciprocal of sampling period. Units: Hz or samples/second"
+  },
+  {
+    "id": "ref-2",
+    "title": "Nyquist Rate",
+    "formula": "f_s > 2W",
+    "description": "Sampling frequency must exceed twice the signal bandwidth W to avoid aliasing"
+  },
+  {
+    "id": "ref-3",
+    "title": "Energy of Continuous Signal",
+    "formula": "E = \\int_{-\\infty}^{\\infty} |x(t)|^2 dt",
+    "description": "Total energy of a signal over all time. Finite for energy signals"
+  },
+  {
+    "id": "ref-4",
+    "title": "Energy of Discrete Signal",
+    "formula": "E = \\sum_{n=-\\infty}^{\\infty} |x[n]|^2",
+    "description": "Total energy of a discrete-time signal"
+  },
+  {
+    "id": "ref-5",
+    "title": "Power of Continuous Signal",
+    "formula": "P = \\lim_{T \\to \\infty} \\frac{1}{2T} \\int_{-T}^{T} |x(t)|^2 dt",
+    "description": "Average power per unit time for power signals"
+  },
+  {
+    "id": "ref-6",
+    "title": "Convolution Integral",
+    "formula": "y(t) = x(t) * h(t) = \\int_{-\\infty}^{\\infty} x(\\tau)h(t-\\tau) d\\tau",
+    "description": "Output of LTI system equals convolution of input with impulse response"
+  },
+  {
+    "id": "ref-7",
+    "title": "Convolution Sum",
+    "formula": "y[n] = x[n] * h[n] = \\sum_{k=-\\infty}^{\\infty} x[k]h[n-k]",
+    "description": "Discrete-time convolution for LTI systems"
+  },
+  {
+    "id": "ref-8",
+    "title": "Fourier Series (Trigonometric)",
+    "formula": "x(t) = a_0 + \\sum_{n=1}^{\\infty} [a_n\\cos(n\\omega_0 t) + b_n\\sin(n\\omega_0 t)]",
+    "description": "Periodic signal representation as sum of sinusoids"
+  },
+  {
+    "id": "ref-9",
+    "title": "Fourier Coefficients",
+    "formula": "a_n = \\frac{2}{T}\\int_0^T x(t)\\cos(n\\omega_0 t)dt, \\quad b_n = \\frac{2}{T}\\int_0^T x(t)\\sin(n\\omega_0 t)dt",
+    "description": "Coefficients for Fourier series expansion"
+  },
+  {
+    "id": "ref-10",
+    "title": "Fourier Transform",
+    "formula": "X(\\omega) = \\int_{-\\infty}^{\\infty} x(t) e^{-j\\omega t} dt",
+    "description": "Transforms time-domain signal to frequency domain"
+  },
+  {
+    "id": "ref-11",
+    "title": "Inverse Fourier Transform",
+    "formula": "x(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^{\\infty} X(\\omega) e^{j\\omega t} d\\omega",
+    "description": "Recovers time-domain signal from frequency spectrum"
+  },
+  {
+    "id": "ref-12",
+    "title": "Time Shifting Property",
+    "formula": "x(t-t_0) \\leftrightarrow X(\\omega)e^{-j\\omega t_0}",
+    "description": "Shift in time causes phase shift in frequency domain"
+  },
+  {
+    "id": "ref-13",
+    "title": "Time Scaling Property",
+    "formula": "x(at) \\leftrightarrow \\frac{1}{|a|}X\\left(\\frac{\\omega}{a}\\right)",
+    "description": "Compression in time causes expansion in frequency"
+  },
+  {
+    "id": "ref-14",
+    "title": "Convolution Theorem",
+    "formula": "x(t) * h(t) \\leftrightarrow X(\\omega) \\cdot H(\\omega)",
+    "description": "Convolution in time domain equals multiplication in frequency domain"
+  },
+  {
+    "id": "ref-15",
+    "title": "Frequency Response",
+    "formula": "H(\\omega) = \\frac{Y(\\omega)}{X(\\omega)}",
+    "description": "Transfer function relating output spectrum to input spectrum"
+  },
+  {
+    "id": "ref-16",
+    "title": "Modulation Theorem",
+    "formula": "x(t)\\cos(\\omega_c t) \\leftrightarrow \\frac{1}{2}[X(\\omega-\\omega_c) + X(\\omega+\\omega_c)]",
+    "description": "Multiplication by carrier shifts spectrum to carrier frequency"
+  },
+  {
+    "id": "ref-17",
+    "title": "Euler's Formula",
+    "formula": "e^{j\\omega t} = \\cos(\\omega t) + j\\sin(\\omega t)",
+    "description": "Relationship between exponential and trigonometric functions"
+  },
+  {
+    "id": "ref-18",
+    "title": "Impulse Response",
+    "formula": "h(t) = T\\{\\delta(t)\\}",
+    "description": "System output when input is unit impulse; characterizes LTI system"
+  },
+  {
+    "id": "ref-19",
+    "title": "Quantization Step",
+    "formula": "\\Delta = \\frac{V_{max} - V_{min}}{L}",
+    "description": "Step size for L-level quantizer spanning voltage range"
+  },
+  {
+    "id": "ref-20",
+    "title": "Sinusoidal Signal",
+    "formula": "x(t) = A\\sin(\\omega_0 t + \\phi) = A\\sin(2\\pi f_0 t + \\phi)",
+    "description": "General sinusoidal signal with amplitude A, frequency f₀, phase φ"
+  }
+]

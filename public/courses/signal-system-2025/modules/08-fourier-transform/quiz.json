@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q8-1",
+    "question": "The Fourier transform extends Fourier series to:",
+    "options": [
+      "Periodic signals only",
+      "Non-periodic (aperiodic) signals",
+      "Digital signals only",
+      "Sinusoidal signals only"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Fourier transform extends the concepts of Fourier series to analyze non-periodic (aperiodic) signals that do not repeat in time."
+  },
+  {
+    "id": "q8-2",
+    "question": "The Fourier transform X(ω) of a real signal x(t) has the property:",
+    "options": [
+      "X(-ω) = X(ω)",
+      "X(-ω) = X*(ω)",
+      "X(-ω) = -X(ω)",
+      "X(-ω) = 0"
+    ],
+    "correctIndex": 1,
+    "explanation": "For real signals, the Fourier transform exhibits conjugate symmetry: X(-ω) = X*(ω). This means the magnitude is even and the phase is odd."
+  },
+  {
+    "id": "q8-3",
+    "question": "The Fourier transform of a rectangular pulse of width τ is:",
+    "options": [
+      "A rectangular function",
+      "A sinc function",
+      "An exponential function",
+      "A delta function"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Fourier transform of a rectangular pulse is a sinc function: X(ω) = τ·sinc(ωτ/2π). This is a fundamental transform pair in signal processing."
+  },
+  {
+    "id": "q8-4",
+    "question": "What does the magnitude spectrum |X(ω)| represent?",
+    "options": [
+      "Phase of frequency components",
+      "Amplitude of frequency components",
+      "Energy at each time instant",
+      "Period of the signal"
+    ],
+    "correctIndex": 1,
+    "explanation": "The magnitude spectrum |X(ω)| shows the amplitude (strength) of each frequency component in the signal. It indicates how much of each frequency is present."
+  },
+  {
+    "id": "q8-5",
+    "question": "For aperiodic signals, the spectrum is:",
+    "options": [
+      "Discrete (line spectrum)",
+      "Continuous",
+      "Zero everywhere",
+      "Infinite at all frequencies"
+    ],
+    "correctIndex": 1,
+    "explanation": "Unlike periodic signals which have discrete (line) spectra, aperiodic signals have continuous spectra where frequency components exist at all frequencies with varying amplitudes."
+  },
+  {
+    "id": "q8-6",
+    "question": "The inverse Fourier transform formula is:",
+    "options": [
+      "x(t) = ∫X(ω)e^{-jωt}dω",
+      "x(t) = (1/2π)∫X(ω)e^{jωt}dω",
+      "x(t) = ∫X(ω)e^{jωt}dt",
+      "x(t) = (1/2π)∫X(ω)e^{-jωt}dω"
+    ],
+    "correctIndex": 1,
+    "explanation": "The inverse Fourier transform is x(t) = (1/2π)∫X(ω)e^{jωt}dω. The factor of 1/2π ensures proper scaling when using angular frequency ω."
+  },
+  {
+    "id": "q8-7",
+    "question": "For the Fourier transform to exist, a sufficient condition is:",
+    "options": [
+      "Signal must be periodic",
+      "Signal must have finite energy",
+      "Signal must be continuous",
+      "Signal must be sinusoidal"
+    ],
+    "correctIndex": 1,
+    "explanation": "Signals with finite energy (satisfying ∫|x(t)|²dt < ∞) always have Fourier transforms. This is related to the Dirichlet conditions for transform existence."
+  },
+  {
+    "id": "q8-8",
+    "question": "The phase spectrum of a real signal is:",
+    "options": [
+      "Even function",
+      "Odd function",
+      "Always zero",
+      "Always positive"
+    ],
+    "correctIndex": 1,
+    "explanation": "For real signals, the phase spectrum ∠X(ω) is an odd function: ∠X(-ω) = -∠X(ω). This follows from the conjugate symmetry property."
+  },
+  {
+    "id": "q8-9",
+    "question": "What happens to the spectrum of a signal as its time duration decreases?",
+    "options": [
+      "Bandwidth decreases",
+      "Bandwidth increases",
+      "Spectrum becomes zero",
+      "No change in bandwidth"
+    ],
+    "correctIndex": 1,
+    "explanation": "There is an inverse relationship between time duration and bandwidth. As a signal becomes shorter in time, its spectrum spreads wider in frequency (time-scaling property)."
+  },
+  {
+    "id": "q8-10",
+    "question": "The Fourier transform of δ(t) (unit impulse) is:",
+    "options": [
+      "0",
+      "1 (constant)",
+      "jω",
+      "e^{-jω}"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Fourier transform of the unit impulse is X(ω) = 1, a constant. This means an impulse contains all frequencies with equal amplitude - the basis for impulse response analysis."
+  }
+]

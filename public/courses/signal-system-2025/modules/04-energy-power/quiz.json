@@ -1,0 +1,112 @@
+[
+  {
+    "question": "What is the definition of energy for a continuous-time signal x(t)?",
+    "options": [
+      "E = ∫|x(t)| dt",
+      "E = ∫|x(t)|² dt",
+      "E = lim(T→∞) 1/(2T) ∫|x(t)|² dt",
+      "E = ∫x(t)² dt"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Energy is defined as the integral of the squared magnitude of the signal over all time: E = ∫|x(t)|² dt from -∞ to ∞."
+  },
+  {
+    "question": "Which of the following is a characteristic of an energy signal?",
+    "options": [
+      "Finite energy and finite power",
+      "Finite energy and zero average power",
+      "Infinite energy and finite power",
+      "Zero energy and zero power"
+    ],
+    "correctAnswer": 1,
+    "explanation": "An energy signal has finite total energy (0 < E < ∞) and zero average power because the signal decays to zero over time."
+  },
+  {
+    "question": "What is the energy of the signal x(t) = e^(-2t)u(t)?",
+    "options": [
+      "1/2",
+      "1/4",
+      "1",
+      "2"
+    ],
+    "correctAnswer": 1,
+    "explanation": "E = ∫₀^∞ e^(-4t) dt = [-1/4 · e^(-4t)]₀^∞ = 1/4"
+  },
+  {
+    "question": "For a periodic signal with period T₀, the average power can be calculated as:",
+    "options": [
+      "P = ∫₀^T₀ |x(t)|² dt",
+      "P = (1/T₀) ∫₀^T₀ |x(t)|² dt",
+      "P = T₀ · ∫₀^T₀ |x(t)|² dt",
+      "P = (1/2T₀) ∫₀^T₀ |x(t)|² dt"
+    ],
+    "correctAnswer": 1,
+    "explanation": "For periodic signals, the average power equals the energy in one period divided by the period length."
+  },
+  {
+    "question": "What is the average power of the signal x(t) = 5cos(ω₀t)?",
+    "options": [
+      "5",
+      "25",
+      "25/2",
+      "5/2"
+    ],
+    "correctAnswer": 2,
+    "explanation": "For a sinusoid A·cos(ω₀t), the average power is A²/2 = 25/2 = 12.5"
+  },
+  {
+    "question": "The unit step function u(t) is classified as:",
+    "options": [
+      "Energy signal",
+      "Power signal",
+      "Both energy and power signal",
+      "Neither energy nor power signal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "u(t) has infinite energy (E = ∞) but finite power (P = 1/2), making it a power signal."
+  },
+  {
+    "question": "Which signal has neither finite energy nor finite power?",
+    "options": [
+      "x(t) = e^(-t)u(t)",
+      "x(t) = cos(t)",
+      "x(t) = t·u(t)",
+      "x(t) = rect(t)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The ramp function t·u(t) grows without bound, resulting in both E = ∞ and P = ∞."
+  },
+  {
+    "question": "For a discrete-time signal x[n], energy is calculated as:",
+    "options": [
+      "E = Σx[n]",
+      "E = Σ|x[n]|",
+      "E = Σ|x[n]|²",
+      "E = lim(N→∞) (1/N) Σ|x[n]|²"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Energy for discrete signals is the sum of squared magnitudes: E = Σ|x[n]|² from n = -∞ to ∞."
+  },
+  {
+    "question": "What is the RMS value of a sinusoid x(t) = 10cos(ω₀t)?",
+    "options": [
+      "10",
+      "5",
+      "10/√2",
+      "5√2"
+    ],
+    "correctAnswer": 2,
+    "explanation": "RMS = √P = √(A²/2) = A/√2 = 10/√2 ≈ 7.07"
+  },
+  {
+    "question": "The signal x(t) = A·δ(t) is:",
+    "options": [
+      "An energy signal with E = A²",
+      "A power signal with P = A²",
+      "An energy signal with E = A",
+      "Neither an energy nor power signal"
+    ],
+    "correctAnswer": 0,
+    "explanation": "The impulse has finite energy E = A² (when defined as the squared integral) and zero power, making it an energy signal."
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q9-1",
+    "question": "The linearity property of Fourier transform states:",
+    "options": [
+      "F{ax(t)} = X(aω)",
+      "F{ax₁(t) + bx₂(t)} = aX₁(ω) + bX₂(ω)",
+      "F{x(t)} = aX(ω)",
+      "F{x₁(t) + x₂(t)} = X₁(ω)X₂(ω)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The linearity property states that scaling and addition in time domain corresponds to scaling and addition in frequency domain: F{ax₁(t) + bx₂(t)} = aX₁(ω) + bX₂(ω)"
+  },
+  {
+    "id": "q9-2",
+    "question": "Time shifting property: F{x(t-t₀)} equals:",
+    "options": [
+      "X(ω)",
+      "X(ω-t₀)",
+      "X(ω)e^{-jωt₀}",
+      "X(ω)e^{jωt₀}"
+    ],
+    "correctIndex": 2,
+    "explanation": "Time shifting adds a linear phase term: F{x(t-t₀)} = X(ω)e^{-jωt₀}. The magnitude spectrum remains unchanged, but phase shifts linearly with frequency."
+  },
+  {
+    "id": "q9-3",
+    "question": "What effect does time shifting have on the magnitude spectrum?",
+    "options": [
+      "Magnitude increases",
+      "Magnitude decreases",
+      "No effect on magnitude",
+      "Magnitude becomes zero"
+    ],
+    "correctIndex": 2,
+    "explanation": "Time shifting does not affect the magnitude spectrum because |X(ω)e^{-jωt₀}| = |X(ω)|. Only the phase spectrum changes."
+  },
+  {
+    "id": "q9-4",
+    "question": "The time-scaling property states F{x(at)} equals:",
+    "options": [
+      "X(aω)",
+      "(1/|a|)X(ω/a)",
+      "aX(ω)",
+      "X(ω/a)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Time scaling: F{x(at)} = (1/|a|)X(ω/a). Compression in time (a > 1) causes expansion in frequency, and vice versa."
+  },
+  {
+    "id": "q9-5",
+    "question": "If x(t) is compressed in time, its bandwidth:",
+    "options": [
+      "Decreases",
+      "Increases",
+      "Remains same",
+      "Becomes zero"
+    ],
+    "correctIndex": 1,
+    "explanation": "Time compression (a > 1 in x(at)) causes frequency expansion. The bandwidth increases - shorter signals have wider spectra."
+  },
+  {
+    "id": "q9-6",
+    "question": "The convolution theorem states:",
+    "options": [
+      "Convolution in time = convolution in frequency",
+      "Convolution in time = multiplication in frequency",
+      "Multiplication in time = multiplication in frequency",
+      "Convolution in time = addition in frequency"
+    ],
+    "correctIndex": 1,
+    "explanation": "The convolution theorem: x(t) * h(t) ↔ X(ω)·H(ω). Convolution in time domain equals multiplication in frequency domain. This is fundamental for LTI system analysis."
+  },
+  {
+    "id": "q9-7",
+    "question": "Frequency shifting property (modulation) states:",
+    "options": [
+      "x(t)e^{jω₀t} ↔ X(ω - ω₀)",
+      "x(t)e^{jω₀t} ↔ X(ω + ω₀)",
+      "x(t)e^{jω₀t} ↔ X(ω₀)",
+      "x(t)e^{jω₀t} ↔ X(ω)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Frequency shifting (modulation): x(t)e^{jω₀t} ↔ X(ω - ω₀). Multiplying by a complex exponential shifts the spectrum. This is the basis for amplitude modulation."
+  },
+  {
+    "id": "q9-8",
+    "question": "What is the dual of the convolution theorem?",
+    "options": [
+      "Time multiplication ↔ frequency convolution",
+      "Time addition ↔ frequency addition",
+      "Time convolution ↔ frequency convolution",
+      "Time scaling ↔ frequency scaling"
+    ],
+    "correctIndex": 0,
+    "explanation": "The dual property: x₁(t)·x₂(t) ↔ (1/2π)X₁(ω) * X₂(ω). Multiplication in time corresponds to convolution in frequency."
+  },
+  {
+    "id": "q9-9",
+    "question": "The duality property of Fourier transform implies:",
+    "options": [
+      "Time and frequency are unrelated",
+      "If x(t) ↔ X(ω), then X(t) ↔ 2πx(-ω)",
+      "Time and frequency are identical",
+      "All transforms are symmetric"
+    ],
+    "correctIndex": 1,
+    "explanation": "Duality: if x(t) ↔ X(ω), then X(t) ↔ 2πx(-ω). This reflects the symmetry between time and frequency domains in the transform formulas."
+  },
+  {
+    "id": "q9-10",
+    "question": "The derivative property states d/dt x(t) ↔ :",
+    "options": [
+      "jωX(ω)",
+      "X'(ω)",
+      "ωX(ω)",
+      "jX(ω)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Differentiation in time: dx(t)/dt ↔ jωX(ω). Taking a derivative multiplies the spectrum by jω, emphasizing high frequencies and adding 90° phase shift."
+  }
+]

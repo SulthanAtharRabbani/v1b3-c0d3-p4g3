@@ -1,0 +1,102 @@
+[
+  {
+    "id": "card-1",
+    "front": "What is a signal?",
+    "back": "A signal is a function of one or more independent variables that carries information. Examples include audio signals x(t), images f(x,y), and discrete sequences x[n]."
+  },
+  {
+    "id": "card-2",
+    "front": "What is the difference between continuous-time and discrete-time signals?",
+    "back": "**Continuous-time**: Defined for all real values of time t (e.g., x(t))\n\n**Discrete-time**: Defined only at integer values n (e.g., x[n] = x(nTs) where Ts is sampling period)"
+  },
+  {
+    "id": "card-3",
+    "front": "What is the Nyquist-Shannon sampling theorem?",
+    "back": "To perfectly reconstruct a bandlimited signal with bandwidth W Hz, the sampling frequency must satisfy:\n\n$$f_s > 2W$$\n\nThe minimum rate 2W is called the Nyquist rate. Sampling below this causes aliasing."
+  },
+  {
+    "id": "card-4",
+    "front": "What is aliasing and how can it be prevented?",
+    "back": "**Aliasing**: High-frequency components appear as lower frequencies when sampling below Nyquist rate.\n\n**Prevention**: Use anti-aliasing filter (low-pass filter) before sampling to limit bandwidth to less than fs/2."
+  },
+  {
+    "id": "card-5",
+    "front": "What is quantization and what is the quantization step size?",
+    "back": "**Quantization**: Mapping continuous amplitude values to finite set of discrete levels.\n\n**Step size**: $$\\Delta = \\frac{V_{max} - V_{min}}{L}$$\n\nWhere L is the number of quantization levels."
+  },
+  {
+    "id": "card-6",
+    "front": "What is the difference between energy signals and power signals?",
+    "back": "**Energy signals**: Finite total energy (E < ∞), zero average power. Examples: pulses, decaying exponentials.\n\n**Power signals**: Finite average power (0 < P < ∞), infinite energy. Examples: periodic signals, constants."
+  },
+  {
+    "id": "card-7",
+    "front": "How do you calculate signal energy for continuous and discrete signals?",
+    "back": "**Continuous-time**:\n$$E = \\int_{-\\infty}^{\\infty} |x(t)|^2 dt$$\n\n**Discrete-time**:\n$$E = \\sum_{n=-\\infty}^{\\infty} |x[n]|^2$$"
+  },
+  {
+    "id": "card-8",
+    "front": "What are the properties of a linear system?",
+    "back": "A system is linear if it satisfies:\n\n1. **Homogeneity**: T{ax(t)} = aT{x(t)}\n2. **Additivity**: T{x₁(t) + x₂(t)} = T{x₁(t)} + T{x₂(t)}\n\nCombined: T{ax₁(t) + bx₂(t)} = aT{x₁(t)} + bT{x₂(t)} (superposition)"
+  },
+  {
+    "id": "card-9",
+    "front": "What is time-invariance?",
+    "back": "A system is time-invariant if a time shift in the input causes the same time shift in the output:\n\nIf x(t) → y(t)\nThen x(t - t₀) → y(t - t₀)\n\nThe system behavior doesn't change over time."
+  },
+  {
+    "id": "card-10",
+    "front": "What is the impulse response of an LTI system?",
+    "back": "The impulse response h(t) is the output of an LTI system when the input is a unit impulse δ(t):\n\n$$h(t) = T\\{\\delta(t)\\}$$\n\nThe impulse response completely characterizes an LTI system."
+  },
+  {
+    "id": "card-11",
+    "front": "What is the convolution integral and what does it represent?",
+    "back": "**Convolution integral**:\n$$y(t) = x(t) * h(t) = \\int_{-\\infty}^{\\infty} x(\\tau)h(t-\\tau)d\\tau$$\n\nIt represents the output of an LTI system as the weighted sum of shifted impulse responses."
+  },
+  {
+    "id": "card-12",
+    "front": "What are the properties of convolution?",
+    "back": "1. **Commutative**: x(t) * h(t) = h(t) * x(t)\n2. **Associative**: [x(t) * h₁(t)] * h₂(t) = x(t) * [h₁(t) * h₂(t)]\n3. **Distributive**: x(t) * [h₁(t) + h₂(t)] = x(t) * h₁(t) + x(t) * h₂(t)"
+  },
+  {
+    "id": "card-13",
+    "front": "What is the Fourier series representation of a periodic signal?",
+    "back": "**Trigonometric form**:\n$$x(t) = a_0 + \\sum_{n=1}^{\\infty}[a_n\\cos(n\\omega_0 t) + b_n\\sin(n\\omega_0 t)]$$\n\nPeriodic signals are represented as sum of harmonically related sinusoids."
+  },
+  {
+    "id": "card-14",
+    "front": "What is the Fourier transform and what does it represent?",
+    "back": "**Definition**:\n$$X(\\omega) = \\int_{-\\infty}^{\\infty} x(t)e^{-j\\omega t}dt$$\n\nIt transforms a time-domain signal into its frequency-domain representation, showing the signal's spectral content."
+  },
+  {
+    "id": "card-15",
+    "front": "What is the convolution theorem?",
+    "back": "Convolution in time domain equals multiplication in frequency domain:\n\n$$x(t) * h(t) \\leftrightarrow X(\\omega) \\cdot H(\\omega)$$\n\nThis is fundamental for LTI system analysis in frequency domain."
+  },
+  {
+    "id": "card-16",
+    "front": "What is the time-shifting property of Fourier transform?",
+    "back": "A shift in time causes phase shift in frequency domain:\n\n$$x(t - t_0) \\leftrightarrow X(\\omega)e^{-j\\omega t_0}$$\n\nThe magnitude spectrum is unchanged; only phase is affected."
+  },
+  {
+    "id": "card-17",
+    "front": "What is the time-scaling property of Fourier transform?",
+    "back": "Compression in time causes expansion in frequency:\n\n$$x(at) \\leftrightarrow \\frac{1}{|a|}X\\left(\\frac{\\omega}{a}\\right)$$\n\nShorter duration signals have broader bandwidth."
+  },
+  {
+    "id": "card-18",
+    "front": "What is amplitude modulation (AM)?",
+    "back": "**AM**: Multiplying message signal m(t) with carrier cos(ωc*t):\n\n$$s(t) = m(t)\\cos(\\omega_c t)$$\n\nThis shifts the message spectrum to the carrier frequency for transmission."
+  },
+  {
+    "id": "card-19",
+    "front": "What are the main types of filters based on frequency response?",
+    "back": "1. **Low-pass filter (LPF)**: Passes low frequencies, attenuates high frequencies\n2. **High-pass filter (HPF)**: Passes high frequencies, attenuates low frequencies\n3. **Band-pass filter (BPF)**: Passes a range of frequencies\n4. **Band-stop filter (BSF)**: Attenuates a range of frequencies"
+  },
+  {
+    "id": "card-20",
+    "front": "How do you determine the output of an LTI system using frequency domain analysis?",
+    "back": "1. Compute input spectrum: X(ω) = F{x(t)}\n2. Multiply by frequency response: Y(ω) = X(ω)·H(ω)\n3. Inverse transform: y(t) = F⁻¹{Y(ω)}\n\nThis is often easier than time-domain convolution."
+  }
+]

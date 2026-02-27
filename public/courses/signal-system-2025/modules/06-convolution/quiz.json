@@ -1,0 +1,112 @@
+[
+  {
+    "question": "The convolution integral for continuous-time signals is defined as:",
+    "options": [
+      "y(t) = ∫x(t)h(t)dt",
+      "y(t) = ∫x(τ)h(t-τ)dτ",
+      "y(t) = ∫x(τ)h(τ)dτ",
+      "y(t) = x(t)·h(t)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The convolution integral y(t) = ∫x(τ)h(t-τ)dτ integrates over all τ, with h(t-τ) being the flipped and shifted impulse response."
+  },
+  {
+    "question": "In the graphical method for convolution, what is the first step?",
+    "options": [
+      "Integrate the product",
+      "Flip one of the signals",
+      "Shift both signals",
+      "Multiply the signals"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The graphical method starts by flipping (reflecting) one signal about the vertical axis, then shifting, multiplying, and integrating."
+  },
+  {
+    "question": "The convolution of a signal with a unit impulse δ(t) yields:",
+    "options": [
+      "Zero",
+      "The signal itself",
+      "The derivative of the signal",
+      "The integral of the signal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "x(t) * δ(t) = x(t). The impulse is the identity element for convolution."
+  },
+  {
+    "question": "If x[n] has length 5 and h[n] has length 3, the convolution result has length:",
+    "options": [
+      "5",
+      "8",
+      "7",
+      "15"
+    ],
+    "correctAnswer": 2,
+    "explanation": "For discrete convolution, if Lx = 5 and Lh = 3, then Ly = Lx + Lh - 1 = 5 + 3 - 1 = 7."
+  },
+  {
+    "question": "The commutative property of convolution states:",
+    "options": [
+      "x(t) * h(t) = h(t) * x(t)",
+      "x(t) * h(t) = -h(t) * x(t)",
+      "x(t) * h(t) = x(t) + h(t)",
+      "x(t) * h(t) = x(t) · h(t)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Convolution is commutative: the order of operands doesn't matter, x(t) * h(t) = h(t) * x(t)."
+  },
+  {
+    "question": "When two systems with impulse responses h₁(t) and h₂(t) are connected in cascade, the overall impulse response is:",
+    "options": [
+      "h₁(t) + h₂(t)",
+      "h₁(t) * h₂(t)",
+      "h₁(t) · h₂(t)",
+      "h₁(t) - h₂(t)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Due to the associative property, cascaded systems have an overall impulse response equal to the convolution of individual responses."
+  },
+  {
+    "question": "When two systems are connected in parallel, the overall impulse response is:",
+    "options": [
+      "The product of individual responses",
+      "The convolution of individual responses",
+      "The sum of individual responses",
+      "The difference of individual responses"
+    ],
+    "correctAnswer": 2,
+    "explanation": "For parallel systems, the overall impulse response is h(t) = h₁(t) + h₂(t), the sum of individual responses."
+  },
+  {
+    "question": "The convolution sum for discrete-time signals is defined as:",
+    "options": [
+      "y[n] = Σx[k]h[k]",
+      "y[n] = Σx[k]h[n-k]",
+      "y[n] = x[n]·h[n]",
+      "y[n] = Σx[n]h[n]"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The discrete convolution sum y[n] = Σx[k]h[n-k] sums over all k, with h[n-k] being the flipped and shifted impulse response."
+  },
+  {
+    "question": "Convolution of x(t) with δ(t-t₀) yields:",
+    "options": [
+      "x(t)",
+      "x(t-t₀)",
+      "x(t+t₀)",
+      "x(t₀)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "x(t) * δ(t-t₀) = x(t-t₀). A shifted impulse shifts the signal by the same amount."
+  },
+  {
+    "question": "The sliding tape method is used for computing:",
+    "options": [
+      "Continuous-time convolution only",
+      "Discrete-time convolution only",
+      "Both continuous and discrete convolution",
+      "Neither continuous nor discrete convolution"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The sliding tape method is specifically designed for computing discrete-time convolution sums, not continuous-time convolution integrals."
+  }
+]

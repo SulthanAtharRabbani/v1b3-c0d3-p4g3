@@ -1,0 +1,112 @@
+[
+  {
+    "question": "What is the fundamental frequency of a periodic signal with period T₀ = 20 ms?",
+    "options": [
+      "20 Hz",
+      "50 Hz",
+      "100 Hz",
+      "200 Hz"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Fundamental frequency f₀ = 1/T₀ = 1/(20×10⁻³) = 50 Hz."
+  },
+  {
+    "question": "In the trigonometric Fourier series, what does the coefficient a₀ represent?",
+    "options": [
+      "Amplitude of the fundamental frequency",
+      "The average (DC) value of the signal",
+      "Amplitude of the first sine harmonic",
+      "The maximum amplitude of the signal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "a₀ is the DC component, representing the average value of the periodic signal over one period."
+  },
+  {
+    "question": "If a signal x(t) is an odd function, which Fourier coefficients are zero?",
+    "options": [
+      "All bₙ are zero",
+      "All aₙ (including a₀) are zero",
+      "All coefficients for even n are zero",
+      "All coefficients are non-zero"
+    ],
+    "correctAnswer": 1,
+    "explanation": "For odd symmetry x(t) = -x(-t), all cosine coefficients aₙ (including a₀) are zero, leaving only sine terms."
+  },
+  {
+    "question": "A signal has half-wave symmetry if it satisfies:",
+    "options": [
+      "x(t) = x(-t)",
+      "x(t) = -x(-t)",
+      "x(t) = -x(t + T₀/2)",
+      "x(t) = x(t + T₀/2)"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Half-wave symmetry means the second half of the period is the negative of the first half: x(t) = -x(t + T₀/2)."
+  },
+  {
+    "question": "For the complex Fourier series, what is the relationship between cₙ and c₋ₙ for real signals?",
+    "options": [
+      "c₋ₙ = cₙ",
+      "c₋ₙ = -cₙ",
+      "c₋ₙ = cₙ* (complex conjugate)",
+      "c₋ₙ = -cₙ*"
+    ],
+    "correctAnswer": 2,
+    "explanation": "For real signals, coefficients at positive and negative frequencies are complex conjugates: c₋ₙ = cₙ*."
+  },
+  {
+    "question": "The Fourier series of a square wave contains:",
+    "options": [
+      "Only even harmonics",
+      "Only odd harmonics",
+      "All harmonics",
+      "Only the fundamental frequency"
+    ],
+    "correctAnswer": 1,
+    "explanation": "A square wave has half-wave symmetry, so it contains only odd harmonics (1st, 3rd, 5th, etc.)."
+  },
+  {
+    "question": "What is the formula for the complex Fourier coefficient cₙ?",
+    "options": [
+      "cₙ = (1/T₀)∫x(t)e^(jnω₀t)dt",
+      "cₙ = (2/T₀)∫x(t)e^(jnω₀t)dt",
+      "cₙ = (1/T₀)∫x(t)e^(-jnω₀t)dt",
+      "cₙ = (2/T₀)∫x(t)e^(-jnω₀t)dt"
+    ],
+    "correctAnswer": 2,
+    "explanation": "The complex Fourier coefficient is cₙ = (1/T₀)∫x(t)e^(-jnω₀t)dt, integrating over one period."
+  },
+  {
+    "question": "According to Parseval's theorem for Fourier series, what does the sum of |cₙ|² represent?",
+    "options": [
+      "The peak amplitude of the signal",
+      "The average power of the signal",
+      "The total energy of the signal",
+      "The bandwidth of the signal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Parseval's theorem states that (1/T₀)∫|x(t)|²dt = Σ|cₙ|², relating the sum of squared coefficient magnitudes to average power."
+  },
+  {
+    "question": "For a triangle wave, the Fourier coefficient amplitudes decrease as:",
+    "options": [
+      "1/n (same as square wave)",
+      "1/n²",
+      "1/n³",
+      "1/√n"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Triangle wave has a smoother shape than square wave. Its Fourier coefficients decrease as 1/n² due to the continuous first derivative."
+  },
+  {
+    "question": "At a point of discontinuity, the Fourier series converges to:",
+    "options": [
+      "The left-hand limit x(t⁻)",
+      "The right-hand limit x(t⁺)",
+      "The average of left and right limits",
+      "Zero"
+    ],
+    "correctAnswer": 2,
+    "explanation": "At discontinuities, the Fourier series converges to [x(t⁻) + x(t⁺)]/2, the average of the left and right limits."
+  }
+]
